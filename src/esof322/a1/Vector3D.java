@@ -10,4 +10,12 @@ public class Vector3D {
         this.y = y;
         this.z = z;
     }
+
+    public Vector3D scale(double f) {
+        return new Vector3D(f*x, f*y, f*z);
+    }
+
+    public Vector3D add(Vector3D v) {
+        return new Vector3D(x + v.x, y + v.y, z + v.z);
+    }
 }
