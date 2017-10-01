@@ -18,4 +18,12 @@ public class Vector3D {
     public Vector3D add(Vector3D v) {
         return new Vector3D(x + v.x, y + v.y, z + v.z);
     }
+    
+    public Vector3D subtract(Vector3D v) {
+        return new Vector3D(x - v.x, y - v.y, z - v.z);
+    }
+    
+    public Vector3D negate() {
+        return new Vector3D(x*(-1), y*(-1), z*(-1));
+    }
 }

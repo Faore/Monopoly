@@ -29,4 +29,19 @@ public class Vector3DTest {
         Vector3D newVector = vector1.add(vector2);
         assertArrayEquals(new double[]{2,4,8}, new double[]{newVector.x, newVector.y, newVector.z}, 0);
     }
+    
+    @Test
+    public void theSubtractMethodShouldSubtractCoordinatesOfTwoVectors() {
+        Vector3D vector1 = new Vector3D(2,4,6);
+        Vector3D vector2 = new Vector3D(1,2,3);
+        Vector3D newVector = vector1.subtract(vector2);
+        assertArrayEquals(new double[]{1,2,3}, new double[]{newVector.x, newVector.y, newVector.z}, 0);
+    }
+    
+    @Test
+    public void theNegateMethodShouldGiveSameMagnitudeButOppositeDirection() {
+        Vector3D vector1 = new Vector3D(2,4,6);
+        vector1 = vector1.negate();
+        assertArrayEquals(new double[]{-2,-4,-6}, new double[]{newVector.x, newVector.y, newVector.z}, 0);
+    }
 }
