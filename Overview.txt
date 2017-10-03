@@ -1,0 +1,33 @@
+------------
+Team Members
+------------
+	Brad Hieronymus
+	Chris Thomas
+	Tyler Krueger
+	Sean Jungst
+
+--------------------------------------------------------------------------------------
+Interesting class relationships, design approaches, things that gave you trouble, etc.
+--------------------------------------------------------------------------------------
+	The assignment itself was fairly straight forward and most of what we were expected
+	to do was already detailed in the Assignment overview so there wasn't too much in 
+	the way of designing. The most difficult part of the assignment was getting all the
+	team members together for the initial meetup to decide who was responsible for what,
+	we all had different schedules. The actual execution of writing the code was simple
+	as github allows for easy asynchronous development.
+
+------------------------------------------------------------------------
+Contributions By Member (Each member did the corresponding Test methods)
+------------------------------------------------------------------------
+	Chris Thomas - Constructor, Scale and Add methods
+	Brad Hieronymus - Dot product and Magnitude methods and overview.txt
+	Tyler Krueger - Subtract and Negate Methods
+	Sean Jungst - ToString and Equals methods
+	
+---------------
+Time Per Member
+---------------
+	Chris Thomas - 48 minutes
+	Brad Hieronymus - 57 minutes
+	Tyler Krueger - 47 minutes
+	Sean Jungst - 52 minutes
