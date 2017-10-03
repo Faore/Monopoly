@@ -44,4 +44,20 @@ public class Vector3DTest {
         vector1 = vector1.negate();
         assertArrayEquals(new double[]{-2,-4,-6}, new double[]{newVector.x, newVector.y, newVector.z}, 0);
     }
+	
+	@Test
+	public void theDotMethodShouldGiveTheDotProductOfTwoVectors() {
+		Vector3D vector1 = new Vector3D(6,6,6);
+		Vector3D vector2 = new Vector3D(4,2,0);
+		double testingDouble = 36;
+		double dotProduct = vector1.dot(vector2);
+		assertEquals(testingDouble, dotProduct, 0);
+	}
+	
+	@Test
+	public void theMagnitudeMethodShouldProvideTheMagnitudeOfAVector() {
+		Vector3D vector1 = new Vector3D(2,4,4);
+		double testingMagnitude = 6;
+		assertEquals(testingMagnitude, vector1.magnitude(), 0);
+	}
 }

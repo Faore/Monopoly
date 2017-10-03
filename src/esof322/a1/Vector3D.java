@@ -26,4 +26,12 @@ public class Vector3D {
     public Vector3D negate() {
         return new Vector3D(x*(-1), y*(-1), z*(-1));
     }
+	
+	public double dot(Vector3D v) {
+		return (x*v.x) + (y*v.y) + (z*v.z);
+	}
+	
+	public double magnitude() {
+		return sqrt((x*x) + (y*y) + (z*z);
+	}
 }
