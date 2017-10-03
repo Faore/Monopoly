@@ -36,4 +36,22 @@ public class Vector3D {
 	public double magnitude() {
 		return sqrt((x*x) + (y*y) + (z*z));
 	}
+
+	public String toString(Vector3D v){
+		return "Coordinates are x: " + v.x + "  y: " + v.y + "  z: " + v.z;
+	}
+
+	public boolean equals(Vector3D v, Vector3D u){
+		double tolerance = 0.00001;
+		boolean a, b, c = false;
+		a = Math.abs(v.x - u.x) < tolerance;
+		b = Math.abs(v.y - u.y) < tolerance;
+		c = Math.abs(v.z - u.z) < tolerance;
+
+		if(a == true && b == true && c == true){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
