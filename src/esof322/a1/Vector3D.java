@@ -1,5 +1,7 @@
 package esof322.a1;
 
+import static java.lang.StrictMath.sqrt;
+
 public class Vector3D {
     public final double x;
     public final double y;
@@ -32,6 +34,6 @@ public class Vector3D {
 	}
 	
 	public double magnitude() {
-		return sqrt((x*x) + (y*y) + (z*z);
+		return sqrt((x*x) + (y*y) + (z*z));
 	}
 }
