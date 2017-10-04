@@ -29,29 +29,29 @@ public class Vector3D {
         return new Vector3D(x*(-1), y*(-1), z*(-1));
     }
 	
-	public double dot(Vector3D v) {
-		return (x*v.x) + (y*v.y) + (z*v.z);
-	}
+    public double dot(Vector3D v) {
+	return (x*v.x) + (y*v.y) + (z*v.z);
+    }
 	
-	public double magnitude() {
-		return sqrt((x*x) + (y*y) + (z*z));
-	}
+    public double magnitude() {
+	return sqrt((x*x) + (y*y) + (z*z));
+    }
 
-	public String toString(){
-		return "Coordinates are x: " + x + "  y: " + y + "  z: " + z;
-	}
+    public String toString(){
+	return "Coordinates are x: " + x + "  y: " + y + "  z: " + z;
+    }
 
-	public boolean equals(Vector3D u){
-		double tolerance = 0.00001;
-		boolean a, b, c = false;
-		a = Math.abs(x - u.x) < tolerance;
-		b = Math.abs(y - u.y) < tolerance;
-		c = Math.abs(z - u.z) < tolerance;
+    public boolean equals(Vector3D u){
+	double tolerance = 0.00001;
+	boolean a, b, c = false;
+	a = Math.abs(x - u.x) < tolerance;
+	b = Math.abs(y - u.y) < tolerance;
+	c = Math.abs(z - u.z) < tolerance;
 
-		if(a == true && b == true && c == true){
-			return true;
-		}else{
-			return false;
-		}
+	if(a == true && b == true && c == true){
+		return true;
+	}else{
+		return false;
 	}
+    }
 }
