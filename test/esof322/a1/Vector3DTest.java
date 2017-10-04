@@ -72,7 +72,7 @@ public void theToStringMethodShouldGiveOutput(){
 @Test
 public void theEqualsMethodShouldShowTheTwoVectorsAreEqualOrNot(){
 	Vector3D vector1 = new Vector3D(6,2,0);
-	Vector3D vector2 = new Vector3D(6,4,1);
+	Vector3D vector2 = new Vector3D(6,2,1);
 	boolean vectorEqualTest = false;
 	boolean vectorEqual = vector1.equals(vector2);
 	assertEquals(vectorEqualTest, vectorEqual);
