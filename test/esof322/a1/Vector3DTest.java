@@ -60,4 +60,22 @@ public class Vector3DTest {
 		double testingMagnitude = 6;
 		assertEquals(testingMagnitude, vector1.magnitude(), 0);
 	}
+
+@Test
+public void theToStringMethodShouldGiveOutput(){
+	Vector3D vector1 = new Vector3D(6,5,4);
+	String testingString = "Coordinates are x: 6.0  y: 5.0  z: 4.0";
+	String outputString = vector1.toString();
+	assertEquals(testingString , outputString, 0);
+	}
+
+@Test
+public void theEqualsMethodShouldShowTheTwoVectorsAreEqualOrNot(){
+	Vector3D vector1 = new Vector3D(6,2,0);
+	Vector3D vector2 = new Vector3D(6,4,1);
+	boolean vectorEqualTest = false;
+	boolean vectorEqual = vector1.equals(vector2);
+	assertEquals(vectorEqualTest, vectorEqual);
+	}
+
 }
