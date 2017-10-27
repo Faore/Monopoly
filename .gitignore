@@ -12,6 +12,10 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+build/
+.gradle/
+*.ipr
+*.iws
 
 # External tool builders
 .externalToolBuilders/

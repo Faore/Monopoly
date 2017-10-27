@@ -1,7 +1,13 @@
-group 'im.admt.team11.pa3'
+plugins {
+    id 'java'
+    id 'idea'
+    id 'application'
+}
+
+group 'im.admt.team11.PA3'
 version '1.0'
 
-apply plugin: 'java'
+mainClassName = 'im.admt.team11.PA3.Monopoly'
 
 sourceCompatibility = 1.9
 
@@ -11,7 +17,17 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'junit:junit:4.12'
     testCompile "org.testfx:testfx-core:4.0.+"
     testCompile "org.testfx:testfx-junit:4.0.+"
+}
+
+
+
+compileJava.options.encoding = 'UTF-8'
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
 }
