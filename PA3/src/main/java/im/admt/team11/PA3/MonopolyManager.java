@@ -1,6 +1,6 @@
 package im.admt.team11.PA3;
 
-public class Monopoly {
+public class MonopolyManager {
 
     public static void main(String[] args) {
         //Everything starts here.
