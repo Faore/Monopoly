@@ -67,8 +67,10 @@ public class GameWindowManager {
     }
 
     public void zoomOut(ActionEvent actionEvent) {
+        zoomSlider.setValue(zoomSlider.getValue() - .05);
     }
 
     public void zoomIn(ActionEvent actionEvent) {
+        zoomSlider.setValue(zoomSlider.getValue() + .05);
     }
 }
