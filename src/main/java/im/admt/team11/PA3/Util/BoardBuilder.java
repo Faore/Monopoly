@@ -13,7 +13,6 @@ public class BoardBuilder {
 
         //Go
         tiles.add(new SpecialTile("Go", new Point2D(0,0), new Point2D(0,0), SpecialTileTypes.Go));
-
         return tiles;
     }
 }

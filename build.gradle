@@ -17,7 +17,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.8.2'
     testCompile 'junit:junit:4.12'
     testCompile "org.testfx:testfx-core:4.0.+"
     testCompile "org.testfx:testfx-junit:4.0.+"
