@@ -1,5 +1,7 @@
 package im.admt.team11.PA3;
 
+import im.admt.team11.PA3.Game.GameSettings;
+import im.admt.team11.PA3.Game.MonopolyGame;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,10 +19,9 @@ public class MonopolyManager extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/GameWindow.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1280, 720));
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
+
+        MonopolyGame game = new MonopolyGame(new GameSettings(), primaryStage);
+        game.start();
+
     }
 }
