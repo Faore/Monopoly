@@ -2,20 +2,25 @@ package im.admt.team11.PA3.Game;
 
 import im.admt.team11.PA3.Game.Board.Pieces.Die;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
+import im.admt.team11.PA3.Game.Board.Card.Deed;
+
+import java.util.ArrayList;
 
 public class Player {
 	final int playerNumber;
-	final Token token;
+
+	//Removed final modifier from token (setToken wasn't valid)
+	Token token;
 	int money;
 	int position;
-	ArrayList<Deeds> deeds;
+	ArrayList<Deed> deeds;
 	
 	public Player(int playerNumber, Token token) {
 		this.playerNumber = playerNumber;
 		this.token = token;
 		this.money = 0;
 		this.position = 0;
-		deeds = new ArrayList<Deeds>();
+		deeds = new ArrayList<Deed>();
 	}
 	
 	public int rollDie(Die die) {
