@@ -1,8 +1,10 @@
 package im.admt.team11.PA3.Game.UI;
 
+import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.MonopolyGame;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,14 +52,6 @@ public class GameWindowManager {
         zoomGroup = new Group();
         contentGroup.getChildren().add(zoomGroup);
         zoomGroup.getChildren().add(scrollPane.getContent());
-        zoomGroup.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(MonopolyGame.getInstance().debugUI != null) {
-                    MonopolyGame.getInstance().debugUI.clickCoordinates.setText("(" + String.format("%1$,.2f", event.getX()) + ", " + String.format("%1$,.2f", event.getY()) + ")");
-                }
-            }
-        });
         scrollPane.setContent(contentGroup);
     }
 
@@ -86,5 +80,15 @@ public class GameWindowManager {
 
     public void debugMenuTools(ActionEvent actionEvent) throws IOException {
         MonopolyGame.getInstance().openDebugDialog();
+    }
+
+    public Tile tileAtEvent(MouseEvent event) {
+        for (Tile t : MonopolyGame.getInstance().gameBoard.tiles) {
+            if(event.getX() >= t.firstBound.getX() && event.getX() <= t.secondBound.getX() && event.getY() <= t.firstBound.getY() && event.getY() >= t.secondBound.getY()) {
+                return t;
+            }
+        }
+
+        return null;
     }
 }

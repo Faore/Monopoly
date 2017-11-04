@@ -23,6 +23,8 @@ public class MonopolyGame {
     public GameWindowManager gameWindowManager;
     public DebugUI debugUI;
 
+    public GameBoard gameBoard;
+
     public MonopolyGame(GameSettings gameSettings, Stage primaryStage) {
         if(MonopolyGame.singleton == null) {
             MonopolyGame.singleton = this;
@@ -30,6 +32,7 @@ public class MonopolyGame {
             throw new ExceptionInInitializerError("Attempt to create more than one instance of the MonopolyGame singleton.");
         }
         this.primaryStage = primaryStage;
+        this.gameBoard = new GameBoard();
     }
 
     public void start() throws IOException {
