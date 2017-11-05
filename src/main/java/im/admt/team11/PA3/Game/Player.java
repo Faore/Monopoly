@@ -3,6 +3,9 @@ package im.admt.team11.PA3.Game;
 import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Die;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
+import im.admt.team11.PA3.Game.Board.Card.Deed;
+
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
