@@ -11,9 +11,7 @@ import java.util.ArrayList;
 
 public class Player {
 	final int playerNumber;
-
-	//Removed final modifier from token (setToken wasn't valid)
-	Token token;
+	final Token token;
 	int money;
 	int position;
 	ArrayList<Deed> deeds;
