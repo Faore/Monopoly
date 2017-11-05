@@ -7,11 +7,11 @@ import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import java.util.ArrayList;
 
 public class Player {
-	final int playerNumber;
-	final Token token;
-	int money;
-	int position;
-	ArrayList<Deed> deeds;
+	public final int playerNumber;
+	public final Token token;
+	public int money;
+	public int position;
+	public ArrayList<Deed> deeds;
 	
 	public Player(int playerNumber, Token token) {
 		this.playerNumber = playerNumber;
@@ -22,9 +22,7 @@ public class Player {
 	}
 	
 	public int rollDie(Die die) {
-		int roll = die.roll();
-		//print
-		return roll;
+		return die.roll();
 	}
 
 	public int getNumber(){

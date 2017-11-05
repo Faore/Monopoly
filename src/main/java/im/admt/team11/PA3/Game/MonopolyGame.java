@@ -1,5 +1,7 @@
 package im.admt.team11.PA3.Game;
 
+import im.admt.team11.PA3.Game.Board.Pieces.Token;
+import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 import im.admt.team11.PA3.Game.UI.Debug.DebugUI;
 import im.admt.team11.PA3.Game.UI.GameWindowManager;
 import javafx.fxml.FXMLLoader;

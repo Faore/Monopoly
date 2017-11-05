@@ -17,10 +17,13 @@
    style="enable-background:new 0 0 2560 1440;"
    xml:space="preserve"
    sodipodi:docname="GreenToken.svg"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"><metadata
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:export-filename="M:\Users\cthomas\Documents\School\ESOF 322\Team11\src\main\resources\GreenToken.png"
+   inkscape:export-xdpi="29.761906"
+   inkscape:export-ydpi="29.761906"><metadata
      id="metadata25"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs23"><filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Color Shift"
@@ -46,7 +49,7 @@
      id="namedview21"
      showgrid="false"
      inkscape:zoom="0.8875"
-     inkscape:cx="1158.7438"
+     inkscape:cx="990.2931"
      inkscape:cy="616.73405"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
