@@ -7,8 +7,6 @@ import im.admt.team11.PA3.Game.Board.Card.Deed;
 
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-
 public class Player {
 	public final int playerNumber;
 	public final Token token;
