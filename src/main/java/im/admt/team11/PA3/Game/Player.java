@@ -1,8 +1,11 @@
 package im.admt.team11.PA3.Game;
 
+import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Die;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Card.Deed;
+
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -37,9 +40,10 @@ public class Player {
 		return token;
 	}
 
-	public void setToken(Token token){
+	//I removed this because you can't change a final variable.
+	/*public void setToken(Token token){
 		this.token = token;
-	}
+	}*/
 
 	public int getMoney(){
 		return money;
