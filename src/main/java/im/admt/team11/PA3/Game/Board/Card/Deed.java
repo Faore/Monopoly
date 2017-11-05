@@ -11,7 +11,10 @@ public class Deed{
         this.buyPrice = buyPrice;
     }
 
+    //I don't know what this is supposed to do. Other than return itself?
+    /*
     public Deed getInfo(){
         return Deed;
     }
+    */
 }
