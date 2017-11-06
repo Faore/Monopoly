@@ -1,29 +1,16 @@
 package im.admt.team11.PA3.Game.UI;
 
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
-import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.MonopolyGame;
 import im.admt.team11.PA3.Game.Player;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -98,7 +85,10 @@ public class GameWindowManager {
 
     public void attachTokenToBoard(Token token) {
         boardPane.getChildren().add(token.buttonElement);
-        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlot1.getX());
-        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlot1.getY());
+
+        int slot = MonopolyGame.getInstance().gameBoard.tiles.get(0).firstFreeTokenSlot();
+        MonopolyGame.getInstance().gameBoard.tiles.get(0).tokensInSlots[slot] = token;
+        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getX());
+        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getY());
     }
 }

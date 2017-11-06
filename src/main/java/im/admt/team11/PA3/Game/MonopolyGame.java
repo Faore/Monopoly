@@ -26,6 +26,7 @@ public class MonopolyGame {
     public DebugUI debugUI;
 
     public GameBoard gameBoard;
+    public GameSettings gameSettings;
 
     public MonopolyGame(GameSettings gameSettings, Stage primaryStage) {
         if(MonopolyGame.singleton == null) {
@@ -33,8 +34,10 @@ public class MonopolyGame {
         } else {
             throw new ExceptionInInitializerError("Attempt to create more than one instance of the MonopolyGame singleton.");
         }
+        this.gameSettings = gameSettings;
         this.primaryStage = primaryStage;
         this.gameBoard = new GameBoard();
+
     }
 
     public void start() throws IOException {
@@ -42,6 +45,11 @@ public class MonopolyGame {
         primaryStage.setTitle("Monopoly (PA3 for Group 11)");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setFullScreen(true);
+
+        for (Player player: gameSettings.players) {
+            gameWindowManager.attachTokenToBoard(player.token);
+        }
+
         primaryStage.show();
     }
 
