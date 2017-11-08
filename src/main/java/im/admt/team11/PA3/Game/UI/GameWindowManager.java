@@ -86,9 +86,9 @@ public class GameWindowManager {
     public void attachTokenToBoard(Token token) {
         boardPane.getChildren().add(token.buttonElement);
 
-        int slot = MonopolyGame.getInstance().gameBoard.tiles.get(0).firstFreeTokenSlot();
-        MonopolyGame.getInstance().gameBoard.tiles.get(0).tokensInSlots[slot] = token;
-        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getX());
-        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getY());
+        int slot = MonopolyGame.getInstance().gameBoard.tiles.get(1).firstFreeTokenSlot();
+        MonopolyGame.getInstance().gameBoard.tiles.get(1).tokensInSlots[slot] = token;
+        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(1).tokenSlots[slot].getX());
+        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(1).tokenSlots[slot].getY());
     }
 }
