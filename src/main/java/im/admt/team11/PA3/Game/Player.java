@@ -84,6 +84,13 @@ public class Player {
 
 	public void addDeed(Deed deed){ deeds.add(deed); }
 
+	public void buyDeed(Deed deed){
+		if (deed.isSellable()){
+			addDeed(deed);
+			deed.setOwner(this);
+		}
+	}
+
 	public ArrayList<Deed> getDeeds() { return deeds; }
 
 	public void removeDeed(Deed deed){

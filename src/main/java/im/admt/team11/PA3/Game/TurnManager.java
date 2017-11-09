@@ -22,6 +22,7 @@ public class TurnManager{
     //getNextPlayer()
     //nextTurn()
     //jailHandler()
+    //setEndTurn()
     //endTurn()
 
 }
