@@ -3,10 +3,10 @@ package im.admt.team11.PA3.Game.Board.Card;
 import im.admt.team11.PA3.Game.Player;
 
 public class Deed{
-    String name;
-    int location;
-    int buyPrice;
-    boolean sellable;
+    public String name;
+    public int location;
+    public int buyPrice;
+    public boolean sellable;
     Player owner;
 
     public Deed(String name, int location, int buyPrice) {

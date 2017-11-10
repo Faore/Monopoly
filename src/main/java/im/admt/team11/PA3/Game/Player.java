@@ -13,7 +13,6 @@ public class Player {
 	public int ownMoney;
 	public int position;
 	public ArrayList<Deed> deeds;
-	public boolean inJail;
 	
 	public Player(int playerNumber, Token token) {
 		this.playerNumber = playerNumber;
@@ -21,7 +20,6 @@ public class Player {
 		this.ownMoney = 0;
 		this.position = 0;
 		deeds = new ArrayList<Deed>();
-		this.inJail = false;
 	}
 
 	public int rollDie(Die die) {
@@ -77,10 +75,6 @@ public class Player {
 	}
 
 	public void updatePosition(int pos){ position = pos; }
-
-	public boolean inJail(){ return inJail; }
-
-	public void goToJail(){ inJail = true; }
 
 	public void addDeed(Deed deed){ deeds.add(deed); }
 
