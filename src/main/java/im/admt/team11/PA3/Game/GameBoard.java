@@ -1,5 +1,6 @@
 package im.admt.team11.PA3.Game;
 
+import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.Board.Tiles.SpecialTile;
@@ -14,11 +15,18 @@ import java.util.ArrayList;
 public class GameBoard {
 
 	public ObservableList<Tile> tiles;
+	public ObservableList<Deed> deeds;
 	public ObservableList<Token> playerTokens;
 
-	public GameBoard() {
+	public GameBoard() throws Exception {
 		playerTokens = FXCollections.observableArrayList();
+		tiles = FXCollections.observableArrayList();
+		deeds = FXCollections.observableArrayList();
 
-		tiles = BoardBuilder.buildTileList();
+		for(Player player : MonopolyGame.getInstance().gameSettings.players) {
+			playerTokens.add(player.token);
+		}
+
+		BoardBuilder.buildBoard(tiles, deeds);
 	}
 }

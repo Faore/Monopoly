@@ -1,5 +1,6 @@
 package im.admt.team11.PA3.Game.Board.Tiles.Properties;
 
+import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tiles.Property;
 import im.admt.team11.PA3.Game.Board.Tiles.TileOrientation;
@@ -10,8 +11,8 @@ public class StandardProperty extends Property {
     public static final int buildingSlotSize = 110;
     public static final int buildingSlotOffset = 117;
 
-    public StandardProperty(String name, Point2D firstBound, Point2D secondBound, TileOrientation orientation) {
-        super(name, firstBound, secondBound, orientation);
+    public StandardProperty(String name, Point2D firstBound, Point2D secondBound, TileOrientation orientation, Deed deed) throws Exception {
+        super(name, firstBound, secondBound, orientation, deed);
 
         double sizeIncrementX = 0;
         double sizeIncrementY = 0;

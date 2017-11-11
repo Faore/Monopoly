@@ -1,96 +1,81 @@
 package im.admt.team11.PA3.Game;
 
 import im.admt.team11.PA3.Game.Board.Card.Deed;
-import im.admt.team11.PA3.Game.Board.Pieces.Die;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Card.Deed;
+import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
-	public final int playerNumber;
-	public final Token token;
-	public int ownMoney;
-	public int position;
-	public ArrayList<Deed> deeds;
-	
-	public Player(int playerNumber, Token token) {
-		this.playerNumber = playerNumber;
-		this.token = token;
-		this.ownMoney = 0;
-		this.position = 0;
-		deeds = new ArrayList<Deed>();
-	}
+    public final int playerNumber;
+    public final Token token;
+    private int money;
+    private int position;
+    public ArrayList<Deed> deeds;
 
-	public int rollDie(Die die) {
-		return die.roll();
-	}
+    private Random random;
 
-	public int getNumber(){
-		return playerNumber;
-	}
+    public Player(int playerNumber, TokenTypes tokenType) {
+        this.playerNumber = playerNumber;
+        this.token = new Token(tokenType, this);
+        this.money = 1500;
+        this.position = 0;
+        deeds = new ArrayList<Deed>();
+        this.random = new Random();
+    }
 
-	public Token getToken(){
-		return token;
-	}
+    public int roll() {
+        return random.nextInt(10) + 2;
+    }
 
-	//I removed this because you can't change a final variable.
-	/*public void setToken(Token token){
-		this.token = token;
-	}*/
+    public Token getToken() {
+        return token;
+    }
 
-	public int getMoney(){
-		return ownMoney;
-	}
+    public int getMoney() {
+        return money;
+    }
 
-	public void withdrawlMoney(int money){ ownMoney -= money; }
+    public void takeMoney(int money) {
+        this.money -= money;
+    }
 
-	public void giveMoney(int money){
-		this.ownMoney += money;
-	}
+    public void giveMoney(int money) {
+        this.money += money;
+    }
 
-	public void transferMoney(int money, Player player){
-		player.withdrawlMoney(money);
-		if (player != null){
-			player.giveMoney(money);
-		}
-	}
+    public void collectMoneyFromPlayer(Player player, int money) {
+        player.takeMoney(money);
+        giveMoney(money);
+    }
 
-	public boolean isBankrupt(){
-		if (ownMoney <= 0){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
+    public int getPosition() {
+        return position;
+    }
 
-	public void setBankrupt(){
-		ownMoney = 0;
-		//need more
-	}
+    public void updatePosition(int pos) {
+        position = pos;
+    }
 
-	public int getPosition(){
-		return position;
-	}
+    public void buyDeed(Deed deed) throws Exception {
+        if (deed.currentOwner == null) {
+            deed.setOwner(this);
+            this.takeMoney(deed.printedPrice);
+        } else {
+            throw new Exception("Tried to buy deed that's already owned.");
+        }
+    }
 
-	public void updatePosition(int pos){ position = pos; }
+    public ArrayList<Deed> getDeeds() {
+        return deeds;
+    }
 
-	public void addDeed(Deed deed){ deeds.add(deed); }
-
-	public void buyDeed(Deed deed){
-		if (deed.isSellable()){
-			addDeed(deed);
-			deed.setOwner(this);
-		}
-	}
-
-	public ArrayList<Deed> getDeeds() { return deeds; }
-
-	public void removeDeed(Deed deed){
-		int position = deeds.indexOf(deed);
-		if (position >= 0){
-			deeds.remove(deed);
-		}
-	}
+    public void removeDeed(Deed deed) {
+        int position = deeds.indexOf(deed);
+        if (position >= 0) {
+            deeds.remove(deed);
+        }
+    }
 }

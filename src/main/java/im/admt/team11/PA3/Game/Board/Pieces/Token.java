@@ -2,6 +2,7 @@ package im.admt.team11.PA3.Game.Board.Pieces;
 
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.MonopolyGame;
+import im.admt.team11.PA3.Game.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -11,11 +12,12 @@ import java.util.Map;
 
 public class Token {
 
+    public final Player player;
     public final TokenTypes tokenType;
     public final Button buttonElement;
     public Tile currentLocation;
 
-    public Token(TokenTypes tokenType) {
+    public Token(TokenTypes tokenType, Player player) {
         HashMap<TokenTypes, String> tokenMap = new HashMap<TokenTypes, String>();
         tokenMap.put(TokenTypes.Blue, "/BlueToken.png");
         tokenMap.put(TokenTypes.Red, "/RedToken.png");
@@ -25,6 +27,7 @@ public class Token {
         this.tokenType = tokenType;
         this.buttonElement = new Button();
         buttonElement.setStyle("-fx-graphic: url('" + tokenMap.get(tokenType) +"'); -fx-background-color: transparent;");
+        this.player = player;
     }
 
     public void moveToTile(Tile tile) {

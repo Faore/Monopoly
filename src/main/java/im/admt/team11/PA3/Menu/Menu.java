@@ -50,14 +50,14 @@ public class Menu {
         primaryStage.setResizable(true);
         this.controller = null;
         if(numberOfPlayers >= 2) {
-            gameSettings.players.add(new Player(1, new Token(TokenTypes.Blue)));
-            gameSettings.players.add(new Player(2, new Token(TokenTypes.Green)));
+            gameSettings.players.add(new Player(1, TokenTypes.Blue));
+            gameSettings.players.add(new Player(2, TokenTypes.Green));
         }
         if(numberOfPlayers >= 3) {
-            gameSettings.players.add(new Player(3, new Token(TokenTypes.Red)));
+            gameSettings.players.add(new Player(3, TokenTypes.Red));
         }
         if(numberOfPlayers >= 4) {
-            gameSettings.players.add(new Player(4, new Token(TokenTypes.Yellow)));
+            gameSettings.players.add(new Player(4, TokenTypes.Yellow));
         }
         MonopolyManager.getInstance().transitionToGame(this.gameSettings);
     }
