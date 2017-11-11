@@ -63,4 +63,13 @@ public class MonopolyGame {
         debugStage.setResizable(false);
         debugStage.show();
     }
+
+    public void startGame(){
+        //int time = need to ask for time from ui
+        long startTime = System.currentTimeMillis();
+        while((System.currentTimeMillis() - startTime) < 50){//change 50 to proper time
+            turnManager.turns();
+        }
+
+    }
 }

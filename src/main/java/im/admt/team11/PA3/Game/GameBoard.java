@@ -16,8 +16,8 @@ public class GameBoard {
 
 	public GameBoard() {
 		playerTokens = new ArrayList<Token>();
-
 		tiles = BoardBuilder.buildTileList();
 	}
 
+	public Tile getTile(int location){ return tiles.get(location); }
 }
