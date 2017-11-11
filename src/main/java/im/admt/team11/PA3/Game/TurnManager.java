@@ -16,4 +16,13 @@ public class TurnManager{
         players = new ArrayList<Player>();
         this.time = time;
     }
+
+    //setTurnOrder()
+    //getCurrentPlayer()
+    //getNextPlayer()
+    //nextTurn()
+    //jailHandler()
+    //setEndTurn()
+    //endTurn()
+
 }

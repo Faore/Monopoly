@@ -27,6 +27,7 @@ public class MonopolyGame {
 
     public GameBoard gameBoard;
     public GameSettings gameSettings;
+    public TurnManager turnManager;
 
     public MonopolyGame(GameSettings gameSettings, Stage primaryStage) {
         if(MonopolyGame.singleton == null) {
