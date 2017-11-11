@@ -2,8 +2,10 @@ package im.admt.team11.PA3.Game.UI;
 
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tile;
+import im.admt.team11.PA3.Game.GameSettings;
 import im.admt.team11.PA3.Game.MonopolyGame;
-import im.admt.team11.PA3.Game.Player;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -12,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import javafx.geometry.Point2D;
 import java.io.IOException;
 
 public class GameWindowManager {
@@ -33,7 +36,7 @@ public class GameWindowManager {
         MonopolyGame.getInstance().gameWindowManager = this;
         zoomSlider.setMin(Math.min(scrollPane.getHeight()/3000.0, scrollPane.getWidth()/3000.0));
         zoomSlider.setMax(1.0);
-        zoomSlider.setValue(1.0);
+        zoomSlider.setValue(0);
 
         zoomSlider.valueProperty().addListener((o, oldValue, newValue) -> adjustZoom((double) newValue));
         scrollPane.heightProperty().addListener((o, oldValue, newValue) -> recalculateMinZoom());
@@ -83,12 +86,19 @@ public class GameWindowManager {
         return null;
     }
 
+    public void setTokenLocation(Token token, Point2D location) {
+        token.buttonElement.setLayoutX(location.getX());
+        token.buttonElement.setLayoutY(location.getY());
+    }
+
     public void attachTokenToBoard(Token token) {
         boardPane.getChildren().add(token.buttonElement);
 
-        int slot = MonopolyGame.getInstance().gameBoard.tiles.get(1).firstFreeTokenSlot();
-        MonopolyGame.getInstance().gameBoard.tiles.get(1).tokensInSlots[slot] = token;
-        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(1).tokenSlots[slot].getX());
-        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(1).tokenSlots[slot].getY());
+        int slot = MonopolyGame.getInstance().gameBoard.tiles.get(0).firstFreeTokenSlot();
+
+        MonopolyGame.getInstance().gameBoard.tiles.get(0).tokensInSlots[slot] = token;
+        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getX());
+        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getY());
+        token.currentLocation = MonopolyGame.getInstance().gameBoard.tiles.get(0);
     }
 }

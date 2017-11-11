@@ -6,13 +6,15 @@ import im.admt.team11.PA3.Game.Board.Tiles.SpecialTile;
 
 import im.admt.team11.PA3.Game.Board.Tiles.SpecialTileTypes;
 import im.admt.team11.PA3.Game.Board.Tiles.TileOrientation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
 
 import java.util.ArrayList;
 
 public class BoardBuilder {
-    public static ArrayList<Tile> buildTileList() {
-        ArrayList<Tile> tiles = new ArrayList<Tile>();
+    public static ObservableList<Tile> buildTileList() {
+        ObservableList<Tile> tiles = FXCollections.observableArrayList();
         //Go
         tiles.add(
                 new SpecialTile("Go",
