@@ -4,6 +4,7 @@ import im.admt.team11.PA3.Game.Board.Pieces.Die;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TurnManager{
 
@@ -11,7 +12,7 @@ public class TurnManager{
     public ArrayList<Player> players;
     public int time;
     public Player currentPlayer;
-    private Die die;
+    private Random random;
     private int roll;
     private boolean endTurn;
 
@@ -20,7 +21,7 @@ public class TurnManager{
         players = new ArrayList<Player>();
         this.time = time;
         this.currentPlayer = null;
-        this.die = new Die();
+        this.random = new Random();
         this.roll = 0;
         this.endTurn = false;
     }
@@ -31,7 +32,7 @@ public class TurnManager{
         int max = 0;
         int playerNum = 0;
         for (int i = 0; i < players.size(); i++) {
-            roll = die.roll();
+            roll = random.nextInt(11) + 2;
             if (roll > max) {
                 max = roll;
                 playerNum = i;
@@ -59,9 +60,7 @@ public class TurnManager{
 
     public void turns(){
         while(!isEndTurn()){
-            int role1 = die.roll();
-            int role2 = die.roll();
-            int roleTotal = role1 + role2;
+            int roleTotal = random.nextInt(11) + 2;
             //move player
         }
 
