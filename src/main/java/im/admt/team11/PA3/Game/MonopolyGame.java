@@ -67,9 +67,6 @@ public class MonopolyGame {
             gameWindowManager.attachTokenToBoard(player.token);
         }
 
-        gameSettings.players.get(0).buyDeed(((Property)gameBoard.tiles.get(1)).deed, 1);
-        gameSettings.players.get(0).buyDeed(((Property)gameBoard.tiles.get(3)).deed, 1);
-
         turnManager = new TurnManager();
 
         timer.schedule(new TimerTask() {
