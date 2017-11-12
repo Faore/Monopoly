@@ -30,6 +30,14 @@ public class Player {
         return random.nextInt(10) + 2;
     }
 
+    public int getPlayerValue() {
+        int value = this.money;
+        for(Deed deed: this.deeds) {
+            value += deed.printedPrice;
+        }
+        return value;
+    }
+
     public Token getToken() {
         return token;
     }

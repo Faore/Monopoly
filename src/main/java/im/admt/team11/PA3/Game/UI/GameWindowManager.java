@@ -4,6 +4,7 @@ import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.GameSettings;
 import im.admt.team11.PA3.Game.MonopolyGame;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.geometry.Point2D;
+import javafx.util.Duration;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.TimerTask;
 
 public class GameWindowManager {
 
@@ -31,10 +37,13 @@ public class GameWindowManager {
     public MenuButton debugMenu;
     public MenuItem debugMenuCoordinates;
 
+    public int time = 0;
+    public Label timerLabel;
+
     @FXML
     public void initialize() {
         MonopolyGame.getInstance().gameWindowManager = this;
-        zoomSlider.setMin(Math.min(scrollPane.getHeight()/3000.0, scrollPane.getWidth()/3000.0));
+        zoomSlider.setMin(Math.min(scrollPane.getHeight() / 3000.0, scrollPane.getWidth() / 3000.0));
         zoomSlider.setMax(1.0);
         zoomSlider.setValue(0);
 
@@ -47,10 +56,31 @@ public class GameWindowManager {
         contentGroup.getChildren().add(zoomGroup);
         zoomGroup.getChildren().add(scrollPane.getContent());
         scrollPane.setContent(contentGroup);
+
+        time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
+
+        MonopolyGame.getInstance().timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(
+                        () -> {
+                            updateTimer();
+                        }
+                );
+
+            }
+        }, 1000, 1000);
+    }
+
+    public void updateTimer() {
+        time--;
+        int minutes = ((int) Math.floor(time / 60));
+        int seconds = (time - ((int) Math.floor(time / 60)) * 60);
+        timerLabel.setText( minutes + ":" + (seconds < 10 ? "0": "") + seconds);
     }
 
     public void recalculateMinZoom() {
-        zoomSlider.setMin(Math.max(scrollPane.getHeight()/3000.0, scrollPane.getWidth()/3000.0));
+        zoomSlider.setMin(Math.max(scrollPane.getHeight() / 3000.0, scrollPane.getWidth() / 3000.0));
     }
 
     public void adjustZoom(double zoom) {
@@ -78,7 +108,7 @@ public class GameWindowManager {
 
     public Tile tileAtEvent(MouseEvent event) {
         for (Tile t : MonopolyGame.getInstance().gameBoard.tiles) {
-            if(event.getX() >= t.firstBound.getX() && event.getX() <= t.secondBound.getX() && event.getY() <= t.firstBound.getY() && event.getY() >= t.secondBound.getY()) {
+            if (event.getX() >= t.firstBound.getX() && event.getX() <= t.secondBound.getX() && event.getY() <= t.firstBound.getY() && event.getY() >= t.secondBound.getY()) {
                 return t;
             }
         }

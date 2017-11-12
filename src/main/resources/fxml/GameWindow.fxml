@@ -23,6 +23,7 @@
             <Slider fx:id="zoomSlider" />
             <Button fx:id="zoomInButton" mnemonicParsing="false" onAction="#zoomIn" text="+" />
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Label text="0:00" fx:id="timerLabel" />
             <MenuButton fx:id="debugMenu" mnemonicParsing="false" text="Debug">
               <items>
                 <MenuItem fx:id="debugMenuCoordinates" mnemonicParsing="false" onAction="#debugMenuTools" text="Debug Tools" />

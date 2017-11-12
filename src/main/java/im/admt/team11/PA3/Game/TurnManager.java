@@ -1,25 +1,18 @@
 package im.admt.team11.PA3.Game;
 
-import im.admt.team11.PA3.Game.Board.Pieces.Die;
-import im.admt.team11.PA3.Game.Board.Pieces.Token;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class TurnManager{
 
-    public int numPlayers;
     public ArrayList<Player> players;
-    public int time;
     public Player currentPlayer;
     private Random random;
     private int roll;
     private boolean endTurn;
 
-    public TurnManager(int numPlayers, int time){
-        this.numPlayers = numPlayers;
-        players = new ArrayList<Player>();
-        this.time = time;
+    public TurnManager(){
+        this.players = MonopolyGame.getInstance().gameSettings.players;
         this.currentPlayer = null;
         this.random = new Random();
         this.roll = 0;
