@@ -1,9 +1,12 @@
 package im.admt.team11.PA3.Game.UI;
 
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
+import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 import im.admt.team11.PA3.Game.Board.Tile;
+import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
 import im.admt.team11.PA3.Game.GameSettings;
 import im.admt.team11.PA3.Game.MonopolyGame;
+import im.admt.team11.PA3.Game.Player;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,9 +119,49 @@ public class GameWindowManager {
         return null;
     }
 
-    public void setTokenLocation(Token token, Point2D location) {
-        token.buttonElement.setLayoutX(location.getX());
-        token.buttonElement.setLayoutY(location.getY());
+    public void setTokenLocation(Token token, Tile location) throws Exception {
+        for(int i = 0; i < token.currentLocation.tokensInSlots.length; i++) {
+            if (token.currentLocation.tokensInSlots[i] == token) {
+                token.currentLocation.tokensInSlots[i] = null;
+                break;
+            }
+        }
+        for(int i = 0; i < location.tokensInSlots.length; i++) {
+            if(location.tokensInSlots[i] == null) {
+                location.tokensInSlots[i] = token;
+                token.currentLocation = location;
+                return;
+            }
+        }
+        throw new Exception("Couldn't find a slot to put a token in.");
+    }
+
+    public void setBuildingLevelAtProperty(TokenTypes tokenType, StandardProperty property, int level) throws Exception {
+        if(level > 5 || level < 0) {
+            throw new Exception("Bad Building Level");
+        }
+        for(int i = 0; i < property.buildingsInSlots.length; i++) {
+            if(property.buildingsInSlots[i] != null) {
+                boardPane.getChildren().remove(property.buildingsInSlots[i]);
+            }
+        }
+        property.buildingsInSlots = new Button[4];
+        Button button;
+        if(level == 5) {
+            button = StandardProperty.generateHotel(tokenType);
+            boardPane.getChildren().add(button);
+            button.setLayoutX(property.buildingSlots[0].getX());
+            button.setLayoutY(property.buildingSlots[0].getY());
+            property.buildingsInSlots[0] = button;
+            return;
+        }
+        for(int i = 0; i < level; i++) {
+            button = StandardProperty.generateHouse(tokenType);
+            boardPane.getChildren().add(button);
+            button.setLayoutX(property.buildingSlots[i].getX());
+            button.setLayoutY(property.buildingSlots[i].getY());
+            property.buildingsInSlots[i] = button;
+        }
     }
 
     public void attachTokenToBoard(Token token) {

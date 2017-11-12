@@ -1,5 +1,8 @@
 package im.admt.team11.PA3.Game;
 
+import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
+import im.admt.team11.PA3.Game.Board.Tile;
+import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
 import im.admt.team11.PA3.Game.UI.Debug.DebugUI;
 import im.admt.team11.PA3.Game.UI.GameWindowManager;
 import javafx.application.Platform;
@@ -9,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -46,7 +50,7 @@ public class MonopolyGame {
         this.gameBoard = new GameBoard();
     }
 
-    public void start() throws IOException {
+    public void start() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/GameWindow.fxml"));
         primaryStage.setTitle("Monopoly (PA3 for Group 11)");
         primaryStage.setScene(new Scene(root, 1280, 720));
@@ -55,8 +59,14 @@ public class MonopolyGame {
         for (Player player : gameSettings.players) {
             gameWindowManager.attachTokenToBoard(player.token);
         }
+
         turnManager = new TurnManager();
 
+        for(Tile tile : gameBoard.tiles) {
+            if(tile.getClass() == StandardProperty.class) {
+                gameWindowManager.setBuildingLevelAtProperty(TokenTypes.Blue,(StandardProperty) tile, 5);
+            }
+        }
 
         timer.schedule(new TimerTask() {
             @Override

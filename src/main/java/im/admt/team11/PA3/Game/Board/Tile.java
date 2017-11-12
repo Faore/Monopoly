@@ -9,6 +9,8 @@ abstract public class Tile {
 	public static final int tokenOffsetX = 62/2;
 	public static final int tokenOffsetY = 100/2;
 
+	public static final int buildingOffset = 48/2;
+
 
 	public final String name;
 	public final Point2D firstBound;
