@@ -17,7 +17,7 @@ public class GameBoard {
 	public ObservableList<Tile> tiles;
 	public ObservableList<Deed> deeds;
 	public ObservableList<Token> playerTokens;
-	
+
 	public GameBoard() throws Exception {
 		playerTokens = FXCollections.observableArrayList();
 		tiles = FXCollections.observableArrayList();
@@ -30,5 +30,7 @@ public class GameBoard {
 		BoardBuilder.buildBoard(tiles, deeds);
 	}
 
-	public Tile getTile(int location){ return tiles.get(location); }
+	public Tile getTile(int location) {
+		return tiles.get(location);
+	}
 }
