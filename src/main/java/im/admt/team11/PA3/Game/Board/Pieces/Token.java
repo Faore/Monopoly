@@ -26,17 +26,4 @@ public class Token {
         buttonElement.setStyle("-fx-graphic: url('" + tokenMap.get(tokenType) +"'); -fx-background-color: transparent;");
         this.player = player;
     }
-
-    public void moveToTile(Tile tile) {
-        int slot = tile.firstFreeTokenSlot();
-        for (int i = 0; i < currentLocation.tokensInSlots.length; i++) {
-            if(currentLocation.tokensInSlots[i] == this) {
-                currentLocation.tokensInSlots[i] = null;
-                break;
-            }
-        }
-        currentLocation = tile;
-        currentLocation.tokensInSlots[slot] = this;
-        MonopolyGame.getInstance().gameWindowManager.setTokenLocation(this, currentLocation.tokenSlots[slot]);
-    }
 }

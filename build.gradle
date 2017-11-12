@@ -26,6 +26,18 @@ dependencies {
 
 compileJava.options.encoding = 'UTF-8'
 
+
+task CompleteJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Full Application Jar',
+                'Implementation-Version': version,
+                'Main-Class': mainClassName
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 jar {
     manifest {
         attributes 'Main-Class': mainClassName
