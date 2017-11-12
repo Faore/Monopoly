@@ -3,6 +3,7 @@ package im.admt.team11.PA3.Game;
 import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
+import im.admt.team11.PA3.Game.Board.Tiles.Property;
 import im.admt.team11.PA3.Game.UI.Debug.DebugUI;
 import im.admt.team11.PA3.Game.UI.GameWindowManager;
 import javafx.application.Platform;
@@ -65,6 +66,9 @@ public class MonopolyGame {
         for (Player player : gameSettings.players) {
             gameWindowManager.attachTokenToBoard(player.token);
         }
+
+        gameSettings.players.get(0).buyDeed(((Property)gameBoard.tiles.get(1)).deed, 1);
+        gameSettings.players.get(0).buyDeed(((Property)gameBoard.tiles.get(3)).deed, 1);
 
         turnManager = new TurnManager();
 

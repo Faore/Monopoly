@@ -112,6 +112,15 @@ public class Deed {
         }
 
         if(currentBuildingLevel == 0 && canHaveBuildings) {
+            int numberOwned = 0;
+            for (Deed deed : this.associatedDeeds) {
+                if(deed.getOwner() == this.currentOwner) {
+                    numberOwned++;
+                }
+            }
+            if(numberOwned == this.associatedDeeds.size()) {
+                return this.rent;
+            }
             return this.rent;
         }
         return this.buildingRents[currentBuildingLevel - 1];
