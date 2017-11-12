@@ -96,6 +96,8 @@ public class MonopolyGame {
         debugStage.setResizable(false);
         debugStage.show();
     }
+<<<<<<< HEAD
+=======
 
     public void stopGame() throws IOException {
         primaryStage.hide();
@@ -116,4 +118,5 @@ public class MonopolyGame {
         primaryStage.show();
     }
 
+>>>>>>> 4412226183d947cf255b3eed492d3fa5c4288b1c
 }
