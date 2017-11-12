@@ -1,7 +1,8 @@
 package im.admt.team11.PA3.Game;
 
-import im.admt.team11.PA3.Game.Board.Pieces.Die;
+import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
+import im.admt.team11.PA3.Game.Board.Tile;
 
 import java.util.ArrayList;
 
@@ -11,34 +12,24 @@ public class TurnManager{
     public ArrayList<Player> players;
     public int time;
     public Player currentPlayer;
-    private Die die;
+    public ArrayList<Deed> deeds;
+    public Deed currentDeed;
     private int roll;
     private boolean endTurn;
+
 
     public TurnManager(int numPlayers, int time){
         this.numPlayers = numPlayers;
         players = new ArrayList<Player>();
         this.time = time;
-        this.currentPlayer = null;
-        this.die = new Die();
+        this.currentPlayer = players.get(0);
         this.roll = 0;
         this.endTurn = false;
+        this.deeds = new ArrayList<Deed>();
+        this.currentDeed = null;
     }
 
     public Player getCurrentPlayer(){ return currentPlayer; }
-
-    public int setTurnOrder(){
-        int max = 0;
-        int playerNum = 0;
-        for (int i = 0; i < players.size(); i++) {
-            roll = die.roll();
-            if (roll > max) {
-                max = roll;
-                playerNum = i;
-            }
-        }
-        return playerNum;
-    }
 
     public Player getNextPlayer(Player player){
         int curPlayer = players.indexOf(player);
@@ -57,13 +48,29 @@ public class TurnManager{
 
     public boolean isEndTurn(){ return endTurn; }
 
-    public void turns(){
-        while(!isEndTurn()){
-            int role1 = die.roll();
-            int role2 = die.roll();
-            int roleTotal = role1 + role2;
-            //move player
+    public void movePlayer(int roll){
+        int currentPosition = currentPlayer.getPosition();
+        int nextPosition = (currentPosition + roll) % 40;
+        if(nextPosition < currentPosition){
+            currentPlayer.giveMoney(200);
         }
+        currentPlayer.updatePosition(nextPosition);
+        Player owner = deeds.get(currentPosition).getOwner();
+        if (owner != currentPlayer){
+            //pay rent
+        }
+    }
+
+    public void buyDeed(Deed deed){
+        if (currentPlayer.getMoney() > deed.printedPrice){
+            try{
+                currentPlayer.buyDeed(deed);
+            }catch(Exception e){
+            }
+        }
+    }
+
+    public void startAuction(){
 
     }
 }
