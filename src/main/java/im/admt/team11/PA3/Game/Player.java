@@ -12,7 +12,6 @@ public class Player {
     public final int playerNumber;
     public final Token token;
     private int money;
-    private int position;
     public ArrayList<Deed> deeds;
 
     private Random random;
@@ -21,7 +20,6 @@ public class Player {
         this.playerNumber = playerNumber;
         this.token = new Token(tokenType, this);
         this.money = 1500;
-        this.position = 0;
         deeds = new ArrayList<Deed>();
         this.random = new Random();
     }
@@ -57,14 +55,6 @@ public class Player {
     public void collectMoneyFromPlayer(Player player, int money) {
         player.takeMoney(money);
         giveMoney(money);
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void updatePosition(int pos) {
-        position = pos;
     }
 
     public void buyDeed(Deed deed) throws Exception {

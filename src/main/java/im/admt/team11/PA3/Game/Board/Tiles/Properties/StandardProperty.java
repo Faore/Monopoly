@@ -53,10 +53,10 @@ public class StandardProperty extends Property {
                 sizeIncrementX = (secondBound.getX() - firstBound.getX()) / 3;
                 sizeIncrementY = (firstBound.getY() - secondBound.getY() - buildingSlotOffset) / 3;
 
-                topLeft = new Point2D(firstBound.getX() + sizeIncrementX - tokenOffsetX, secondBound.getY() - buildingSlotOffset + sizeIncrementY - tokenOffsetY);
-                topRight = new Point2D(firstBound.getX() + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() - buildingSlotOffset + sizeIncrementY - tokenOffsetY);
-                bottomLeft = new Point2D(firstBound.getX() + sizeIncrementX - tokenOffsetX, secondBound.getY() - buildingSlotOffset + 2 * sizeIncrementY - tokenOffsetY);
-                bottomRight = new Point2D(firstBound.getX() + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() - buildingSlotOffset + 2 * sizeIncrementY - tokenOffsetY);
+                topLeft = new Point2D(firstBound.getX() + sizeIncrementX - tokenOffsetX, secondBound.getY() + sizeIncrementY - tokenOffsetY);
+                topRight = new Point2D(firstBound.getX() + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() + sizeIncrementY - tokenOffsetY);
+                bottomLeft = new Point2D(firstBound.getX() + sizeIncrementX - tokenOffsetX, secondBound.getY() + 2 * sizeIncrementY - tokenOffsetY);
+                bottomRight = new Point2D(firstBound.getX() + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() + 2 * sizeIncrementY - tokenOffsetY);
 
                 sizeIncrementX = (secondBound.getX() - firstBound.getX()) / 5;
                 b1 = new Point2D(firstBound.getX() + sizeIncrementX - buildingOffset, firstBound.getY() - 2*buildingSlotMiddleOffset);
@@ -69,10 +69,10 @@ public class StandardProperty extends Property {
                 sizeIncrementX = (secondBound.getX() - firstBound.getX() - buildingSlotOffset) / 3;
                 sizeIncrementY = (firstBound.getY() - secondBound.getY()) / 3;
 
-                topLeft = new Point2D(firstBound.getX() - buildingSlotOffset + sizeIncrementX - tokenOffsetX, secondBound.getY() + sizeIncrementY - tokenOffsetY);
-                topRight = new Point2D(firstBound.getX() - buildingSlotOffset + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() + sizeIncrementY - tokenOffsetY);
-                bottomLeft = new Point2D(firstBound.getX() - buildingSlotOffset + sizeIncrementX - tokenOffsetX, secondBound.getY() + 2 * sizeIncrementY - tokenOffsetY);
-                bottomRight = new Point2D(firstBound.getX() - buildingSlotOffset + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() + 2 * sizeIncrementY - tokenOffsetY);
+                topLeft = new Point2D(firstBound.getX() + sizeIncrementX - tokenOffsetX, secondBound.getY() + sizeIncrementY - tokenOffsetY);
+                topRight = new Point2D(firstBound.getX() + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() + sizeIncrementY - tokenOffsetY);
+                bottomLeft = new Point2D(firstBound.getX() + sizeIncrementX - tokenOffsetX, secondBound.getY() + 2 * sizeIncrementY - tokenOffsetY);
+                bottomRight = new Point2D(firstBound.getX() + 2 * sizeIncrementX - tokenOffsetX, secondBound.getY() + 2 * sizeIncrementY - tokenOffsetY);
 
                 sizeIncrementY = (secondBound.getY() - firstBound.getY()) / 5;
                 b1 = new Point2D(secondBound.getX() - 2*buildingSlotMiddleOffset, firstBound.getY() + sizeIncrementY - buildingOffset);

@@ -15,38 +15,42 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0" prefWidth="1631.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="im.admt.team11.PA3.Game.UI.GameWindowManager">
-   <children>
-      <HBox alignment="CENTER_LEFT" fillHeight="false" prefWidth="485.0" spacing="5.0" VBox.vgrow="NEVER">
-         <children>
-            <Label fx:id="playerTurnLabel" text="Player 1's Turn" />
-            <Button fx:id="zoomOutButton" mnemonicParsing="false" onAction="#zoomOut" text="-" />
-            <Slider fx:id="zoomSlider" />
-            <Button fx:id="zoomInButton" mnemonicParsing="false" onAction="#zoomIn" text="+" />
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Label text="0:00" fx:id="timerLabel" />
-            <MenuButton fx:id="debugMenu" mnemonicParsing="false" text="Debug">
-              <items>
-                <MenuItem fx:id="debugMenuCoordinates" mnemonicParsing="false" onAction="#debugMenuTools" text="Debug Tools" />
-              </items>
-            </MenuButton>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin></HBox>
-      <ScrollPane fx:id="scrollPane" pannable="true" VBox.vgrow="ALWAYS">
-        <content>
-          <AnchorPane fx:id="boardPane">
-               <children>
-                  <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../GameBoard.png" />
-                     </image>
-                  </ImageView>
-               </children></AnchorPane>
-        </content>
-      </ScrollPane>
-   </children>
+    <children>
+        <HBox alignment="CENTER_LEFT" fillHeight="false" prefWidth="485.0" spacing="5.0" VBox.vgrow="NEVER">
+            <children>
+                <Button fx:id="zoomOutButton" mnemonicParsing="false" onAction="#zoomOut" text="-" />
+                <Slider fx:id="zoomSlider" />
+                <Button fx:id="zoomInButton" mnemonicParsing="false" onAction="#zoomIn" text="+" />
+                <Label fx:id="playerTurnLabel" text="Player 1's Turn" />
+            <Label fx:id="moneyLabel" text="\$0" />
+                <Button fx:id="rollToMoveButton" mnemonicParsing="false" onAction="#rollToMove" text="Roll to Move" />
+                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                <Label fx:id="timerLabel" text="0:00" />
+                <MenuButton fx:id="debugMenu" mnemonicParsing="false" text="Debug">
+                    <items>
+                        <MenuItem fx:id="debugMenuCoordinates" mnemonicParsing="false" onAction="#debugMenuTools" text="Debug Tools" />
+                    </items>
+                </MenuButton>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin>
+        </HBox>
+        <ScrollPane fx:id="scrollPane" pannable="true" VBox.vgrow="ALWAYS">
+            <content>
+                <AnchorPane fx:id="boardPane">
+                    <children>
+                        <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../GameBoard.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
 </VBox>

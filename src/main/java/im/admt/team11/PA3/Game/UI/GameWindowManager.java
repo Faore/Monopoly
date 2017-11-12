@@ -42,6 +42,8 @@ public class GameWindowManager {
 
     public int time = 0;
     public Label timerLabel;
+    public Button rollToMoveButton;
+    public Label moneyLabel;
 
     @FXML
     public void initialize() {
@@ -73,6 +75,10 @@ public class GameWindowManager {
 
             }
         }, 1000, 1000);
+    }
+
+    public void updateMoney(int money) {
+        moneyLabel.setText("$" + money);
     }
 
     public void updateTimer() {
@@ -119,6 +125,15 @@ public class GameWindowManager {
         return null;
     }
 
+    public void setTurnPhase(Player player, boolean movementPhase) {
+        playerTurnLabel.setText("Player " + player.playerNumber + "'s Turn");
+        if(movementPhase) {
+            rollToMoveButton.setDisable(false);
+        } else {
+            rollToMoveButton.setDisable(true);
+        }
+    }
+
     public void setTokenLocation(Token token, Tile location) throws Exception {
         for(int i = 0; i < token.currentLocation.tokensInSlots.length; i++) {
             if (token.currentLocation.tokensInSlots[i] == token) {
@@ -130,6 +145,8 @@ public class GameWindowManager {
             if(location.tokensInSlots[i] == null) {
                 location.tokensInSlots[i] = token;
                 token.currentLocation = location;
+                token.buttonElement.setLayoutX(location.tokenSlots[i].getX());
+                token.buttonElement.setLayoutY(location.tokenSlots[i].getY());
                 return;
             }
         }
@@ -173,5 +190,14 @@ public class GameWindowManager {
         token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getX());
         token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getY());
         token.currentLocation = MonopolyGame.getInstance().gameBoard.tiles.get(0);
+    }
+
+    public void rollToMove(ActionEvent actionEvent) throws Exception {
+        System.out.println("Click");
+        MonopolyGame.getInstance().turnManager.movePlayer();
+    }
+
+    public void startAskBuyMode() {
+
     }
 }

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Random;
@@ -62,12 +63,6 @@ public class MonopolyGame {
 
         turnManager = new TurnManager();
 
-        for(Tile tile : gameBoard.tiles) {
-            if(tile.getClass() == StandardProperty.class) {
-                gameWindowManager.setBuildingLevelAtProperty(TokenTypes.Blue,(StandardProperty) tile, 5);
-            }
-        }
-
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -90,6 +85,7 @@ public class MonopolyGame {
     public void openDebugDialog() throws IOException {
         Parent debugDialog = FXMLLoader.load(getClass().getResource("/fxml/debug/DebugUI.fxml"));
         debugStage = new Stage();
+        debugStage.initStyle(StageStyle.UTILITY);
         debugStage.setTitle("PA3 Debug Tools");
         debugStage.setScene(new Scene(debugDialog));
         debugStage.setAlwaysOnTop(true);
