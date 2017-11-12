@@ -4,25 +4,23 @@ import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
-import im.admt.team11.PA3.Game.GameSettings;
+import im.admt.team11.PA3.Game.Board.Tiles.Property;
 import im.admt.team11.PA3.Game.MonopolyGame;
 import im.admt.team11.PA3.Game.Player;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
-import javafx.geometry.Point2D;
-import javafx.util.Duration;
-
-import javax.swing.*;
-import java.awt.event.ActionListener;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.TimerTask;
 
@@ -45,8 +43,18 @@ public class GameWindowManager {
     public Button rollToMoveButton;
     public Label moneyLabel;
 
+    public Stage deedStage;
+    public Stage auctionStage;
+    public Stage upgradePropertiesStage;
+    public AskBuyController askBuyController;
+    public AuctionController auctionController;
+    public UpgradePropertiesController upgradePropertiesController;
+    public Label lastActionLabel;
+    public Button upgradePropertiesButton;
+    public Button endTurnButton;
+
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         MonopolyGame.getInstance().gameWindowManager = this;
         zoomSlider.setMin(Math.min(scrollPane.getHeight() / 3000.0, scrollPane.getWidth() / 3000.0));
         zoomSlider.setMax(1.0);
@@ -62,6 +70,36 @@ public class GameWindowManager {
         zoomGroup.getChildren().add(scrollPane.getContent());
         scrollPane.setContent(contentGroup);
 
+        Parent deedWindow = FXMLLoader.load(getClass().getResource("/fxml/AskBuy.fxml"));
+        deedStage = new Stage();
+        deedStage.initStyle(StageStyle.UNDECORATED);
+        deedStage.setTitle("Deed");
+        deedStage.setScene(new Scene(deedWindow));
+        deedStage.setAlwaysOnTop(true);
+        deedStage.setResizable(false);
+        deedStage.initModality(Modality.WINDOW_MODAL);
+        deedStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent auctionWindow = FXMLLoader.load(getClass().getResource("/fxml/Auction.fxml"));
+        auctionStage = new Stage();
+        auctionStage.initStyle(StageStyle.UNDECORATED);
+        auctionStage.setTitle("Auction");
+        auctionStage.setScene(new Scene(auctionWindow));
+        auctionStage.setAlwaysOnTop(true);
+        auctionStage.setResizable(false);
+        auctionStage.initModality(Modality.WINDOW_MODAL);
+        auctionStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent upgradePropertiesWindow = FXMLLoader.load(getClass().getResource("/fxml/UpgradeProperties.fxml"));
+        upgradePropertiesStage = new Stage();
+        upgradePropertiesStage.initStyle(StageStyle.UNDECORATED);
+        upgradePropertiesStage.setTitle("Upgrade Properties");
+        upgradePropertiesStage.setScene(new Scene(upgradePropertiesWindow));
+        upgradePropertiesStage.setAlwaysOnTop(true);
+        upgradePropertiesStage.setResizable(false);
+        upgradePropertiesStage.initModality(Modality.WINDOW_MODAL);
+        upgradePropertiesStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
         time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
 
         MonopolyGame.getInstance().timer.scheduleAtFixedRate(new TimerTask() {
@@ -75,6 +113,10 @@ public class GameWindowManager {
 
             }
         }, 1000, 1000);
+    }
+
+    public void setLastActionLabel(String text) {
+        lastActionLabel.setText(text);
     }
 
     public void updateMoney(int money) {
@@ -129,9 +171,14 @@ public class GameWindowManager {
         playerTurnLabel.setText("Player " + player.playerNumber + "'s Turn");
         if(movementPhase) {
             rollToMoveButton.setDisable(false);
+            endTurnButton.setDisable(true);
+            upgradePropertiesButton.setDisable(true);
         } else {
             rollToMoveButton.setDisable(true);
+            endTurnButton.setDisable(false);
+            upgradePropertiesButton.setDisable(false);
         }
+        updateMoney(player.getMoney());
     }
 
     public void setTokenLocation(Token token, Tile location) throws Exception {
@@ -193,11 +240,40 @@ public class GameWindowManager {
     }
 
     public void rollToMove(ActionEvent actionEvent) throws Exception {
-        System.out.println("Click");
         MonopolyGame.getInstance().turnManager.movePlayer();
     }
 
-    public void startAskBuyMode() {
+    public void startAskBuyMode(Property property, Player player) throws IOException {
+        askBuyController.setProperty(property, player);
+        deedStage.show();
+    }
 
+    public void endAskBuyMode(boolean buy) throws Exception {
+        deedStage.hide();
+        if(buy) {
+            MonopolyGame.getInstance().turnManager.buyProperty();
+        } else {
+            //Start an auction
+            auctionController.setup((Property) MonopolyGame.getInstance().turnManager.getCurrentPlayer().token.currentLocation);
+            auctionStage.show();
+        }
+    }
+
+    public void endAuction(Player winner, int amount, Property property) throws Exception {
+        auctionStage.hide();
+        MonopolyGame.getInstance().turnManager.completeAuction(winner, amount, property);
+    }
+
+    public void startUpgrade(ActionEvent actionEvent) {
+        upgradePropertiesController.setup(MonopolyGame.getInstance().turnManager.getCurrentPlayer());
+        upgradePropertiesStage.show();
+    }
+
+    public void endTurn(ActionEvent actionEvent) {
+        MonopolyGame.getInstance().turnManager.nextTurn();
+    }
+
+    public void endUpgrade() {
+        upgradePropertiesStage.hide();
     }
 }

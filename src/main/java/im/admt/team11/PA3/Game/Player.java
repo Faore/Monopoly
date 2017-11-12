@@ -4,6 +4,8 @@ import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,7 +14,7 @@ public class Player {
     public final int playerNumber;
     public final Token token;
     private int money;
-    public ArrayList<Deed> deeds;
+    public ObservableList<Deed> deeds;
 
     private Random random;
 
@@ -20,7 +22,7 @@ public class Player {
         this.playerNumber = playerNumber;
         this.token = new Token(tokenType, this);
         this.money = 1500;
-        deeds = new ArrayList<Deed>();
+        deeds = FXCollections.observableArrayList();
         this.random = new Random();
     }
 
@@ -57,6 +59,15 @@ public class Player {
         giveMoney(money);
     }
 
+    public void buyDeed(Deed deed, int auctionAmount) throws Exception {
+        if (deed.currentOwner == null) {
+            deed.setOwner(this);
+            this.takeMoney(auctionAmount);
+        } else {
+            throw new Exception("Tried to buy deed that's already owned.");
+        }
+    }
+
     public void buyDeed(Deed deed) throws Exception {
         if (deed.currentOwner == null) {
             deed.setOwner(this);
@@ -64,10 +75,6 @@ public class Player {
         } else {
             throw new Exception("Tried to buy deed that's already owned.");
         }
-    }
-
-    public ArrayList<Deed> getDeeds() {
-        return deeds;
     }
 
     public void removeDeed(Deed deed) {

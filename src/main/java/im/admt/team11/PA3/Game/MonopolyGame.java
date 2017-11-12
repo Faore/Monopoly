@@ -27,7 +27,7 @@ public class MonopolyGame {
 
     public Player winner;
 
-    private Stage primaryStage;
+    public Stage primaryStage;
     private Stage debugStage;
 
     public GameWindowManager gameWindowManager;
@@ -56,6 +56,11 @@ public class MonopolyGame {
         primaryStage.setTitle("Monopoly (PA3 for Group 11)");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setFullScreen(true);
+
+        primaryStage.setOnCloseRequest(event -> {
+            timer.cancel();
+            Platform.exit();
+        });
 
         for (Player player : gameSettings.players) {
             gameWindowManager.attachTokenToBoard(player.token);

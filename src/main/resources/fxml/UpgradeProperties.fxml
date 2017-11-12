@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="im.admt.team11.PA3.Game.UI.UpgradePropertiesController">
+   <children>
+      <Button fx:id="upgradeButton" alignment="CENTER" layoutX="221.0" layoutY="319.0" mnemonicParsing="false" onAction="#upgradeProperty" text="Upgrade Property for $100" textAlignment="CENTER" />
+      <ListView fx:id="propertyList" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="171.0" layoutY="33.0" text="Upgrade Properties">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="274.0" layoutY="352.0" mnemonicParsing="false" onAction="#done" text="Done" />
+   </children>
+</AnchorPane>

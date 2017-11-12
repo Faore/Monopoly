@@ -4,6 +4,7 @@ import im.admt.team11.PA3.Game.Board.Tiles.Properties.Railroad;
 import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
 import im.admt.team11.PA3.Game.Board.Tiles.Properties.Utility;
 import im.admt.team11.PA3.Game.Board.Tiles.Property;
+import im.admt.team11.PA3.Game.MonopolyGame;
 import im.admt.team11.PA3.Game.Player;
 
 import java.util.ArrayList;
@@ -13,10 +14,10 @@ public class Deed {
 
     public final int printedPrice;
     public final int mortgageValue;
-    private final int rent;
+    public final int rent;
     public final boolean canHaveBuildings;
-    private final int buildingCost;
-    private final int[] buildingRents;
+    public final int buildingCost;
+    public final int[] buildingRents;
     private Property property;
 
     public ArrayList<Deed> associatedDeeds;
@@ -80,12 +81,6 @@ public class Deed {
         throw new Exception("Property-deed mismatch.");
     }
 
-    public int getBuildingCost() throws Exception {
-        if(!canHaveBuildings) {
-            throw new Exception("This deed cannot have buildings.");
-        }
-        return this.buildingCost;
-    }
     //TODO: Rent based on properties owned.
     public int getRent() {
         if(this.currentOwner == null) {
@@ -130,6 +125,7 @@ public class Deed {
             throw new Exception("Building already at max level.");
         }
         this.currentBuildingLevel++;
+        MonopolyGame.getInstance().gameWindowManager.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public Player getOwner() {
@@ -147,5 +143,14 @@ public class Deed {
 
     public Property getProperty() {
         return property;
+    }
+
+    public int getCurrentBuildingLevel() {
+        return currentBuildingLevel;
+    }
+
+    @Override
+    public String toString() {
+        return property.name;
     }
 }
