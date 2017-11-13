@@ -34,6 +34,7 @@ public class UpgradePropertiesController {
         if (propertyList.getItems().size() == 0) {
             upgradeButton.setText("No Properties Owned");
             upgradeButton.setDisable(true);
+            return;
         }
 
         if (player.deeds.get(newValue).canHaveBuildings) {
