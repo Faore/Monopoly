@@ -23,7 +23,6 @@ public class DeedTest {
 
     @Test
     public void testGetOwner() throws Exception {
-        int expectedPlayerNumber = 1;
 
         assertTrue(null == testDeedBoardwalk.currentOwner);
     }
