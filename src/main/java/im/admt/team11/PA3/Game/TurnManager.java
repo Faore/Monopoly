@@ -6,6 +6,7 @@ import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
 import im.admt.team11.PA3.Game.Board.Tiles.Property;
+import im.admt.team11.PA3.Game.Board.Tiles.SpecialTile;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -82,6 +83,21 @@ public class TurnManager {
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 }
             }
+        } else if(currentPlayer.token.currentLocation instanceof SpecialTile) {
+            SpecialTile specialTile = (SpecialTile) currentPlayer.token.currentLocation;
+            switch (specialTile.type) {
+                case LuxuryTax:
+                    currentPlayer.takeMoney(100);
+                    description += "and landed on " + currentPlayer.token.currentLocation.name + " and lost $100.";
+                    break;
+                case IncomeTax:
+                    currentPlayer.takeMoney(200);
+                    description += "and landed on " + currentPlayer.token.currentLocation.name + " and lost $200.";
+                    break;
+                default:
+                    description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
+            }
+            MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
         } else {
             description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
             MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
