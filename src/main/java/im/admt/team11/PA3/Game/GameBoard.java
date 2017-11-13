@@ -29,8 +29,4 @@ public class GameBoard {
 
 		BoardBuilder.buildBoard(tiles, deeds);
 	}
-
-	public Tile getTile(int location) {
-		return tiles.get(location);
-	}
 }

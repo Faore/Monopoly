@@ -16,18 +16,11 @@ public class Player {
     private int money;
     public ObservableList<Deed> deeds;
 
-    private Random random;
-
     public Player(int playerNumber, TokenTypes tokenType) {
         this.playerNumber = playerNumber;
         this.token = new Token(tokenType, this);
         this.money = 1500;
         deeds = FXCollections.observableArrayList();
-        this.random = new Random();
-    }
-
-    public int roll() {
-        return random.nextInt(10) + 2;
     }
 
     public int getPlayerValue() {
@@ -74,13 +67,6 @@ public class Player {
             this.takeMoney(deed.printedPrice);
         } else {
             throw new Exception("Tried to buy deed that's already owned.");
-        }
-    }
-
-    public void removeDeed(Deed deed) {
-        int position = deeds.indexOf(deed);
-        if (position >= 0) {
-            deeds.remove(deed);
         }
     }
 }
