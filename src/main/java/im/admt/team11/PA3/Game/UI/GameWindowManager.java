@@ -190,6 +190,11 @@ public class GameWindowManager {
             rollToMoveButton.setDisable(true);
             endTurnButton.setDisable(false);
             upgradePropertiesButton.setDisable(false);
+        } else if(phase == TurnPhase.InJail) {
+            rollToMoveButton.setDisable(true);
+            endTurnButton.setDisable(true);
+            upgradePropertiesButton.setDisable(true);
+            jailStage.show();
         }
         updateMoney(player.getMoney());
     }
@@ -290,11 +295,13 @@ public class GameWindowManager {
         upgradePropertiesStage.hide();
     }
 
-    public void rollToLeaveJail() {
+    public void rollToLeaveJail() throws Exception {
         jailStage.hide();
+        MonopolyGame.getInstance().turnManager.rollToLeaveJail();
     }
 
     public void payToLeaveJail() {
         jailStage.show();
+        MonopolyGame.getInstance().turnManager.payToLeaveJail();
     }
 }

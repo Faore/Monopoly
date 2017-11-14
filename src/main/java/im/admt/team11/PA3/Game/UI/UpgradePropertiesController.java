@@ -87,6 +87,7 @@ public class UpgradePropertiesController {
 
     public void upgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).addBuildingLevel();
+        player.takeMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost);
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 

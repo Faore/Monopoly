@@ -40,13 +40,27 @@ public class TurnManager {
             this.currentPlayerIndex = 0;
         }
         this.currentPlayer = players.get(currentPlayerIndex);
-        this.turnPhase = TurnPhase.Movement;
-        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, TurnPhase.Movement);
+        TurnPhase phase;
+
+        if(currentPlayer.inJail()) {
+            currentPlayer.decrementTimeInJail();
+            if(currentPlayer.inJail()) {
+                phase = TurnPhase.InJail;
+            } else {
+                currentPlayer.takeMoney(50);
+                MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + currentPlayer.playerNumber + " was forced to pay $50 to leave jail.");
+                phase = TurnPhase.Movement;
+            }
+        } else {
+            phase = TurnPhase.Movement;
+        }
+
+        setPhase(phase);
     }
 
     public void setPhase(TurnPhase phase) {
         this.turnPhase = phase;
-        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, phase);
+        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, turnPhase);
     }
 
     public void movePlayer() throws Exception {
@@ -89,6 +103,13 @@ public class TurnManager {
                     currentPlayer.takeMoney(200);
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " and lost $200.";
                     break;
+                case GoToJail:
+                    description += "and landed on " + currentPlayer.token.currentLocation.name + " and was sent to jail.";
+                    MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(10));
+                    currentPlayer.setInJail(true);
+                    MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
+                    nextTurn();
+                    return;
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
             }
@@ -117,5 +138,27 @@ public class TurnManager {
             player.buyDeed(property.deed, amount);
         }
         setPhase(TurnPhase.Management);
+    }
+
+    public void rollToLeaveJail() throws Exception {
+        int roll1 = random.nextInt(6) + 1;
+        int roll2 = random.nextInt(6) + 1;
+        String description = "";
+        if(roll1 == roll2) {
+            description += "Player " + currentPlayer.playerNumber + " rolled double " + roll1 + " to escape jail.";
+            currentPlayer.setInJail(false);
+            movePlayer(roll1 + roll2);
+        } else {
+            description += "Player " + currentPlayer.playerNumber + " failed to roll doubles to escape jail.";
+            nextTurn();
+        }
+        MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
+    }
+
+    public void payToLeaveJail() {
+        currentPlayer.setInJail(false);
+        currentPlayer.takeMoney(50);
+        MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + currentPlayer.playerNumber + " paid $50 to leave jail.");
+        setPhase(TurnPhase.Movement);
     }
 }
