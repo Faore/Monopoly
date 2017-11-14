@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
 public class UpgradePropertiesController {
-    public ListView<Deed> propertyList;
+    public ListView propertyList;
     public Player player;
     public Button upgradeButton;
 
