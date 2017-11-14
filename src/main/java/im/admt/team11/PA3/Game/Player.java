@@ -15,9 +15,6 @@ public class Player {
     public final Token token;
     private int money;
     public ObservableList<Deed> deeds;
-    public int timeInJail = 3;
-    public boolean isInJail = false;
-    public boolean willRoll = true;
 
     public Player(int playerNumber, TokenTypes tokenType) {
         this.playerNumber = playerNumber;
@@ -32,22 +29,6 @@ public class Player {
             value += deed.printedPrice;
         }
         return value;
-    }
-
-    public void setInJail(boolean inJail){
-        this.isInJail = inJail;
-    }
-
-    public boolean isInJail(){
-        return isInJail;
-    }
-
-    public int getTimeInJail(){
-        return timeInJail;
-    }
-
-    public void decrementTimeInJail(){
-        timeInJail -= 1;
     }
 
     public Token getToken() {

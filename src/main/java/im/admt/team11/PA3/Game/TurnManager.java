@@ -56,47 +56,24 @@ public class TurnManager {
     public void movePlayer() throws Exception {
         MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, false);
         String description = "";
-        if(currentPlayer.isInJail() && currentPlayer.timeInJail != 0) {
-            if (currentPlayer.willRoll == true){  //temporary: maybe get option from ui to pay $50 or roll?
-                int roll1 = random.nextInt(5) + 2;
-                int roll2 = random.nextInt(5) + 2;
-                if (roll1 == roll2){
-                    currentPlayer.setInJail(false);
-                    description += "Player " + currentPlayer.playerNumber + " rolled" + roll1 + " " + roll2 + ", you are out of Jail";
-                    //move token to just visiting location
-                }else {
-                    currentPlayer.decrementTimeInJail();
-                    description += "Player " + currentPlayer.playerNumber + " rolled" + roll1 + " " + roll2 + ", stay in Jail";
-                    setPhase(false); //next player turn
-                }
-            }else{
-                currentPlayer.takeMoney(50);
-                currentPlayer.setInJail(false);
-                description += "Player " + currentPlayer.playerNumber + " payed $50, you are out of Jail";
-            }
-        }else{
-            currentPlayer.takeMoney(50);
-            currentPlayer.setInJail(false);
-            description += "Player " + currentPlayer.playerNumber + " has to pay $50 to get out of Jail";
-        }
         int roll = random.nextInt(11) + 2;
         description += "Player " + currentPlayer.playerNumber + " rolled a " + roll + ", ";
         int startLocation = MonopolyGame.getInstance().gameBoard.tiles.indexOf(currentPlayer.token.currentLocation);
         int endLocation = startLocation + roll;
-        if (endLocation >= MonopolyGame.getInstance().gameBoard.tiles.size()) {
+        if(endLocation >= MonopolyGame.getInstance().gameBoard.tiles.size()) {
             endLocation -= MonopolyGame.getInstance().gameBoard.tiles.size();
             currentPlayer.giveMoney(200);
             description += "collected $200 from Go, ";
         }
         MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(endLocation));
-        if (currentPlayer.token.currentLocation instanceof Property) {
+        if(currentPlayer.token.currentLocation instanceof Property) {
             Property property = (Property) currentPlayer.token.currentLocation;
-            if (property.deed.getOwner() == null) {
+            if(property.deed.getOwner() == null) {
                 description += "and landed on " + property.name + " which is unowned.";
                 MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 MonopolyGame.getInstance().gameWindowManager.startAskBuyMode(property, currentPlayer);
             } else {
-                if (property.deed.getOwner() != currentPlayer) {
+                if(property.deed.getOwner() != currentPlayer) {
                     int rent = property.deed.getRent();
                     description += "and landed on " + property.name + " which was owned by Player " + property.deed.getOwner().playerNumber + " and was charged $" + rent + " for rent.";
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
@@ -106,7 +83,7 @@ public class TurnManager {
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 }
             }
-        } else if (currentPlayer.token.currentLocation instanceof SpecialTile) {
+        } else if(currentPlayer.token.currentLocation instanceof SpecialTile) {
             SpecialTile specialTile = (SpecialTile) currentPlayer.token.currentLocation;
             switch (specialTile.type) {
                 case LuxuryTax:
@@ -116,10 +93,6 @@ public class TurnManager {
                 case IncomeTax:
                     currentPlayer.takeMoney(200);
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " and lost $200.";
-                    break;
-                case GoToJail:
-                    currentPlayerIndex = 10;
-                    description += "and landed on " + currentPlayer.token.currentLocation.name + " and goes directly to Jail";
                     break;
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
