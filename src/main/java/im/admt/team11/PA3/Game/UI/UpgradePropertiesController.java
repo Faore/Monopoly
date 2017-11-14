@@ -27,6 +27,7 @@ public class UpgradePropertiesController {
     public void setup(Player player) {
         this.player = player;
         propertyList.setItems(player.deeds);
+        propertyList.getSelectionModel().clearSelection();
         rerender(0);
     }
 
@@ -35,6 +36,11 @@ public class UpgradePropertiesController {
             upgradeButton.setText("No Properties Owned");
             upgradeButton.setDisable(true);
             return;
+        }
+
+        if(newValue < 0) {
+            upgradeButton.setText("Select a Property");
+            upgradeButton.setDisable(true);
         }
 
         if (player.deeds.get(newValue).canHaveBuildings) {

@@ -50,8 +50,11 @@ public class TurnManager {
     }
 
     public void movePlayer() throws Exception {
+        movePlayer(random.nextInt(11) + 2);
+    }
+
+    public void movePlayer(int roll) throws Exception {
         String description = "";
-        int roll = random.nextInt(11) + 2;
         description += "Player " + currentPlayer.playerNumber + " rolled a " + roll + ", ";
         int startLocation = MonopolyGame.getInstance().gameBoard.tiles.indexOf(currentPlayer.token.currentLocation);
         int endLocation = startLocation + roll;
@@ -65,17 +68,14 @@ public class TurnManager {
             Property property = (Property) currentPlayer.token.currentLocation;
             if(property.deed.getOwner() == null) {
                 description += "and landed on " + property.name + " which is unowned.";
-                MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 MonopolyGame.getInstance().gameWindowManager.startAskBuyMode(property, currentPlayer);
             } else {
                 if(property.deed.getOwner() != currentPlayer) {
                     int rent = property.deed.getRent();
                     description += "and landed on " + property.name + " which was owned by Player " + property.deed.getOwner().playerNumber + " and was charged $" + rent + " for rent.";
-                    MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                     property.deed.getOwner().collectMoneyFromPlayer(currentPlayer, rent);
                 } else {
                     description += "and landed on " + property.name + " which they own.";
-                    MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 }
             }
         } else if(currentPlayer.token.currentLocation instanceof SpecialTile) {
@@ -92,11 +92,10 @@ public class TurnManager {
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
             }
-            MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
         } else {
             description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
-            MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
         }
+        MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
         setPhase(TurnPhase.Management);
     }
 

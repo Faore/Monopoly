@@ -15,12 +15,32 @@ public class Player {
     public final Token token;
     private int money;
     public ObservableList<Deed> deeds;
+    public int timeInJail;
 
     public Player(int playerNumber, TokenTypes tokenType) {
         this.playerNumber = playerNumber;
         this.token = new Token(tokenType, this);
         this.money = 1500;
+        this.timeInJail = 0;
         deeds = FXCollections.observableArrayList();
+    }
+
+    public boolean inJail() {
+        return timeInJail > 0;
+    }
+
+    public void setInJail(boolean inJail) {
+        if(inJail) {
+            timeInJail = 3;
+        } else {
+            timeInJail = 0;
+        }
+    }
+
+    public void decrementTimeInJail() {
+        if(timeInJail > 0) {
+            timeInJail--;
+        }
     }
 
     public int getPlayerValue() {
