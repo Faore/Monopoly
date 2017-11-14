@@ -15,14 +15,15 @@ public class Player {
     public final Token token;
     private int money;
     public ObservableList<Deed> deeds;
-    public int timeInJail = 3;
-    public boolean isInJail = false;
-    public boolean willRoll = true;
+    public int timeInJail;
+    public boolean isInJail;
 
     public Player(int playerNumber, TokenTypes tokenType) {
         this.playerNumber = playerNumber;
         this.token = new Token(tokenType, this);
         this.money = 1500;
+        this.isInJail = false;
+        this.timeInJail = 0;
         deeds = FXCollections.observableArrayList();
     }
 
@@ -35,19 +36,20 @@ public class Player {
     }
 
     public void setInJail(boolean inJail){
-        this.isInJail = inJail;
-    }
-
-    public boolean isInJail(){
-        return isInJail;
-    }
-
-    public int getTimeInJail(){
-        return timeInJail;
+        if(inJail) {
+            this.isInJail = true;
+            timeInJail = 3;
+        } else {
+            this.isInJail = false;
+            timeInJail = 0;
+        }
     }
 
     public void decrementTimeInJail(){
         timeInJail -= 1;
+        if(timeInJail == 0) {
+            isInJail = false;
+        }
     }
 
     public Token getToken() {

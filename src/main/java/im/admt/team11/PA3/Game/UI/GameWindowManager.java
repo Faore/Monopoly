@@ -7,6 +7,7 @@ import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
 import im.admt.team11.PA3.Game.Board.Tiles.Property;
 import im.admt.team11.PA3.Game.MonopolyGame;
 import im.admt.team11.PA3.Game.Player;
+import im.admt.team11.PA3.Game.TurnPhase;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +22,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import javax.swing.text.html.Option;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.TimerTask;
 
 public class GameWindowManager {
@@ -52,6 +58,8 @@ public class GameWindowManager {
     public Label lastActionLabel;
     public Button upgradePropertiesButton;
     public Button endTurnButton;
+    public Button manageMortgagesButton;
+    public Stage jailDialogStage;
 
     @FXML
     public void initialize() throws IOException {
@@ -99,6 +107,16 @@ public class GameWindowManager {
         upgradePropertiesStage.setResizable(false);
         upgradePropertiesStage.initModality(Modality.WINDOW_MODAL);
         upgradePropertiesStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent jailDialog = FXMLLoader.load(getClass().getResource("/fxml/UpgradeProperties.fxml"));
+        jailDialogStage = new Stage();
+        jailDialogStage.initStyle(StageStyle.UNDECORATED);
+        jailDialogStage.setTitle("You are in jail!");
+        jailDialogStage.setScene(new Scene(jailDialog));
+        jailDialogStage.setAlwaysOnTop(true);
+        jailDialogStage.setResizable(false);
+        jailDialogStage.initModality(Modality.WINDOW_MODAL);
+        jailDialogStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
         time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
 
@@ -167,18 +185,30 @@ public class GameWindowManager {
         return null;
     }
 
-    public void setTurnPhase(Player player, boolean movementPhase) {
+    public void setTurnPhase(Player player, TurnPhase phase) {
         playerTurnLabel.setText("Player " + player.playerNumber + "'s Turn");
-        if(movementPhase) {
-            rollToMoveButton.setDisable(false);
-            endTurnButton.setDisable(true);
-            upgradePropertiesButton.setDisable(true);
-        } else {
-            rollToMoveButton.setDisable(true);
-            endTurnButton.setDisable(false);
-            upgradePropertiesButton.setDisable(false);
-        }
         updateMoney(player.getMoney());
+        switch (phase) {
+            case Movement:
+                rollToMoveButton.setDisable(false);
+                endTurnButton.setDisable(true);
+                upgradePropertiesButton.setDisable(true);
+                manageMortgagesButton.setDisable(true);
+                break;
+            case Property:
+                rollToMoveButton.setDisable(true);
+                endTurnButton.setDisable(false);
+                upgradePropertiesButton.setDisable(false);
+                manageMortgagesButton.setDisable(false);
+                break;
+            case InJail:
+                rollToMoveButton.setDisable(true);
+                endTurnButton.setDisable(true);
+                upgradePropertiesButton.setDisable(true);
+                manageMortgagesButton.setDisable(true);
+                jailDialogStage.show();
+                break;
+        }
     }
 
     public void setTokenLocation(Token token, Tile location) throws Exception {
@@ -240,7 +270,7 @@ public class GameWindowManager {
     }
 
     public void rollToMove(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().turnManager.movePlayer();
+        MonopolyGame.getInstance().turnManager.movePlayer(-1);
     }
 
     public void startAskBuyMode(Property property, Player player) throws IOException {
@@ -275,5 +305,18 @@ public class GameWindowManager {
 
     public void endUpgrade() {
         upgradePropertiesStage.hide();
+    }
+
+    public void manageMortgages(ActionEvent actionEvent) {
+    }
+
+    public void rollGetOutOfJail() throws Exception {
+        jailDialogStage.hide();
+        MonopolyGame.getInstance().turnManager.rollGetOutOfJail();
+    }
+
+    public void payGetOutOfJail() throws Exception {
+        jailDialogStage.hide();
+        MonopolyGame.getInstance().turnManager.payGetOutOfJail();
     }
 }

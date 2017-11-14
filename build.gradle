@@ -7,7 +7,7 @@ plugins {
 group 'im.admt.team11.PA3'
 version '1.0'
 
-mainClassName = 'im.admt.team11.PA3.Monopoly'
+mainClassName = 'im.admt.team11.PA3.MonopolyManager'
 
 sourceCompatibility = 1.9
 
