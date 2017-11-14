@@ -9,11 +9,11 @@ public class JailController {
         MonopolyGame.getInstance().gameWindowManager.jailController = this;
     }
 
-    public void rollToLeave(ActionEvent actionEvent) {
+    public void rollToLeave(ActionEvent actionEvent) throws Exception {
         MonopolyGame.getInstance().gameWindowManager.rollToLeaveJail();
     }
 
-    public void payToLeave(ActionEvent actionEvent) {
+    public void payToLeave(ActionEvent actionEvent) throws Exception {
         MonopolyGame.getInstance().gameWindowManager.payToLeaveJail();
     }
 }
