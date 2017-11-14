@@ -18,6 +18,7 @@ public class Deed {
     public final boolean canHaveBuildings;
     public final int buildingCost;
     public final int[] buildingRents;
+    public boolean isMortgaged;
     private Property property;
 
     public ArrayList<Deed> associatedDeeds;
@@ -35,6 +36,7 @@ public class Deed {
         this.buildingRents = new int[0];
         this.currentBuildingLevel = -1;
         this.associatedDeeds = new ArrayList<>();
+        this.isMortgaged = false;
     }
 
     public Deed(int printedPrice, int rent) {
@@ -46,6 +48,7 @@ public class Deed {
         this.buildingRents = new int[0];
         this.currentBuildingLevel = -1;
         this.associatedDeeds = new ArrayList<>();
+        this.isMortgaged = false;
     }
 
     public Deed(int printedPrice, int rent, int buildingCost, int rent1, int rent2, int rent3, int rent4, int rent5) {
@@ -57,6 +60,16 @@ public class Deed {
         this.buildingRents = new int[]{rent1, rent2, rent3, rent4, rent5};
         this.currentBuildingLevel = 0;
         this.associatedDeeds = new ArrayList<>();
+        this.isMortgaged = false;
+    }
+
+    public void setMortgaged(boolean mortgaged) throws Exception {
+        if(currentOwner != null) {
+            isMortgaged = mortgaged;
+        } else {
+            throw new Exception("Can't mortgage property that isn't owned.");
+        }
+
     }
 
     public void associateWithDeed(Deed deed) {
@@ -81,7 +94,6 @@ public class Deed {
         throw new Exception("Property-deed mismatch.");
     }
 
-    //TODO: Rent based on properties owned.
     public int getRent() {
         if(this.currentOwner == null) {
             return 0;
@@ -134,6 +146,17 @@ public class Deed {
             throw new Exception("Building already at max level.");
         }
         this.currentBuildingLevel++;
+        MonopolyGame.getInstance().gameWindowManager.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
+    }
+
+    public void removeBuildingLevel() throws Exception {
+        if (!canHaveBuildings) {
+            throw new Exception("Buildings cannot be built using this deed.");
+        }
+        if(currentBuildingLevel == 0) {
+            throw new Exception("Building already at min level.");
+        }
+        this.currentBuildingLevel--;
         MonopolyGame.getInstance().gameWindowManager.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 

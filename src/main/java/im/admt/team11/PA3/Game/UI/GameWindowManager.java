@@ -301,7 +301,7 @@ public class GameWindowManager {
     }
 
     public void payToLeaveJail() throws Exception {
-        jailStage.show();
+        jailStage.hide();
         MonopolyGame.getInstance().turnManager.payToLeaveJail();
     }
 }
