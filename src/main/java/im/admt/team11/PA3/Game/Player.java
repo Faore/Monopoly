@@ -46,7 +46,11 @@ public class Player {
     public int getPlayerValue() {
         int value = this.money;
         for(Deed deed: this.deeds) {
-            value += deed.printedPrice;
+            if(deed.isMortgaged) {
+                value += deed.mortgageValue;
+            } else {
+                value += deed.printedPrice;
+            }
         }
         return value;
     }

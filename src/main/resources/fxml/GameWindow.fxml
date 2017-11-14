@@ -24,6 +24,7 @@
                 <Label fx:id="playerTurnLabel" text="Player 1's Turn" />
             <Label fx:id="moneyLabel" text="\$0" />
                 <Button fx:id="rollToMoveButton" mnemonicParsing="false" onAction="#rollToMove" text="Roll to Move" />
+            <Button fx:id="manageMortgagesButton" mnemonicParsing="false" onAction="#manageMortgages" text="Manage Mortgages" />
             <Button fx:id="upgradePropertiesButton" mnemonicParsing="false" onAction="#startUpgrade" text="Upgrade Properties" />
             <Button fx:id="endTurnButton" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
                 <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />

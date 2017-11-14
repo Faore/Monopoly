@@ -85,9 +85,14 @@ public class TurnManager {
                 MonopolyGame.getInstance().gameWindowManager.startAskBuyMode(property, currentPlayer);
             } else {
                 if(property.deed.getOwner() != currentPlayer) {
-                    int rent = property.deed.getRent();
-                    description += "and landed on " + property.name + " which was owned by Player " + property.deed.getOwner().playerNumber + " and was charged $" + rent + " for rent.";
-                    property.deed.getOwner().collectMoneyFromPlayer(currentPlayer, rent);
+                    if(!property.deed.isMortgaged) {
+                        int rent = property.deed.getRent();
+                        description += "and landed on " + property.name + " which was owned by Player " + property.deed.getOwner().playerNumber + " and was charged $" + rent + " for rent.";
+                        property.deed.getOwner().collectMoneyFromPlayer(currentPlayer, rent);
+                    } else {
+                        description += "and landed on " + property.name + " which was owned by Player " + property.deed.getOwner().playerNumber + " and is mortgaged.";
+                    }
+
                 } else {
                     description += "and landed on " + property.name + " which they own.";
                 }

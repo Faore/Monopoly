@@ -118,6 +118,7 @@ public class UpgradePropertiesController {
     public void upgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).addBuildingLevel();
         player.takeMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost);
+        MonopolyGame.getInstance().gameWindowManager.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 
@@ -128,6 +129,7 @@ public class UpgradePropertiesController {
     public void downgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).removeBuildingLevel();
         player.giveMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost/2);
+        MonopolyGame.getInstance().gameWindowManager.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 }

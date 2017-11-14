@@ -48,6 +48,7 @@ public class GameWindowManager {
     public Stage auctionStage;
     public Stage upgradePropertiesStage;
     public Stage jailStage;
+    public Stage mortgageStage;
     public AskBuyController askBuyController;
     public AuctionController auctionController;
     public UpgradePropertiesController upgradePropertiesController;
@@ -55,6 +56,8 @@ public class GameWindowManager {
     public Button upgradePropertiesButton;
     public Button endTurnButton;
     public JailController jailController;
+    public MortgagePropertiesController mortgagePropertiesController;
+    public Button manageMortgagesButton;
 
     @FXML
     public void initialize() throws IOException {
@@ -112,6 +115,16 @@ public class GameWindowManager {
         jailStage.setResizable(false);
         jailStage.initModality(Modality.WINDOW_MODAL);
         jailStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent mortgageWindow = FXMLLoader.load(getClass().getResource("/fxml/MortgageProperties.fxml"));
+        mortgageStage = new Stage();
+        mortgageStage.initStyle(StageStyle.UNDECORATED);
+        mortgageStage.setTitle("Manage Mortgages");
+        mortgageStage.setScene(new Scene(mortgageWindow));
+        mortgageStage.setAlwaysOnTop(true);
+        mortgageStage.setResizable(false);
+        mortgageStage.initModality(Modality.WINDOW_MODAL);
+        mortgageStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
         time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
 
@@ -303,5 +316,14 @@ public class GameWindowManager {
     public void payToLeaveJail() throws Exception {
         jailStage.hide();
         MonopolyGame.getInstance().turnManager.payToLeaveJail();
+    }
+
+    public void closeMortgageWindow() {
+        mortgageStage.hide();
+    }
+
+    public void manageMortgages(ActionEvent actionEvent) {
+        mortgagePropertiesController.setup(MonopolyGame.getInstance().turnManager.getCurrentPlayer());
+        mortgageStage.show();
     }
 }
