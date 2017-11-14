@@ -41,6 +41,7 @@ public class UpgradePropertiesController {
         if(newValue < 0) {
             upgradeButton.setText("Select a Property");
             upgradeButton.setDisable(true);
+            return;
         }
 
         if (player.deeds.get(newValue).canHaveBuildings) {

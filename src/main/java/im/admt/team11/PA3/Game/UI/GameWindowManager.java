@@ -47,12 +47,14 @@ public class GameWindowManager {
     public Stage deedStage;
     public Stage auctionStage;
     public Stage upgradePropertiesStage;
+    public Stage jailStage;
     public AskBuyController askBuyController;
     public AuctionController auctionController;
     public UpgradePropertiesController upgradePropertiesController;
     public Label lastActionLabel;
     public Button upgradePropertiesButton;
     public Button endTurnButton;
+    public JailController jailController;
 
     @FXML
     public void initialize() throws IOException {
@@ -100,6 +102,16 @@ public class GameWindowManager {
         upgradePropertiesStage.setResizable(false);
         upgradePropertiesStage.initModality(Modality.WINDOW_MODAL);
         upgradePropertiesStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent jailWindow = FXMLLoader.load(getClass().getResource("/fxml/Jail.fxml"));
+        jailStage = new Stage();
+        jailStage.initStyle(StageStyle.UNDECORATED);
+        jailStage.setTitle("You Are In Jail");
+        jailStage.setScene(new Scene(jailWindow));
+        jailStage.setAlwaysOnTop(true);
+        jailStage.setResizable(false);
+        jailStage.initModality(Modality.WINDOW_MODAL);
+        jailStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
         time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
 
@@ -276,5 +288,13 @@ public class GameWindowManager {
 
     public void endUpgrade() {
         upgradePropertiesStage.hide();
+    }
+
+    public void rollToLeaveJail() {
+        jailStage.hide();
+    }
+
+    public void payToLeaveJail() {
+        jailStage.show();
     }
 }
