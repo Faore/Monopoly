@@ -16,7 +16,7 @@ public class TurnManager {
     private ArrayList<Player> players;
     private int currentPlayerIndex;
     private Player currentPlayer;
-    private boolean movementPhase;
+    private TurnPhase turnPhase;
 
     private Random random;
 
@@ -26,8 +26,8 @@ public class TurnManager {
 
         this.currentPlayerIndex = 0;
         this.currentPlayer = players.get(0);
-        this.movementPhase = true;
-        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, true);
+        this.turnPhase = TurnPhase.Movement;
+        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, TurnPhase.Movement);
     }
 
     public Player getCurrentPlayer() {
@@ -40,21 +40,16 @@ public class TurnManager {
             this.currentPlayerIndex = 0;
         }
         this.currentPlayer = players.get(currentPlayerIndex);
-        this.movementPhase = true;
-        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, true);
+        this.turnPhase = TurnPhase.Movement;
+        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, TurnPhase.Movement);
     }
 
-    public boolean isMovementPhase() {
-        return movementPhase;
-    }
-
-    public void setPhase(boolean movementPhase) {
-        this.movementPhase = movementPhase;
-        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, movementPhase);
+    public void setPhase(TurnPhase phase) {
+        this.turnPhase = phase;
+        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, phase);
     }
 
     public void movePlayer() throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, false);
         String description = "";
         int roll = random.nextInt(11) + 2;
         description += "Player " + currentPlayer.playerNumber + " rolled a " + roll + ", ";
@@ -102,14 +97,14 @@ public class TurnManager {
             description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
             MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
         }
-        setPhase(false);
+        setPhase(TurnPhase.Management);
     }
 
     public void buyProperty() throws Exception {
         if (currentPlayer.getMoney() >= ((Property) currentPlayer.token.currentLocation).deed.printedPrice) {
             currentPlayer.buyDeed(((Property) currentPlayer.token.currentLocation).deed);
             MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + currentPlayer.playerNumber + " bought " + currentPlayer.token.currentLocation.name + " for $" + ((Property) currentPlayer.token.currentLocation).deed.printedPrice + ".");
-            setPhase(false);
+            setPhase(TurnPhase.Management);
         } else {
             throw new Exception("Can't afford property.");
         }
@@ -122,6 +117,6 @@ public class TurnManager {
             MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + player.playerNumber + " won the auction for " + property.name + " for $" + amount + ".");
             player.buyDeed(property.deed, amount);
         }
-        setPhase(false);
+        setPhase(TurnPhase.Management);
     }
 }

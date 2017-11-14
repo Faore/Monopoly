@@ -7,6 +7,7 @@ import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
 import im.admt.team11.PA3.Game.Board.Tiles.Property;
 import im.admt.team11.PA3.Game.MonopolyGame;
 import im.admt.team11.PA3.Game.Player;
+import im.admt.team11.PA3.Game.TurnPhase;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -167,13 +168,13 @@ public class GameWindowManager {
         return null;
     }
 
-    public void setTurnPhase(Player player, boolean movementPhase) {
+    public void setTurnPhase(Player player, TurnPhase phase) {
         playerTurnLabel.setText("Player " + player.playerNumber + "'s Turn");
-        if(movementPhase) {
+        if(phase == TurnPhase.Movement) {
             rollToMoveButton.setDisable(false);
             endTurnButton.setDisable(true);
             upgradePropertiesButton.setDisable(true);
-        } else {
+        } else if(phase == TurnPhase.Management){
             rollToMoveButton.setDisable(true);
             endTurnButton.setDisable(false);
             upgradePropertiesButton.setDisable(false);
