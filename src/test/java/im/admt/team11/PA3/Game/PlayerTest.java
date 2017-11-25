@@ -6,8 +6,7 @@ import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PlayerTest extends ApplicationTest {
 
@@ -60,11 +59,86 @@ public class PlayerTest extends ApplicationTest {
         assertEquals(1440, player.getMoney());
     }
 
+    @Test
     public void testAuctionDeed() throws Exception {
         Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed, 1500);
         assertTrue(player.deeds.contains(deed));
         assertEquals(0, player.getMoney());
+    }
+
+    @Test
+    public void testSetInJail() {
+        Player player = new Player(1, TokenTypes.Blue);
+        assertFalse(player.inJail());
+        player.setInJail(true);
+        assertTrue(player.inJail());
+        player.setInJail(false);
+        assertFalse(player.inJail());
+    }
+
+    @Test
+    public void testDecrementJailTime() {
+        Player player = new Player(1, TokenTypes.Blue);
+        player.setInJail(true);
+        assertTrue(player.inJail());
+        player.decrementTimeInJail();
+        assertTrue(player.inJail());
+        player.decrementTimeInJail();
+        assertTrue(player.inJail());
+        player.decrementTimeInJail();
+        assertFalse(player.inJail());
+    }
+
+    @Test
+    public void testPlayerValue() throws Exception {
+        Player player = new Player(1, TokenTypes.Blue);
+        GameSettings gameSettings = new GameSettings();
+        gameSettings.players.add(player);
+        GameBoard gameBoard = new GameBoard(gameSettings);
+        gameBoard.deeds.get(0).setOwner(player);
+        gameBoard.deeds.get(1).setOwner(player);
+        gameBoard.deeds.get(1).setMortgaged(true);
+        assertEquals(1725, player.getPlayerValue());
+    }
+
+    @Test
+    public void testGetToken() {
+        Player player = new Player(1, TokenTypes.Blue);
+        assertNotNull(player.getToken());
+        assertEquals(TokenTypes.Blue, player.getToken().tokenType);
+    }
+
+    @Test
+    public void testBuyDeedFail() throws Exception {
+        Player player = new Player(1, TokenTypes.Blue);
+        GameSettings gameSettings = new GameSettings();
+        gameSettings.players.add(player);
+        GameBoard gameBoard = new GameBoard(gameSettings);
+        gameBoard.deeds.get(0).setOwner(player);
+        try {
+            player.buyDeed(gameBoard.deeds.get(0));
+        } catch (Exception e) {
+            assertTrue(true);
+            return;
+        }
+        assertTrue(false);
+    }
+
+    @Test
+    public void testBuyDeedAuctionFail() throws Exception {
+        Player player = new Player(1, TokenTypes.Blue);
+        GameSettings gameSettings = new GameSettings();
+        gameSettings.players.add(player);
+        GameBoard gameBoard = new GameBoard(gameSettings);
+        gameBoard.deeds.get(0).setOwner(player);
+        try {
+            player.buyDeed(gameBoard.deeds.get(0), 50);
+        } catch (Exception e) {
+            assertTrue(true);
+            return;
+        }
+        assertTrue(false);
     }
 }

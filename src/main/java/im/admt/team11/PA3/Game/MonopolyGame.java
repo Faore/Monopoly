@@ -1,9 +1,5 @@
 package im.admt.team11.PA3.Game;
 
-import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
-import im.admt.team11.PA3.Game.Board.Tile;
-import im.admt.team11.PA3.Game.Board.Tiles.Properties.StandardProperty;
-import im.admt.team11.PA3.Game.Board.Tiles.Property;
 import im.admt.team11.PA3.Game.UI.Debug.DebugUI;
 import im.admt.team11.PA3.Game.UI.GameWindowManager;
 import javafx.application.Platform;
@@ -14,7 +10,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -49,7 +44,7 @@ public class MonopolyGame {
         timer = new Timer("gameTimer");
         this.gameSettings = gameSettings;
         this.primaryStage = primaryStage;
-        this.gameBoard = new GameBoard();
+        this.gameBoard = new GameBoard(gameSettings);
     }
 
     public void start() throws Exception {
