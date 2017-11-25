@@ -93,4 +93,8 @@ public class Player {
             throw new Exception("Tried to buy deed that's already owned.");
         }
     }
+
+    public boolean isAI(){
+        return false;
+    }
 }
