@@ -14,9 +14,11 @@
       <Button fx:id="startGameButton" layoutX="262.0" layoutY="306.0" mnemonicParsing="false" onAction="#clickStartGame" text="Start Game" />
       <Slider fx:id="timeLimitSlider" layoutX="204.0" layoutY="40.0" max="60.0" min="1.0" prefHeight="14.0" prefWidth="192.0" value="10.0" />
       <Slider fx:id="playerSlider" layoutX="204.0" layoutY="80.0" max="4.0" min="2.0" prefHeight="14.0" prefWidth="192.0" value="3.0" />
+      <Slider fx:id="aiPlayerSlider" layoutX="204.0" layoutY="120.0" max="3.0" min="1.0" prefHeight="14.0" prefWidth="192.0" value="0.0" />
 
       <Label fx:id="timeLimitLabel" layoutX="240.0" layoutY="17.0" text="Time Limit (15 minutes):" />
       <Label layoutX="234.0" layoutY="63.0" text="Select Number of Players" />
+      <Label fx:id="aiPlayerLabel" layoutX="234.0" layoutY="100.0" text="Number of AI players ( 0 ):" />
       <HBox alignment="CENTER" layoutY="150.0" prefHeight="100.0" prefWidth="600.0">
          <children>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />

@@ -17,6 +17,8 @@ public class MenuController {
     public Button startGameButton;
     public Slider timeLimitSlider;
     public Label timeLimitLabel;
+    public Slider aiPlayerSlider;
+    public Label aiPlayerLabel;
 
     @FXML
     public void initialize() {
@@ -32,6 +34,9 @@ public class MenuController {
 
         timeLimitSlider.valueProperty().addListener((obs, oldval, newval) ->
                 timeLimitSliderUpdate(newval));
+
+        aiPlayerSlider.valueProperty().addListener((obs, oldval, newval) ->
+                aiPlayerSliderUpdate(newval));
 
 
 
@@ -62,6 +67,11 @@ public class MenuController {
             menuRed.setVisible(false);
             menuYellow.setVisible(false);
         }
+    }
+
+    public void aiPlayerSliderUpdate(Number newVal){
+        aiPlayerSlider.setValue(newVal.intValue());
+        aiPlayerLabel.setText("Number of AI players ( " + newVal.intValue() + " ):");
     }
 
     public void clickStartGame(ActionEvent event) throws Exception {
