@@ -122,7 +122,7 @@ public class TurnManager {
                     return;
                 case Chance:
                     description += "and landed on " + currentPlayer.token.currentLocation.name;
-                    //add
+                    MonopolyGame.getInstance().gameWindowManager.drawChanceCard();
                     break;
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";

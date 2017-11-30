@@ -1,5 +1,6 @@
 package im.admt.team11.PA3.Game.UI;
 
+import im.admt.team11.PA3.Game.Board.Card.Card;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Pieces.TokenTypes;
 import im.admt.team11.PA3.Game.Board.Tile;
@@ -339,5 +340,13 @@ public class GameWindowManager {
         mortgageStage.show();
     }
 
-    public void continueTurn(){ MonopolyGame.getInstance().turnManager.setManagementPhase(); }
+    public void drawChanceCard(){
+        //chanceController.setChanceCard(card);
+        chanceStage.show();
+    }
+
+    public void endShowCard(){
+        MonopolyGame.getInstance().turnManager.setManagementPhase();
+        chanceStage.hide();
+    }
 }

@@ -13,6 +13,11 @@
             <font>
                 <Font size="32.0" />
             </font></Label>
-        <Button layoutX="222.0" layoutY="312.0" mnemonicParsing="false" onAction="#continueTurn" text="Okay" />
+        <!--<Label fx:id="chanceCard" alignment="CENTER" layoutX="66.0" layoutY="31.0" prefHeight="45.0" prefWidth="469.0" text="Baltic Avenue" textAlignment="CENTER">-->
+            <!--<font>-->
+                <!--<Font size="15.0" />-->
+            <!--</font>-->
+        <!--</Label>-->
+        <Button layoutX="275.0" layoutY="312.0" mnemonicParsing="false" onAction="#continueTurn" text="Okay" />
     </children>
 </AnchorPane>

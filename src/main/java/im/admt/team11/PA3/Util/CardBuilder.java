@@ -9,10 +9,11 @@ import java.util.ArrayList;
 public class CardBuilder {
 
     public static void buildChanceCard(ObservableList<Card> chanceCards){
-        chanceCards.add(new Card("chance", 0, 1));
+        chanceCards.add(new Card("chance", 0, 1, "Advance to Go (Collect $200)"));
     }
 
     public static void buildChestCard(ObservableList<Card> chestCard){
-        chestCard.add(new Card("chest", 0, 1));
+        chestCard.add(new Card("chest", 0, 1,
+                "Grand Opera Opening, Collect $50 from every player"));
     }
 }

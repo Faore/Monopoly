@@ -4,11 +4,13 @@ public class Card {
     private String type;
     private int value;
     private int cardNum;
+    private String description;
 
-    public Card(String type, int value, int cardNum){
+    public Card(String type, int value, int cardNum, String description){
         this.type = type;
         this.value = value;
         this.cardNum = cardNum;
+        this.description = description;
     }
 
     public String getType() {
@@ -21,5 +23,9 @@ public class Card {
 
     public int getValue() {
         return value;
+    }
+
+    public String getDescription(){
+        return description;
     }
 }
