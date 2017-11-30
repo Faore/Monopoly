@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.CheckBox;
 
 public class MenuController {
 
@@ -17,8 +18,8 @@ public class MenuController {
     public Button startGameButton;
     public Slider timeLimitSlider;
     public Label timeLimitLabel;
-    public Slider aiPlayerSlider;
-    public Label aiPlayerLabel;
+    public Slider themeSelect;
+    public Label themeLabel;
 
     @FXML
     public void initialize() {
@@ -35,9 +36,8 @@ public class MenuController {
         timeLimitSlider.valueProperty().addListener((obs, oldval, newval) ->
                 timeLimitSliderUpdate(newval));
 
-        aiPlayerSlider.valueProperty().addListener((obs, oldval, newval) ->
-                aiPlayerSliderUpdate(newval));
-
+        themeSelect.valueProperty().addListener((obs, oldval, newval) ->
+                themeSelectUpdate(newval));
 
 
     }
@@ -69,9 +69,14 @@ public class MenuController {
         }
     }
 
-    public void aiPlayerSliderUpdate(Number newVal){
-        aiPlayerSlider.setValue(newVal.intValue());
-        aiPlayerLabel.setText("Number of AI players ( " + newVal.intValue() + " ):");
+    public void themeSelectUpdate(Number newVal){
+        themeSelect.setValue(newVal.intValue());
+        if(newVal.intValue() == 0) {
+            themeLabel.setText("Theme: Original Monopoly Theme");
+        }
+        else if(newVal.intValue() == 1){
+            themeLabel.setText("Theme: Custom Overwatch Theme");
+        }
     }
 
     public void clickStartGame(ActionEvent event) throws Exception {
