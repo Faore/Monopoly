@@ -63,6 +63,11 @@ public class TurnManager {
         MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, turnPhase);
     }
 
+    public void setManagementPhase(){
+        this.turnPhase = TurnPhase.Management;
+        MonopolyGame.getInstance().gameWindowManager.setTurnPhase(currentPlayer, turnPhase);
+    }
+
     public void movePlayer() throws Exception {
         movePlayer(random.nextInt(11) + 2);
     }
@@ -115,6 +120,10 @@ public class TurnManager {
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                     nextTurn();
                     return;
+                case Chance:
+                    description += "and landed on " + currentPlayer.token.currentLocation.name;
+                    //add
+                    break;
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
             }

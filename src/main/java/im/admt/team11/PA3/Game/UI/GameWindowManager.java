@@ -58,6 +58,8 @@ public class GameWindowManager {
     public JailController jailController;
     public MortgagePropertiesController mortgagePropertiesController;
     public Button manageMortgagesButton;
+    public ChanceController chanceController;
+    public Stage chanceStage;
 
     @FXML
     public void initialize() throws IOException {
@@ -125,6 +127,16 @@ public class GameWindowManager {
         mortgageStage.setResizable(false);
         mortgageStage.initModality(Modality.WINDOW_MODAL);
         mortgageStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent chanceWindow = FXMLLoader.load(getClass().getResource("/fxml/ChanceWindow.fxml"));
+        chanceStage = new Stage();
+        chanceStage.initStyle(StageStyle.UNDECORATED);
+        chanceStage.setTitle("Chance Card");
+        chanceStage.setScene(new Scene(chanceWindow));
+        chanceStage.setAlwaysOnTop(true);
+        chanceStage.setResizable(false);
+        chanceStage.initModality(Modality.WINDOW_MODAL);
+        chanceStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
         time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
 
@@ -326,4 +338,6 @@ public class GameWindowManager {
         mortgagePropertiesController.setup(MonopolyGame.getInstance().turnManager.getCurrentPlayer());
         mortgageStage.show();
     }
+
+    public void continueTurn(){ MonopolyGame.getInstance().turnManager.setManagementPhase(); }
 }

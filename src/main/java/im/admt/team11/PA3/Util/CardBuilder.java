@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class CardBuilder {
 
-    public static void buildChanceCard(ObservableList<Card> chanceCard){
-        chanceCard.add(new Card("chance", 0, 1));
+    public static void buildChanceCard(ObservableList<Card> chanceCards){
+        chanceCards.add(new Card("chance", 0, 1));
     }
 
     public static void buildChestCard(ObservableList<Card> chestCard){
