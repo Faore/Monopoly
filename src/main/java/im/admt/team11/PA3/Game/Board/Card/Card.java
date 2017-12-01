@@ -4,7 +4,7 @@ public class Card {
     private String type;
     private int value;
     private int cardNum;
-    private String description;
+    public String description;
 
     public Card(String type, int value, int cardNum, String description){
         this.type = type;
@@ -23,9 +23,5 @@ public class Card {
 
     public int getValue() {
         return value;
-    }
-
-    public String getDescription(){
-        return description;
     }
 }

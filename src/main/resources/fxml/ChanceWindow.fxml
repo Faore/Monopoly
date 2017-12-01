@@ -3,21 +3,23 @@
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="im.admt.team11.PA3.Game.UI.ChanceController">
+
+<AnchorPane prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="im.admt.team11.PA3.Game.UI.ChanceController">
     <children>
-        <Label alignment="CENTER" layoutX="112.0" layoutY="59.0" prefHeight="47.0" prefWidth="377.0" text="Chance">
+        <Label alignment="CENTER" layoutX="112.0" layoutY="50.0" prefHeight="47.0" prefWidth="377.0" text="Chance">
             <font>
                 <Font size="32.0" />
-            </font></Label>
-        <!--<Label fx:id="chanceCard" alignment="CENTER" layoutX="66.0" layoutY="31.0" prefHeight="45.0" prefWidth="469.0" text="Baltic Avenue" textAlignment="CENTER">-->
-            <!--<font>-->
-                <!--<Font size="15.0" />-->
-            <!--</font>-->
-        <!--</Label>-->
-        <Button layoutX="275.0" layoutY="312.0" mnemonicParsing="false" onAction="#continueTurn" text="Okay" />
+            </font>
+        </Label>
+        <Label fx:id="chanceCard" alignment="CENTER" layoutX="66.0" layoutY="100.0" prefHeight="45.0" prefWidth="469.0"  textAlignment="CENTER">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Button layoutX="275.0" layoutY="200.0" mnemonicParsing="false" onAction="#continueTurn" text="Okay" />
     </children>
 </AnchorPane>

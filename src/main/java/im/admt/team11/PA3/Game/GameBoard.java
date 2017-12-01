@@ -28,6 +28,14 @@ public class GameBoard {
 
 		BoardBuilder.buildBoard(tiles, deeds);
 		CardBuilder.buildChanceCard(cards);
-		CardBuilder.buildChestCard(cards);
+		//CardBuilder.buildChestCard(cards);
+		FXCollections.shuffle(cards);
+	}
+
+	public Card getCard(){
+		Card card = cards.get(0);
+		cards.remove(0);
+		cards.add(card);
+		return card;
 	}
 }

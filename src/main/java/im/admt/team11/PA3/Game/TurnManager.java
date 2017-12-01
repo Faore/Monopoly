@@ -1,6 +1,7 @@
 
 package im.admt.team11.PA3.Game;
 
+import im.admt.team11.PA3.Game.Board.Card.Card;
 import im.admt.team11.PA3.Game.Board.Card.Deed;
 import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tile;
@@ -122,7 +123,25 @@ public class TurnManager {
                     return;
                 case Chance:
                     description += "and landed on " + currentPlayer.token.currentLocation.name;
-                    MonopolyGame.getInstance().gameWindowManager.drawChanceCard();
+                    Card card = MonopolyGame.getInstance().gameBoard.getCard();
+                    MonopolyGame.getInstance().gameWindowManager.drawChanceCard(card);
+                    switch (card.getCardNum()){
+                        case 1:
+                            MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(0));
+                            break;
+                        case 2:
+                            currentPlayer.giveMoney(50);
+                            break;
+                        case 3:
+                            MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentPlayerIndex - 3));
+                            break;
+                        case 4:
+
+                            break;
+                        case 5:
+
+                            break;
+                    }
                     break;
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";

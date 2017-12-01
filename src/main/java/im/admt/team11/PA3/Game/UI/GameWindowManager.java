@@ -340,13 +340,12 @@ public class GameWindowManager {
         mortgageStage.show();
     }
 
-    public void drawChanceCard(){
-        //chanceController.setChanceCard(card);
+    public void drawChanceCard(Card card)throws IOException{
+        chanceController.setChanceCard(card);
         chanceStage.show();
     }
 
     public void endShowCard(){
-        MonopolyGame.getInstance().turnManager.setManagementPhase();
         chanceStage.hide();
     }
 }
