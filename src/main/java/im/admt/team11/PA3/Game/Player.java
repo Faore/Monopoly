@@ -94,7 +94,22 @@ public class Player {
         }
     }
 
-    public boolean isAI(){
-        return false;
+    public int getRepairs(){
+        int repairs = 0;
+        if (deeds.size() == 0){
+            return repairs;
+        }else{
+            for (int i = 0; i < deeds.size(); i++){
+                Deed currDeed = deeds.get(i);
+                if (currDeed.getCurrentBuildingLevel() == 5) {
+                    repairs += 100;
+                }else
+                    for (int j = 0; j < currDeed.getCurrentBuildingLevel(); j++) {
+                        repairs += 25;
+                    }
+                }
+            }
+
+        return repairs;
     }
 }

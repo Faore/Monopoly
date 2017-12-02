@@ -34,8 +34,12 @@ public class GameBoard {
 
 	public Card getCard(){
 		Card card = cards.get(0);
-		cards.remove(0);
+		cards.remove(card);
 		cards.add(card);
 		return card;
+	}
+
+	public int getLocation(Tile tile){
+		return tiles.indexOf(tile);
 	}
 }

@@ -2,13 +2,11 @@ package im.admt.team11.PA3.Game.Board.Card;
 
 public class Card {
     private String type;
-    private int value;
     private int cardNum;
     public String description;
 
-    public Card(String type, int value, int cardNum, String description){
+    public Card(String type, int cardNum, String description){
         this.type = type;
-        this.value = value;
         this.cardNum = cardNum;
         this.description = description;
     }
@@ -19,9 +17,5 @@ public class Card {
 
     public int getCardNum() {
         return cardNum;
-    }
-
-    public int getValue() {
-        return value;
     }
 }
