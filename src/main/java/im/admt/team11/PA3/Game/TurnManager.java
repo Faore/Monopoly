@@ -100,6 +100,7 @@ public class TurnManager {
             }
         } else if(currentPlayer.token.currentLocation instanceof SpecialTile) {
             SpecialTile specialTile = (SpecialTile) currentPlayer.token.currentLocation;
+            int currentLocation = MonopolyGame.getInstance().gameBoard.getLocation(currentPlayer.token.currentLocation);
             switch (specialTile.type) {
                 case LuxuryTax:
                     currentPlayer.takeMoney(100);
@@ -116,12 +117,91 @@ public class TurnManager {
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                     nextTurn();
                     return;
+                case CommunityChest:
+                    description += "and landed on " + currentPlayer.token.currentLocation.name;
+                    Card chestCard = MonopolyGame.getInstance().gameBoard.getChestCard();
+                    MonopolyGame.getInstance().gameWindowManager.drawChestCard(chestCard);
+                    switch (chestCard.getCardNum()){
+                        case 1:
+                            MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(0));
+                            description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
+                            break;
+                        case 2:
+                            currentPlayer.giveMoney(200);
+                            description = "Player " + currentPlayer.playerNumber +  " received $200";
+                            break;
+                        case 3:
+                            currentPlayer.takeMoney(50);
+                            description = "Player " + currentPlayer.playerNumber +  " lost $50";
+                            break;
+                        case 4:
+                            currentPlayer.giveMoney(45);
+                            description = "Player " + currentPlayer.playerNumber +  " received $45";
+                            break;
+                        case 5:
+                            description = "Player " + currentPlayer.playerNumber +  " was sent to jail.";
+                            MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(10));
+                            currentPlayer.setInJail(true);
+                            MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
+                            nextTurn();
+                            return;
+                        case 6:
+                            int numPlayers = players.size();
+                            currentPlayer.giveMoney(numPlayers * 50);
+                            for(int i = 0; i < numPlayers; i++){
+                                players.get(i).takeMoney(50);
+                            }
+                            description = "Player " + currentPlayer.playerNumber +  " received $" + ((numPlayers - 1) * 50);
+                            break;
+                        case 7:
+                            currentPlayer.giveMoney(100);
+                            description = "Player " + currentPlayer.playerNumber +  " received $100";
+                            break;
+                        case 8:
+                            currentPlayer.giveMoney(20);
+                            description = "Player " + currentPlayer.playerNumber +  " received $20";
+                            break;
+                        case 9:
+                            currentPlayer.giveMoney(100);
+                            description = "Player " + currentPlayer.playerNumber +  " received $100";
+                            break;
+                        case 10:
+                            currentPlayer.takeMoney(100);
+                            description = "Player " + currentPlayer.playerNumber +  " lost $100";
+                            break;
+                        case 11:
+                            currentPlayer.takeMoney(150);
+                            description = "Player " + currentPlayer.playerNumber +  " lost $150";
+                            break;
+                        case 12:
+                            currentPlayer.giveMoney(25);
+                            description = "Player " + currentPlayer.playerNumber +  " received $25";
+                            break;
+                        case 13:
+                            int repairs = 0;
+                            repairs = currentPlayer.getChestRepairs();
+                            currentPlayer.takeMoney(repairs);
+                            description = "Player " + currentPlayer.playerNumber +  " pays " + repairs + " for repairs.";
+                            break;
+                        case 14:
+                            currentPlayer.giveMoney(10);
+                            description = "Player " + currentPlayer.playerNumber +  " received $10";
+                            break;
+                        case 15:
+                            currentPlayer.giveMoney(100);
+                            description = "Player " + currentPlayer.playerNumber +  " received $100";
+                            break;
+                        case 16:
+                            break;
+                        default:
+                            description = "unknown card";
+                    }
+                    break;
                 case Chance:
                     description += "and landed on " + currentPlayer.token.currentLocation.name;
-                    Card card = MonopolyGame.getInstance().gameBoard.getCard();
-                    MonopolyGame.getInstance().gameWindowManager.drawChanceCard(card);
-                    int currentLocation = MonopolyGame.getInstance().gameBoard.getLocation(currentPlayer.token.currentLocation);
-                    switch (card.getCardNum()){
+                    Card chanceCard = MonopolyGame.getInstance().gameBoard.getChnaceCard();
+                    MonopolyGame.getInstance().gameWindowManager.drawChanceCard(chanceCard);
+                    switch (chanceCard.getCardNum()){
                         case 1:
                             MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(0));
                             description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
@@ -191,7 +271,7 @@ public class TurnManager {
                             break;
                         case 9:
                             int repairs = 0;
-                            repairs = currentPlayer.getRepairs();
+                            repairs = currentPlayer.getChanceRepairs();
                             currentPlayer.takeMoney(repairs);
                             description = "Player " + currentPlayer.playerNumber +  " pays " + repairs + " for repairs.";
                             break;
@@ -232,7 +312,6 @@ public class TurnManager {
                             break;
                         default:
                             description = "unknown card";
-
                     }
                     break;
                 default:

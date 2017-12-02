@@ -14,28 +14,38 @@ public class GameBoard {
 	public ObservableList<Tile> tiles;
 	public ObservableList<Deed> deeds;
 	public ObservableList<Token> playerTokens;
-	public ObservableList<Card> cards;
+	public ObservableList<Card> chanceCards;
+	public ObservableList<Card> chestCards;
 
 	public GameBoard(GameSettings gameSettings) throws Exception {
 		playerTokens = FXCollections.observableArrayList();
 		tiles = FXCollections.observableArrayList();
 		deeds = FXCollections.observableArrayList();
-		cards = FXCollections.observableArrayList();
+		chanceCards = FXCollections.observableArrayList();
+		chestCards = FXCollections.observableArrayList();
 
 		for(Player player : gameSettings.players) {
 			playerTokens.add(player.token);
 		}
 
 		BoardBuilder.buildBoard(tiles, deeds);
-		CardBuilder.buildChanceCard(cards);
-		//CardBuilder.buildChestCard(cards);
-		FXCollections.shuffle(cards);
+		CardBuilder.buildChanceCard(chanceCards);
+		CardBuilder.buildChestCard(chestCards);
+		FXCollections.shuffle(chanceCards);
+		FXCollections.shuffle(chestCards);
 	}
 
-	public Card getCard(){
-		Card card = cards.get(0);
-		cards.remove(card);
-		cards.add(card);
+	public Card getChnaceCard(){
+		Card card = chanceCards.get(0);
+		chanceCards.remove(card);
+		chanceCards.add(card);
+		return card;
+	}
+
+	public Card getChestCard(){
+		Card card = chestCards.get(0);
+		chestCards.remove(card);
+		chestCards.add(card);
 		return card;
 	}
 

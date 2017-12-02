@@ -31,7 +31,22 @@ public class CardBuilder {
         chanceCards.add(new Card("chance",  16, "Get out of jail free. This card may be kept until needed or sold"));
     }
 
-    public static void buildChestCard(ObservableList<Card> chestCard){
-        chestCard.add(new Card("chest", 1, "Grand Opera Opening, Collect $50 from every player"));
+    public static void buildChestCard(ObservableList<Card> chestCards){
+        chestCards.add(new Card("chest", 1, "Advance to Go (Collect $200)"));
+        chestCards.add(new Card("chest", 2, "Bank error in your favor. Collect $200"));
+        chestCards.add(new Card("chest", 3, "Doctor's fee. Pay $50"));
+        chestCards.add(new Card("chest", 4, "From sale of stock, you get $45"));
+        chestCards.add(new Card("chest", 5, "Go directly to jail. Do not pass go, do not collect $200"));
+        chestCards.add(new Card("chest", 6, "Grand Opera Opening, Collect $50 from every player"));
+        chestCards.add(new Card("chest", 7, "XMas fund matures. Collect $100"));
+        chestCards.add(new Card("chest", 8, "Income tax refund. Collect $20"));
+        chestCards.add(new Card("chest", 9, "Life insurance matures. Collect $100"));
+        chestCards.add(new Card("chest", 10, "Pay hospital $100"));
+        chestCards.add(new Card("chest", 11, "Pay school tax of $150"));
+        chestCards.add(new Card("chest", 12, "Receive for services $25"));
+        chestCards.add(new Card("chest", 13, "You are assessed for street repairs. $45 per house. $115 per hotel"));
+        chestCards.add(new Card("chest", 14, "You have won second prize in a  beauty contest. Collect $10"));
+        chestCards.add(new Card("chest", 15, "You inherit $100"));
+        chestCards.add(new Card("chest", 16, "Get out of jail free. This card may be kept until needed or sold"));
     }
 }

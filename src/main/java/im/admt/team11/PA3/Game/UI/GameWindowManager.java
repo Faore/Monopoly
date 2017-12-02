@@ -61,6 +61,8 @@ public class GameWindowManager {
     public Button manageMortgagesButton;
     public ChanceController chanceController;
     public Stage chanceStage;
+    public ChestController chestController;
+    public Stage chestStage;
 
     @FXML
     public void initialize() throws IOException {
@@ -138,6 +140,16 @@ public class GameWindowManager {
         chanceStage.setResizable(false);
         chanceStage.initModality(Modality.WINDOW_MODAL);
         chanceStage.initOwner(MonopolyGame.getInstance().primaryStage);
+
+        Parent chestWindow = FXMLLoader.load(getClass().getResource("/fxml/CommunityChest.fxml"));
+        chestStage = new Stage();
+        chestStage.initStyle(StageStyle.UNDECORATED);
+        chestStage.setTitle("Community Chest Card");
+        chestStage.setScene(new Scene(chestWindow));
+        chestStage.setAlwaysOnTop(true);
+        chestStage.setResizable(false);
+        chestStage.initModality(Modality.WINDOW_MODAL);
+        chestStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
         time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
 
@@ -345,7 +357,16 @@ public class GameWindowManager {
         chanceStage.show();
     }
 
-    public void endShowCard(){
+    public void drawChestCard(Card card)throws IOException{
+        chestController.setChestCard(card);
+        chestStage.show();
+    }
+
+    public void endChanceCard(){
         chanceStage.hide();
+    }
+
+    public void endChestCard(){
+        chestStage.hide();
     }
 }

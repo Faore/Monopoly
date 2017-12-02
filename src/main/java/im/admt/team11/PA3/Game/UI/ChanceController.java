@@ -4,7 +4,6 @@ import im.admt.team11.PA3.Game.Board.Card.Card;
 import im.admt.team11.PA3.Game.MonopolyGame;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 
 public class ChanceController {
     public Label chanceCard;
@@ -16,6 +15,6 @@ public class ChanceController {
     }
 
     public void continueTurn(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.endShowCard();
+        MonopolyGame.getInstance().gameWindowManager.endChanceCard();
     }
 }

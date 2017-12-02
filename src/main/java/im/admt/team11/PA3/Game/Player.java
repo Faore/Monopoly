@@ -94,7 +94,7 @@ public class Player {
         }
     }
 
-    public int getRepairs(){
+    public int getChanceRepairs(){
         int repairs = 0;
         if (deeds.size() == 0){
             return repairs;
@@ -103,13 +103,32 @@ public class Player {
                 Deed currDeed = deeds.get(i);
                 if (currDeed.getCurrentBuildingLevel() == 5) {
                     repairs += 100;
-                }else
+                }else {
                     for (int j = 0; j < currDeed.getCurrentBuildingLevel(); j++) {
                         repairs += 25;
                     }
                 }
             }
+        }
+        return repairs;
+    }
 
+    public int getChestRepairs(){
+        int repairs = 0;
+        if (deeds.size() == 0){
+            return repairs;
+        }else{
+            for (int i = 0; i < deeds.size(); i++){
+                Deed currDeed = deeds.get(i);
+                if (currDeed.getCurrentBuildingLevel() == 5) {
+                    repairs += 115;
+                }else {
+                    for (int j = 0; j < currDeed.getCurrentBuildingLevel(); j++) {
+                        repairs += 45;
+                    }
+                }
+            }
+        }
         return repairs;
     }
 }
