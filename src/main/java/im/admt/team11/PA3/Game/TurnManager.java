@@ -191,7 +191,7 @@ public class TurnManager {
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                     break;
                 case Chance:
-                    Card chanceCard = MonopolyGame.getInstance().gameBoard.getChnaceCard();
+                    Card chanceCard = MonopolyGame.getInstance().gameBoard.getChanceCard();
                     MonopolyGame.getInstance().gameWindowManager.drawChanceCard(chanceCard);
                     description = handleChance(chanceCard, currentLocation);
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);

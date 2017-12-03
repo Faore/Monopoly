@@ -37,7 +37,7 @@ public class GameBoard {
 		FXCollections.shuffle(chestCards);
 	}
 
-	public Card getChnaceCard(){
+	public Card getChanceCard(){
 		Card card = chanceCards.get(0);
 		chanceCards.remove(card);
 		if (card.getCardNum() != 16) {

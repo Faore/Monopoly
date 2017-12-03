@@ -43,7 +43,7 @@ public class Menu {
         primaryStage.show();
     }
 
-    public void startGame(int numberOfPlayers, int timeLimit) throws Exception {
+    public void startGame(int numberOfPlayers, int timeLimit, int themeOption) throws Exception {
         //Get rid of the menu UI and let garbage collection do its thing.
         primaryStage.hide();
         primaryStage.setScene(null);
@@ -58,6 +58,12 @@ public class Menu {
         }
         if(numberOfPlayers >= 4) {
             gameSettings.players.add(new Player(4, TokenTypes.Yellow));
+        }
+        if(themeOption == 0){
+
+        }
+        if(themeOption == 1){
+
         }
         this.gameSettings.timeLimit = timeLimit;
         MonopolyManager.getInstance().transitionToGame(this.gameSettings);

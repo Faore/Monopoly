@@ -18,7 +18,7 @@ public class MenuController {
     public Button startGameButton;
     public Slider timeLimitSlider;
     public Label timeLimitLabel;
-    public Slider themeSelect;
+    public Slider themeSelectSlider;
     public Label themeLabel;
 
     @FXML
@@ -36,8 +36,8 @@ public class MenuController {
         timeLimitSlider.valueProperty().addListener((obs, oldval, newval) ->
                 timeLimitSliderUpdate(newval));
 
-        themeSelect.valueProperty().addListener((obs, oldval, newval) ->
-                themeSelectUpdate(newval));
+        themeSelectSlider.valueProperty().addListener((obs, oldval, newval) ->
+                themeSelectSliderUpdate(newval));
 
 
     }
@@ -69,8 +69,8 @@ public class MenuController {
         }
     }
 
-    public void themeSelectUpdate(Number newVal){
-        themeSelect.setValue(newVal.intValue());
+    public void themeSelectSliderUpdate(Number newVal){
+        themeSelectSlider.setValue(newVal.intValue());
         if(newVal.intValue() == 0) {
             themeLabel.setText("Theme: Original Monopoly Theme");
         }
@@ -80,6 +80,6 @@ public class MenuController {
     }
 
     public void clickStartGame(ActionEvent event) throws Exception {
-        Menu.getInstance().startGame((int) Math.round(playerSlider.getValue()), (int) Math.round(timeLimitSlider.getValue()));
+        Menu.getInstance().startGame((int) Math.round(playerSlider.getValue()), (int) Math.round(timeLimitSlider.getValue()), (int) Math.round(themeSelectSlider.getValue()));
     }
 }
