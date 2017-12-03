@@ -60,10 +60,10 @@ public class Menu {
             gameSettings.players.add(new Player(4, TokenTypes.Yellow));
         }
         if(themeOption == 0){
-
+            gameSettings.themeOption = 0;
         }
         if(themeOption == 1){
-
+            gameSettings.themeOption = 1;
         }
         this.gameSettings.timeLimit = timeLimit;
         MonopolyManager.getInstance().transitionToGame(this.gameSettings);
