@@ -64,6 +64,8 @@ public class GameWindowManager {
     public ChestController chestController;
     public Stage chestStage;
 
+    public Button sellJailCardButton;
+
     @FXML
     public void initialize() throws IOException {
         MonopolyGame.getInstance().gameWindowManager = this;
@@ -220,11 +222,17 @@ public class GameWindowManager {
 
     public void setTurnPhase(Player player, TurnPhase phase) {
         playerTurnLabel.setText("Player " + player.playerNumber + "'s Turn");
+        sellJailCardButton.setDisable(true);
         if(phase == TurnPhase.Movement) {
             rollToMoveButton.setDisable(false);
             endTurnButton.setDisable(true);
             upgradePropertiesButton.setDisable(true);
         } else if(phase == TurnPhase.Management){
+            if (player.chanceJailCard || player.chestJailCard){
+                sellJailCardButton.setDisable(false);
+            }else{
+                sellJailCardButton.setDisable(true);
+            }
             rollToMoveButton.setDisable(true);
             endTurnButton.setDisable(false);
             upgradePropertiesButton.setDisable(false);
@@ -329,6 +337,18 @@ public class GameWindowManager {
         MonopolyGame.getInstance().turnManager.nextTurn();
     }
 
+    public void sellJailCard(){
+        if (MonopolyGame.getInstance().turnManager.getCurrentPlayer().chanceJailCard){
+            MonopolyGame.getInstance().turnManager.getCurrentPlayer().chanceJailCard = false;
+            MonopolyGame.getInstance().turnManager.getCurrentPlayer().giveMoney(50);
+            sellJailCardButton.setDisable(true);
+        }else{
+            MonopolyGame.getInstance().turnManager.getCurrentPlayer().chestJailCard = false;
+            MonopolyGame.getInstance().turnManager.getCurrentPlayer().giveMoney(50);
+            sellJailCardButton.setDisable(true);
+        }
+    }
+
     public void endUpgrade() {
         upgradePropertiesStage.hide();
     }
@@ -374,5 +394,4 @@ public class GameWindowManager {
     public void endChestCard(){
         chestStage.hide();
     }
-    
 }

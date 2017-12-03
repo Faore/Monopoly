@@ -42,11 +42,11 @@ public class Player {
     }
 
     public void setChanceJailCard(boolean jailCard){
-        this.chanceJailCard = chanceJailCard;
+        this.chanceJailCard = jailCard;
     }
 
     public void setChestJailCard(boolean jailCard){
-        this.chestJailCard = chestJailCard;
+        this.chestJailCard = jailCard;
     }
 
     public void decrementTimeInJail() {

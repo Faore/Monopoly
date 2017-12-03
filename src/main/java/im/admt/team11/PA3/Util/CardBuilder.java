@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CardBuilder {
 
     public static void buildChanceCard(ObservableList<Card> chanceCards){
-        chanceCards.add(new Card( 1,  "Advance to Go (Collect $200)"));
+        chanceCards.add(new Card( 1, "Advance to Go (Collect $200)"));
         chanceCards.add(new Card( 2, "Bank pays you dividend of $50"));
         chanceCards.add(new Card( 3, "Go back 3 spaces"));
         chanceCards.add(new Card( 4, "Advance token to nearest utility. If unowned, you may buy it from \n" +
