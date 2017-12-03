@@ -86,7 +86,7 @@ public class GameWindowManager {
         deedStage.initStyle(StageStyle.UNDECORATED);
         deedStage.setTitle("Deed");
         deedStage.setScene(new Scene(deedWindow));
-        deedStage.setAlwaysOnTop(true);
+        deedStage.setAlwaysOnTop(false);
         deedStage.setResizable(false);
         deedStage.initModality(Modality.WINDOW_MODAL);
         deedStage.initOwner(MonopolyGame.getInstance().primaryStage);
