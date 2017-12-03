@@ -16,6 +16,8 @@ public class Player {
     private int money;
     public ObservableList<Deed> deeds;
     public int timeInJail;
+    public boolean chanceJailCard;
+    public boolean chestJailCard;
 
     public Player(int playerNumber, TokenTypes tokenType) {
         this.playerNumber = playerNumber;
@@ -23,6 +25,8 @@ public class Player {
         this.money = 1500;
         this.timeInJail = 0;
         deeds = FXCollections.observableArrayList();
+        this.chanceJailCard = false;
+        this.chestJailCard = false;
     }
 
     public boolean inJail() {
@@ -35,6 +39,14 @@ public class Player {
         } else {
             timeInJail = 0;
         }
+    }
+
+    public void setChanceJailCard(boolean jailCard){
+        this.chanceJailCard = chanceJailCard;
+    }
+
+    public void setChestJailCard(boolean jailCard){
+        this.chestJailCard = chestJailCard;
     }
 
     public void decrementTimeInJail() {

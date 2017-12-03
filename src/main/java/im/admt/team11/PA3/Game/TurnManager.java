@@ -69,7 +69,6 @@ public class TurnManager {
     }
 
     public void movePlayer(int roll) throws Exception {
-        roll = 2;
         String description = "";
         description += "Player " + currentPlayer.playerNumber + " rolled a " + roll + ", ";
         int startLocation = MonopolyGame.getInstance().gameBoard.tiles.indexOf(currentPlayer.token.currentLocation);
@@ -125,6 +124,20 @@ public class TurnManager {
         currentPlayer.setInJail(false);
         currentPlayer.takeMoney(50);
         MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + currentPlayer.playerNumber + " paid $50 to leave jail.");
+        setPhase(TurnPhase.Movement);
+    }
+
+    public void cardToLeaveJail(){
+        currentPlayer.setInJail(false);
+        if (currentPlayer.chanceJailCard){
+            currentPlayer.setChanceJailCard(false);
+            MonopolyGame.getInstance().gameBoard.replaceChanceJailCard();
+            MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + currentPlayer.playerNumber + " used the chance get out of jail free card.");
+        }else{
+            currentPlayer.setChestJailCard(false);
+            MonopolyGame.getInstance().gameBoard.replaceChestJailCard();
+            MonopolyGame.getInstance().gameWindowManager.setLastActionLabel("Player " + currentPlayer.playerNumber + " used the community chest get out of jail free card.");
+        }
         setPhase(TurnPhase.Movement);
     }
 
@@ -270,6 +283,8 @@ public class TurnManager {
                 description = "Player " + currentPlayer.playerNumber +  " received $100";
                 break;
             case 16:
+                currentPlayer.setChestJailCard(true);
+                description = "Player " + currentPlayer.playerNumber +  " received a Get Out of Jail Free card";
                 break;
             default:
                 description = "unknown card";
@@ -402,7 +417,8 @@ public class TurnManager {
                 description = "Player " + currentPlayer.playerNumber +  " received $150";
                 break;
             case 16:
-
+                currentPlayer.setChanceJailCard(true);
+                description = "Player " + currentPlayer.playerNumber +  " received a Get Out of Jail Free card";
                 break;
             default:
                 description = "unknown card";

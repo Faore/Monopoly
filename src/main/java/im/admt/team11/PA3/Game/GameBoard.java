@@ -16,6 +16,8 @@ public class GameBoard {
 	public ObservableList<Token> playerTokens;
 	public ObservableList<Card> chanceCards;
 	public ObservableList<Card> chestCards;
+	public Card chanceJailCard;
+	public Card chestJailCard;
 
 	public GameBoard(GameSettings gameSettings) throws Exception {
 		playerTokens = FXCollections.observableArrayList();
@@ -38,15 +40,31 @@ public class GameBoard {
 	public Card getChnaceCard(){
 		Card card = chanceCards.get(0);
 		chanceCards.remove(card);
-		chanceCards.add(card);
+		if (card.getCardNum() != 16) {
+			chanceCards.add(card);
+		}else{
+			chanceJailCard = card;
+		}
 		return card;
 	}
 
 	public Card getChestCard(){
 		Card card = chestCards.get(0);
 		chestCards.remove(card);
-		chestCards.add(card);
+		if (card.getCardNum() != 16){
+			chestCards.add(card);
+		}else {
+			chestJailCard = card;
+		}
 		return card;
+	}
+
+	public void replaceChanceJailCard(){
+		chanceCards.add(chanceJailCard);
+	}
+
+	public void replaceChestJailCard(){
+		chestCards.add(chestJailCard);
 	}
 
 	public int getLocation(Tile tile){

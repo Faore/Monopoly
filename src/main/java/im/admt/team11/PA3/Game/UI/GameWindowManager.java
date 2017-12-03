@@ -116,7 +116,7 @@ public class GameWindowManager {
         jailStage.initStyle(StageStyle.UNDECORATED);
         jailStage.setTitle("You Are In Jail");
         jailStage.setScene(new Scene(jailWindow));
-        jailStage.setAlwaysOnTop(true);
+        jailStage.setAlwaysOnTop(false);
         jailStage.setResizable(false);
         jailStage.initModality(Modality.WINDOW_MODAL);
         jailStage.initOwner(MonopolyGame.getInstance().primaryStage);
@@ -341,6 +341,11 @@ public class GameWindowManager {
     public void payToLeaveJail() throws Exception {
         jailStage.hide();
         MonopolyGame.getInstance().turnManager.payToLeaveJail();
+    }
+
+    public void cardToLeaveJail() throws Exception{
+        jailStage.hide();
+        MonopolyGame.getInstance().turnManager.cardToLeaveJail();
     }
 
     public void closeMortgageWindow() {
