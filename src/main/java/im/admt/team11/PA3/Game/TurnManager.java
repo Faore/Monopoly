@@ -185,18 +185,23 @@ public class TurnManager {
                     nextTurn();
                     break;
                 case CommunityChest:
-                    description += "and landed on " + currentPlayer.token.currentLocation.name;
                     Card chestCard = MonopolyGame.getInstance().gameBoard.getChestCard();
                     MonopolyGame.getInstance().gameWindowManager.drawChestCard(chestCard);
                     description = handleChest(chestCard);
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                     break;
                 case Chance:
-                    description += "and landed on " + currentPlayer.token.currentLocation.name;
                     Card chanceCard = MonopolyGame.getInstance().gameBoard.getChnaceCard();
                     MonopolyGame.getInstance().gameWindowManager.drawChanceCard(chanceCard);
                     description = handleChance(chanceCard, currentLocation);
                     MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
+                    break;
+                case Jail:
+                    if (currentPlayer.inJail()){
+                        description = "Player " + currentPlayer.playerNumber + " was sent to jail";
+                    }else{
+                        description += "and landed on " + currentPlayer.token.currentLocation.name + ", just visiting";
+                    }
                     break;
                 default:
                     description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
@@ -213,7 +218,6 @@ public class TurnManager {
             case 1:
                 currentPlayer.giveMoney(200);
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(0));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 2:
@@ -229,10 +233,9 @@ public class TurnManager {
                 description = "Player " + currentPlayer.playerNumber +  " received $45";
                 break;
             case 5:
-                description = "Player " + currentPlayer.playerNumber +  " was sent to jail.";
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(10));
-                description = handleLand();
                 currentPlayer.setInJail(true);
+                description = handleLand();
                 MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 nextTurn();
                 break;
@@ -298,7 +301,6 @@ public class TurnManager {
             case 1:
                 currentPlayer.giveMoney(200);
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(0));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 2:
@@ -308,19 +310,16 @@ public class TurnManager {
             case 3:
                 currentLocation -= 3;
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 4:
                 if (currentLocation == 7 || currentLocation == 36){
                     currentLocation = 12;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }else{
                     currentLocation = 28;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }
                 break;
@@ -328,18 +327,15 @@ public class TurnManager {
                 if (currentLocation == 7){
                     currentLocation = 15;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }else if(currentLocation == 22){
                     currentLocation = 25;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }
                 else{
                     currentLocation = 5;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }
                 break;
@@ -347,26 +343,22 @@ public class TurnManager {
                 if (currentLocation == 7){
                     currentLocation = 15;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }else if(currentLocation == 22){
                     currentLocation = 25;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }
                 else{
                     currentLocation = 5;
                     MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                    description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                     description = handleLand();
                 }
                 break;
             case 7:
-                description = "Player " + currentPlayer.playerNumber +  " was sent to jail.";
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(10));
-                description = handleLand();
                 currentPlayer.setInJail(true);
+                description = handleLand();
                 MonopolyGame.getInstance().gameWindowManager.setLastActionLabel(description);
                 nextTurn();
                 break;
@@ -383,25 +375,21 @@ public class TurnManager {
             case 10:
                 currentLocation = 5;
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 11:
                 currentLocation = 24;
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 12:
                 currentLocation = 11;
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 13:
                 currentLocation = 39;
                 MonopolyGame.getInstance().gameWindowManager.setTokenLocation(currentPlayer.token, MonopolyGame.getInstance().gameBoard.tiles.get(currentLocation));
-                description = "Player " + currentPlayer.playerNumber +  " moved to " + currentPlayer.token.currentLocation.name;
                 description = handleLand();
                 break;
             case 14:
