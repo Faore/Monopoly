@@ -6,6 +6,7 @@ import im.admt.team11.PA3.Game.Board.Pieces.Token;
 import im.admt.team11.PA3.Game.Board.Tile;
 import im.admt.team11.PA3.Util.BoardBuilder;
 import im.admt.team11.PA3.Util.CardBuilder;
+import im.admt.team11.PA3.Util.ThemedBoardBuilder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -30,7 +31,11 @@ public class GameBoard {
 			playerTokens.add(player.token);
 		}
 
-		BoardBuilder.buildBoard(tiles, deeds);
+		if (gameSettings.themeOption == 0) {
+			BoardBuilder.buildBoard(tiles, deeds);
+		}else{
+			ThemedBoardBuilder.buildBoard(tiles, deeds);
+		}
 		CardBuilder.buildChanceCard(chanceCards);
 		CardBuilder.buildChestCard(chestCards);
 		FXCollections.shuffle(chanceCards);

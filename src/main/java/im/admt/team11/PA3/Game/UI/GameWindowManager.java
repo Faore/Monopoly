@@ -374,4 +374,5 @@ public class GameWindowManager {
     public void endChestCard(){
         chestStage.hide();
     }
+    
 }

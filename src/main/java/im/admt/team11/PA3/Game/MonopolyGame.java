@@ -48,7 +48,12 @@ public class MonopolyGame {
     }
 
     public void start() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/GameWindow.fxml"));
+        Parent root;
+        if (gameSettings.themeOption == 0) {
+            root = FXMLLoader.load(getClass().getResource("/fxml/GameWindow.fxml"));
+        }else{
+            root = FXMLLoader.load(getClass().getResource("/fxml/ThemedGameWindow.fxml"));
+        }
         primaryStage.setTitle("Monopoly (PA3 for Group 11)");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setFullScreen(true);
