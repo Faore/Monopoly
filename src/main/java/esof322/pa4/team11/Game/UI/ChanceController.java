@@ -7,12 +7,17 @@ import javafx.scene.control.Label;
 
 public class ChanceController {
     public Label chanceCard;
+    public GameWindowController gameWindowController;
+
+    public void setup(GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
+    }
 
     public void setChanceCard(Card card){
         chanceCard.setText(card.description);
     }
 
     public void continueTurn(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.endChanceCard();
+        gameWindowController.endChanceCard();
     }
 }

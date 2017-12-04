@@ -148,6 +148,7 @@ public class GameWindowController {
         loader = new FXMLLoader();
         Parent chanceWindow = loader.load(getClass().getResource("/fxml/ChanceWindow.fxml").openStream());
         this.chanceController = loader.getController();
+        this.chanceController.setup(this);
         chanceStage = new Stage();
         chanceStage.initStyle(StageStyle.UNDECORATED);
         chanceStage.setTitle("Chance Card");
