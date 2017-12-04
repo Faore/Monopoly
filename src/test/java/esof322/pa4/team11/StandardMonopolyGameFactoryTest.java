@@ -7,19 +7,5 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class StandardMonopolyGameFactoryTest {
-    @Test
-    public void standardChanceCardsInitializedTest() throws Exception {
-        GameSettings gameSettings = new GameSettings();
-        GameBoard board = new GameBoard(gameSettings);
-        CardBuilder.buildChanceCard(board.chanceCards);
-        assertEquals(16, board.chanceCards.size());
-    }
 
-    @Test
-    public void standardChestCardsInitializedTest() throws Exception {
-        GameSettings gameSettings = new GameSettings();
-        GameBoard board = new GameBoard(gameSettings);
-        CardBuilder.buildChanceCard(board.chestCards);
-        assertEquals(16, board.chestCards.size());
-    }
 }
