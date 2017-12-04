@@ -4,7 +4,6 @@ import esof322.pa4.team11.Game.Board.Tiles.Properties.Railroad;
 import esof322.pa4.team11.Game.Board.Tiles.Properties.StandardProperty;
 import esof322.pa4.team11.Game.Board.Tiles.Properties.Utility;
 import esof322.pa4.team11.Game.Board.Tiles.Property;
-import esof322.pa4.team11.Game.MonopolyGame;
 import esof322.pa4.team11.Game.Player;
 import esof322.pa4.team11.Game.UI.GameWindowController;
 
