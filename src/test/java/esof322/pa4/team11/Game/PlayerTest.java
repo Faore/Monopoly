@@ -2,6 +2,7 @@ package esof322.pa4.team11.Game;
 
 import esof322.pa4.team11.Game.Board.Card.Deed;
 import esof322.pa4.team11.Game.Board.Pieces.TokenTypes;
+import esof322.pa4.team11.Game.UI.GameWindowController;
 import esof322.pa4.team11.GameSettings;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -53,7 +54,7 @@ public class PlayerTest extends ApplicationTest {
 
     @Test
     public void testBuyDeed() throws Exception {
-        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250, new GameWindowController());
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed);
         assertTrue(player.deeds.contains(deed));
@@ -62,7 +63,7 @@ public class PlayerTest extends ApplicationTest {
 
     @Test
     public void testAuctionDeed() throws Exception {
-        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250, new GameWindowController());
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed, 1500);
         assertTrue(player.deeds.contains(deed));
@@ -98,10 +99,12 @@ public class PlayerTest extends ApplicationTest {
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(player);
         GameBoard gameBoard = new GameBoard(gameSettings);
-        gameBoard.deeds.get(0).setOwner(player);
-        gameBoard.deeds.get(1).setOwner(player);
-        gameBoard.deeds.get(1).setMortgaged(true);
-        assertEquals(1725, player.getPlayerValue());
+        Deed deed1 = new Deed(60, new GameWindowController());
+        Deed deed2 = new Deed(60, new GameWindowController());
+        deed1.setOwner(player);
+        deed2.setOwner(player);
+        deed2.setMortgaged(true);
+        assertEquals(1590, player.getPlayerValue());
     }
 
     @Test
@@ -116,10 +119,10 @@ public class PlayerTest extends ApplicationTest {
         Player player = new Player(1, TokenTypes.Blue);
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(player);
-        GameBoard gameBoard = new GameBoard(gameSettings);
-        gameBoard.deeds.get(0).setOwner(player);
+        Deed deed = new Deed(250, new GameWindowController());
+        deed.setOwner(player);
         try {
-            player.buyDeed(gameBoard.deeds.get(0));
+            player.buyDeed(deed);
         } catch (Exception e) {
             assertTrue(true);
             return;
@@ -132,10 +135,10 @@ public class PlayerTest extends ApplicationTest {
         Player player = new Player(1, TokenTypes.Blue);
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(player);
-        GameBoard gameBoard = new GameBoard(gameSettings);
-        gameBoard.deeds.get(0).setOwner(player);
+        Deed deed = new Deed(250, new GameWindowController());
+        deed.setOwner(player);
         try {
-            player.buyDeed(gameBoard.deeds.get(0), 50);
+            player.buyDeed(deed, 50);
         } catch (Exception e) {
             assertTrue(true);
             return;

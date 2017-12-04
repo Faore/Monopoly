@@ -24,28 +24,12 @@ public class GameBoardTest {
     }
 
     @Test
-    public void tilesInitialized() throws Exception {
-        GameSettings gameSettings = new GameSettings();
-        gameSettings.players.add(new Player(1, TokenTypes.Blue));
-        GameBoard board = new GameBoard(gameSettings);
-        assertEquals(40, board.tiles.size());
-    }
-
-    @Test
     public void playerTokensInitialized() throws Exception {
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(new Player(1, TokenTypes.Blue));
         GameBoard board = new GameBoard(gameSettings);
         assertEquals(1, board.playerTokens.size());
         assertEquals(TokenTypes.Blue, board.playerTokens.get(0).tokenType);
-    }
-
-    @Test
-    public void deedsInitialized() throws Exception {
-        GameSettings gameSettings = new GameSettings();
-        gameSettings.players.add(new Player(1, TokenTypes.Blue));
-        GameBoard board = new GameBoard(gameSettings);
-        assertEquals(28, board.deeds.size());
     }
 
     @Test
