@@ -2,6 +2,7 @@ package esof322.pa4.team11.Game;
 
 import esof322.pa4.team11.Game.Board.Card.Deed;
 import esof322.pa4.team11.Game.Board.Pieces.TokenTypes;
+import esof322.pa4.team11.Game.UI.GameWindowController;
 import esof322.pa4.team11.GameSettings;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -53,7 +54,8 @@ public class PlayerTest extends ApplicationTest {
 
     @Test
     public void testBuyDeed() throws Exception {
-        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        GameWindowController gameController = new GameWindowController();
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250, gameController);
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed);
         assertTrue(player.deeds.contains(deed));
@@ -62,7 +64,8 @@ public class PlayerTest extends ApplicationTest {
 
     @Test
     public void testAuctionDeed() throws Exception {
-        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        GameWindowController gameController = new GameWindowController();
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250, gameController);
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed, 1500);
         assertTrue(player.deeds.contains(deed));

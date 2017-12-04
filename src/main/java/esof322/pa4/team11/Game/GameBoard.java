@@ -31,11 +31,6 @@ public class GameBoard {
 		for(Player player : gameSettings.players) {
 			playerTokens.add(player.token);
 		}
-
-		CardBuilder.buildChanceCard(chanceCards);
-		CardBuilder.buildChestCard(chestCards);
-		FXCollections.shuffle(chanceCards);
-		FXCollections.shuffle(chestCards);
 	}
 
 	public Card getChanceCard(){
