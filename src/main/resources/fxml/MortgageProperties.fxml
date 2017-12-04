@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="im.admt.team11.PA3.Game.UI.MortgagePropertiesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esof322.pa4.team11.Game.UI.MortgagePropertiesController">
    <children>
       <Button fx:id="mortgageButton" layoutX="243.0" layoutY="326.0" mnemonicParsing="false" onAction="#updateMortgage" text="Mortgage (+$100)" />
       <Button layoutX="274.0" layoutY="361.0" mnemonicParsing="false" onAction="#done" text="Done" />

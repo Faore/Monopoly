@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="im.admt.team11.PA3.Game.UI.ChestController">
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="esof322.pa4.team11.Game.UI.ChestController">
     <children>
         <Label alignment="CENTER" layoutX="112.0" layoutY="50.0" prefHeight="47.0" prefWidth="377.0" text="Community Chest">
             <font>
