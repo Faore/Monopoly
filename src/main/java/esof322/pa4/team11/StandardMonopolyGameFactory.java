@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StandardMonopolyGame extends AbstractGameFactory {
+public class StandardMonopolyGameFactory extends AbstractGameFactory {
     @Override
     public MonopolyGame createMonopolyGame(GameSettings settings, Stage primaryStage) throws Exception {
         MonopolyGame game = new MonopolyGame(settings, primaryStage);

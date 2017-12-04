@@ -4,10 +4,10 @@ plugins {
     id 'application'
 }
 
-group 'im.admt.team11.PA3'
+group 'esof322.pa4.team11'
 version '1.0'
 
-mainClassName = 'im.admt.team11.PA3.MonopolyManager'
+mainClassName = 'esof322.pa4.team11.MonopolyManager'
 
 sourceCompatibility = 1.9
 
