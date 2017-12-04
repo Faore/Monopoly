@@ -14,10 +14,8 @@
          <font>
             <Font size="32.0" />
          </font></Label>
-        <ImageView fx:id="playerIcon" fitHeight="100" fitWidth="62.0" layoutX="269.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
-            <image>
-                <Image url="@../BlueToken.png" />
-            </image>
+        <ImageView fx:id="playerIcon" fitHeight="100" fitWidth="62.0" layoutX="269.0" layoutY="150.0"
+                   pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
         </ImageView>
     </children>
 </AnchorPane>

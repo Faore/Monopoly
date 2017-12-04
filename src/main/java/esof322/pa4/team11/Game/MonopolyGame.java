@@ -2,6 +2,7 @@ package esof322.pa4.team11.Game;
 
 import esof322.pa4.team11.Game.UI.Debug.DebugUI;
 import esof322.pa4.team11.Game.UI.GameWindowManager;
+import esof322.pa4.team11.GameOver.GameOverController;
 import esof322.pa4.team11.GameSettings;
 import esof322.pa4.team11.Theme;
 import javafx.application.Platform;
@@ -107,7 +108,12 @@ public class MonopolyGame {
             }
         }
 
-        Parent gameOverDialog = FXMLLoader.load(getClass().getResource("/fxml/GameOver.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        Parent gameOverDialog = loader.load(getClass().getResource("/fxml/GameOver.fxml").openStream());
+        GameOverController controller = loader.getController();
+        controller.setup(winner);
+        primaryStage.setWidth(640);
+        primaryStage.setHeight(480);
         primaryStage.setTitle("Game Over!");
         primaryStage.setFullScreen(false);
         primaryStage.setScene(new Scene(gameOverDialog));
