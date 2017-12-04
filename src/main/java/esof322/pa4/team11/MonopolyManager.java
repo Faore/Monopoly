@@ -43,7 +43,7 @@ public class MonopolyManager extends Application {
         //Use the abstract factory to create the game.
         AbstractGameFactory gameFactory = AbstractGameFactory.getFactory(theme);
         MonopolyGame game = gameFactory.createMonopolyGame(gameSettings, primaryStage);
-        game.root = gameFactory.createGameWindow();
+        game.root = gameFactory.createGameWindow(game);
         game.start();
     }
 }

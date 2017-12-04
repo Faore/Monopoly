@@ -44,7 +44,7 @@ public class AskBuyController {
             hotelLabel.setText("-");
             buildingCost.setText("-");
         }
-        if(player.getMoney() >= property.deed.printedPrice) {
+        if(player.canBid(property.deed.printedPrice)) {
             buyButton.setDisable(false);
         } else {
             buyButton.setDisable(true);

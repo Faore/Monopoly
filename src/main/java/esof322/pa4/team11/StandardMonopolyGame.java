@@ -18,7 +18,10 @@ public class StandardMonopolyGame extends AbstractGameFactory {
     }
 
     @Override
-    public Parent createGameWindow() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/fxml/GameWindow.fxml"));
+    public Parent createGameWindow(MonopolyGame game) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent parent = fxmlLoader.load(getClass().getResource("/fxml/GameWindow.fxml").openStream());
+        game.gameWindowController = fxmlLoader.getController();
+        return parent;
     }
 }

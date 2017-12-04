@@ -56,6 +56,7 @@ public class MonopolyGame {
     }
 
     public void start() throws Exception {
+        gameWindowController.setup(this);
         primaryStage.setTitle("Monopoly (PA3 for Group 11)");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setFullScreen(true);

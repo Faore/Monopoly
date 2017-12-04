@@ -10,6 +10,7 @@ import esof322.pa4.team11.Game.Board.Tiles.Property;
 import esof322.pa4.team11.Game.MonopolyGame;
 import esof322.pa4.team11.Game.Player;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameWindowController {
@@ -66,9 +68,10 @@ public class GameWindowController {
 
     public Button sellJailCardButton;
 
+    MonopolyGame game;
+
     @FXML
     public void initialize() throws IOException {
-        MonopolyGame.getInstance().gameWindowController = this;
         zoomSlider.setMin(Math.min(scrollPane.getHeight() / 3000.0, scrollPane.getWidth() / 3000.0));
         zoomSlider.setMax(1.0);
         zoomSlider.setValue(0);
@@ -82,6 +85,10 @@ public class GameWindowController {
         contentGroup.getChildren().add(zoomGroup);
         zoomGroup.getChildren().add(scrollPane.getContent());
         scrollPane.setContent(contentGroup);
+    }
+
+    public void setup(MonopolyGame game) throws IOException {
+        this.game = game;
 
         FXMLLoader loader = new FXMLLoader();
         Parent deedWindow = loader.load(getClass().getResource("/fxml/AskBuy.fxml").openStream());
@@ -94,20 +101,7 @@ public class GameWindowController {
         deedStage.setAlwaysOnTop(false);
         deedStage.setResizable(false);
         deedStage.initModality(Modality.WINDOW_MODAL);
-        deedStage.initOwner(MonopolyGame.getInstance().primaryStage);
-
-        loader = new FXMLLoader();
-        Parent auctionWindow = loader.load(getClass().getResource("/fxml/Auction.fxml").openStream());
-        this.auctionController = loader.getController();
-        this.auctionController.setup(this, MonopolyGame.getInstance().players);
-        auctionStage = new Stage();
-        auctionStage.initStyle(StageStyle.UNDECORATED);
-        auctionStage.setTitle("Auction");
-        auctionStage.setScene(new Scene(auctionWindow));
-        auctionStage.setAlwaysOnTop(true);
-        auctionStage.setResizable(false);
-        auctionStage.initModality(Modality.WINDOW_MODAL);
-        auctionStage.initOwner(MonopolyGame.getInstance().primaryStage);
+        deedStage.initOwner(game.primaryStage);
 
         loader = new FXMLLoader();
         Parent upgradePropertiesWindow = loader.load(getClass().getResource("/fxml/UpgradeProperties.fxml").openStream());
@@ -120,7 +114,7 @@ public class GameWindowController {
         upgradePropertiesStage.setAlwaysOnTop(true);
         upgradePropertiesStage.setResizable(false);
         upgradePropertiesStage.initModality(Modality.WINDOW_MODAL);
-        upgradePropertiesStage.initOwner(MonopolyGame.getInstance().primaryStage);
+        upgradePropertiesStage.initOwner(game.primaryStage);
 
         loader = new FXMLLoader();
         Parent jailWindow = loader.load(getClass().getResource("/fxml/Jail.fxml").openStream());
@@ -133,7 +127,7 @@ public class GameWindowController {
         jailStage.setAlwaysOnTop(false);
         jailStage.setResizable(false);
         jailStage.initModality(Modality.WINDOW_MODAL);
-        jailStage.initOwner(MonopolyGame.getInstance().primaryStage);
+        jailStage.initOwner(game.primaryStage);
 
         loader = new FXMLLoader();
         Parent mortgageWindow = loader.load(getClass().getResource("/fxml/MortgageProperties.fxml").openStream());
@@ -146,7 +140,7 @@ public class GameWindowController {
         mortgageStage.setAlwaysOnTop(true);
         mortgageStage.setResizable(false);
         mortgageStage.initModality(Modality.WINDOW_MODAL);
-        mortgageStage.initOwner(MonopolyGame.getInstance().primaryStage);
+        mortgageStage.initOwner(game.primaryStage);
 
         loader = new FXMLLoader();
         Parent chanceWindow = loader.load(getClass().getResource("/fxml/ChanceWindow.fxml").openStream());
@@ -159,7 +153,7 @@ public class GameWindowController {
         chanceStage.setAlwaysOnTop(true);
         chanceStage.setResizable(false);
         chanceStage.initModality(Modality.WINDOW_MODAL);
-        chanceStage.initOwner(MonopolyGame.getInstance().primaryStage);
+        chanceStage.initOwner(game.primaryStage);
 
         loader = new FXMLLoader();
         Parent chestWindow = loader.load(getClass().getResource("/fxml/CommunityChest.fxml").openStream());
@@ -172,11 +166,24 @@ public class GameWindowController {
         chestStage.setAlwaysOnTop(true);
         chestStage.setResizable(false);
         chestStage.initModality(Modality.WINDOW_MODAL);
-        chestStage.initOwner(MonopolyGame.getInstance().primaryStage);
+        chestStage.initOwner(game.primaryStage);
 
-        time = MonopolyGame.getInstance().gameSettings.timeLimit * 60;
+        loader = new FXMLLoader();
+        Parent auctionWindow = loader.load(getClass().getResource("/fxml/Auction.fxml").openStream());
+        this.auctionController = loader.getController();
+        this.auctionController.setup(this, game.players);
+        auctionStage = new Stage();
+        auctionStage.initStyle(StageStyle.UNDECORATED);
+        auctionStage.setTitle("Auction");
+        auctionStage.setScene(new Scene(auctionWindow));
+        auctionStage.setAlwaysOnTop(true);
+        auctionStage.setResizable(false);
+        auctionStage.initModality(Modality.WINDOW_MODAL);
+        auctionStage.initOwner(game.primaryStage);
 
-        MonopolyGame.getInstance().timer.scheduleAtFixedRate(new TimerTask() {
+        time = game.gameSettings.timeLimit * 60;
+
+        game.timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(
@@ -228,11 +235,11 @@ public class GameWindowController {
     }
 
     public void debugMenuTools(ActionEvent actionEvent) throws IOException {
-        MonopolyGame.getInstance().openDebugDialog();
+        game.openDebugDialog();
     }
 
     public Tile tileAtEvent(MouseEvent event) {
-        for (Tile t : MonopolyGame.getInstance().gameBoard.tiles) {
+        for (Tile t : game.gameBoard.tiles) {
             if (event.getX() >= t.firstBound.getX() && event.getX() <= t.secondBound.getX() && event.getY() <= t.firstBound.getY() && event.getY() >= t.secondBound.getY()) {
                 return t;
             }
@@ -320,16 +327,16 @@ public class GameWindowController {
     public void attachTokenToBoard(Token token) {
         boardPane.getChildren().add(token.buttonElement);
 
-        int slot = MonopolyGame.getInstance().gameBoard.tiles.get(0).firstFreeTokenSlot();
+        int slot = game.gameBoard.tiles.get(0).firstFreeTokenSlot();
 
-        MonopolyGame.getInstance().gameBoard.tiles.get(0).tokensInSlots[slot] = token;
-        token.buttonElement.setLayoutX(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getX());
-        token.buttonElement.setLayoutY(MonopolyGame.getInstance().gameBoard.tiles.get(0).tokenSlots[slot].getY());
-        token.currentLocation = MonopolyGame.getInstance().gameBoard.tiles.get(0);
+        game.gameBoard.tiles.get(0).tokensInSlots[slot] = token;
+        token.buttonElement.setLayoutX(game.gameBoard.tiles.get(0).tokenSlots[slot].getX());
+        token.buttonElement.setLayoutY(game.gameBoard.tiles.get(0).tokenSlots[slot].getY());
+        token.currentLocation = game.gameBoard.tiles.get(0);
     }
 
     public void rollToMove(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().turnManager.movePlayer();
+        game.turnManager.movePlayer();
     }
 
     public void startAskBuyMode(Property property, Player player) throws IOException {
@@ -340,40 +347,40 @@ public class GameWindowController {
     public void endAskBuyMode(boolean buy) throws Exception {
         deedStage.hide();
         if(buy) {
-            MonopolyGame.getInstance().turnManager.buyProperty();
+            game.turnManager.buyProperty();
         } else {
             //Start an auction
-            auctionController.setup((Property) MonopolyGame.getInstance().turnManager.getCurrentPlayer().token.currentLocation);
+            auctionController.setup((Property) game.turnManager.getCurrentPlayer().token.currentLocation);
             auctionStage.show();
         }
     }
 
     public void endAuction(Player winner, int amount, Property property) throws Exception {
         auctionStage.hide();
-        MonopolyGame.getInstance().turnManager.completeAuction(winner, amount, property);
+        game.turnManager.completeAuction(winner, amount, property);
     }
 
     public void startUpgrade(ActionEvent actionEvent) {
-        upgradePropertiesController.setup(MonopolyGame.getInstance().turnManager.getCurrentPlayer());
+        upgradePropertiesController.setup(game.turnManager.getCurrentPlayer());
         upgradePropertiesStage.show();
     }
 
     public void endTurn(ActionEvent actionEvent) {
-        MonopolyGame.getInstance().turnManager.nextTurn();
+        game.turnManager.nextTurn();
     }
 
     public void sellJailCard(){
-        if (MonopolyGame.getInstance().turnManager.getCurrentPlayer().chanceJailCard){
-            MonopolyGame.getInstance().turnManager.getCurrentPlayer().chanceJailCard = false;
-            MonopolyGame.getInstance().turnManager.getCurrentPlayer().giveMoney(50);
-            if(MonopolyGame.getInstance().turnManager.getCurrentPlayer().chestJailCard) {
+        if (game.turnManager.getCurrentPlayer().chanceJailCard){
+            game.turnManager.getCurrentPlayer().chanceJailCard = false;
+            game.turnManager.getCurrentPlayer().giveMoney(50);
+            if(game.turnManager.getCurrentPlayer().chestJailCard) {
                 sellJailCardButton.setDisable(false);
             } else {
                 sellJailCardButton.setDisable(true);
             }
-        } else if(MonopolyGame.getInstance().turnManager.getCurrentPlayer().chestJailCard){
-            MonopolyGame.getInstance().turnManager.getCurrentPlayer().chestJailCard = false;
-            MonopolyGame.getInstance().turnManager.getCurrentPlayer().giveMoney(50);
+        } else if(game.turnManager.getCurrentPlayer().chestJailCard){
+            game.turnManager.getCurrentPlayer().chestJailCard = false;
+            game.turnManager.getCurrentPlayer().giveMoney(50);
             sellJailCardButton.setDisable(true);
         }
     }
@@ -384,17 +391,17 @@ public class GameWindowController {
 
     public void rollToLeaveJail() throws Exception {
         jailStage.hide();
-        MonopolyGame.getInstance().turnManager.rollToLeaveJail();
+        game.turnManager.rollToLeaveJail();
     }
 
     public void payToLeaveJail() throws Exception {
         jailStage.hide();
-        MonopolyGame.getInstance().turnManager.payToLeaveJail();
+        game.turnManager.payToLeaveJail();
     }
 
     public void cardToLeaveJail() throws Exception{
         jailStage.hide();
-        MonopolyGame.getInstance().turnManager.cardToLeaveJail();
+        game.turnManager.cardToLeaveJail();
     }
 
     public void closeMortgageWindow() {
@@ -402,7 +409,7 @@ public class GameWindowController {
     }
 
     public void manageMortgages(ActionEvent actionEvent) {
-        mortgagePropertiesController.setup(MonopolyGame.getInstance().turnManager.getCurrentPlayer());
+        mortgagePropertiesController.setup(game.turnManager.getCurrentPlayer());
         mortgageStage.show();
     }
 

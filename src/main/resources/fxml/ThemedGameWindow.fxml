@@ -50,7 +50,7 @@
                     <children>
                         <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../GameBoardOverwatch.png" />
+                                <Image url="/GameBoardOverwatch.png" />
                             </image>
                         </ImageView>
                     </children>
