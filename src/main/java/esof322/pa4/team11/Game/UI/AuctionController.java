@@ -1,8 +1,10 @@
 package esof322.pa4.team11.Game.UI;
 
+import esof322.pa4.team11.Game.Board.Pieces.Token;
 import esof322.pa4.team11.Game.Board.Tiles.Property;
 import esof322.pa4.team11.Game.MonopolyGame;
 import esof322.pa4.team11.Game.Player;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -38,12 +40,17 @@ public class AuctionController {
     public HBox container;
     public Property property;
 
-    public void initialize() {
-        int players = MonopolyGame.getInstance().gameBoard.playerTokens.size();
-        if(players < 3) {
+    private ObservableList<Player> players;
+    private GameWindowController gameWindowController;
+
+    public void setup(GameWindowController gameWindowController, ObservableList<Player> players) {
+        this.players = players;
+        this.gameWindowController = gameWindowController;
+        int playerCount = players.size();
+        if(playerCount < 3) {
             container.getChildren().remove(p3);
         }
-        if(players < 4) {
+        if(playerCount < 4) {
             container.getChildren().remove(p4);
         }
     }
@@ -57,7 +64,7 @@ public class AuctionController {
     }
 
     public void endAuction(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.endAuction(currentBidder, currentBid, property);
+        gameWindowController.endAuction(currentBidder, currentBid, property);
     }
 
     public void updateBidder() {
@@ -142,53 +149,37 @@ public class AuctionController {
         }
     }
 
+    public Player findPlayerFromButton(Button button) {
+        Player player = null;
+        if(button.getId().startsWith("p1p")) {
+            player = players.get(0);
+        } else if(button.getId().startsWith("p2p")) {
+            player = players.get(1);
+        } else if(button.getId().startsWith("p3p")) {
+            player = players.get(2);
+        } else if(button.getId().startsWith("p4p")) {
+            player = players.get(3);
+        }
+        return player;
+    }
+
     public void addOne(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
-        Player player = null;
-        if(button == p1p1) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(0);
-        } else if(button == p2p1) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(1);
-        } else if(button == p3p1) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(2);
-        } else if(button == p4p1) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(3);
-        }
-        currentBidder = player;
+        currentBidder = findPlayerFromButton(button);
         currentBid += 1;
         updateBidder();
     }
 
     public void addTen(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
-        Player player = null;
-        if(button == p1p10) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(0);
-        } else if(button == p2p10) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(1);
-        } else if(button == p3p10) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(2);
-        } else if(button == p4p10) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(3);
-        }
-        currentBidder = player;
+        currentBidder = findPlayerFromButton(button);
         currentBid += 10;
         updateBidder();
     }
 
     public void addHundred(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
-        Player player = null;
-        if(button == p1p100) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(0);
-        } else if(button == p2p100) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(1);
-        } else if(button == p3p100) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(2);
-        } else if(button == p4p100) {
-            player = MonopolyGame.getInstance().gameSettings.players.get(3);
-        }
-        currentBidder = player;
+        currentBidder = findPlayerFromButton(button);
         currentBid += 100;
         updateBidder();
     }

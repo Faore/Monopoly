@@ -56,6 +56,6 @@ public class AskBuyController {
     }
 
     public void auctionProperty(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.endAskBuyMode(false);
+        gameWindowController.endAskBuyMode(false);
     }
 }

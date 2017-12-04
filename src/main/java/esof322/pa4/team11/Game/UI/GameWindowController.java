@@ -99,6 +99,7 @@ public class GameWindowController {
         loader = new FXMLLoader();
         Parent auctionWindow = loader.load(getClass().getResource("/fxml/Auction.fxml").openStream());
         this.auctionController = loader.getController();
+        this.auctionController.setup(this, MonopolyGame.getInstance().players);
         auctionStage = new Stage();
         auctionStage.initStyle(StageStyle.UNDECORATED);
         auctionStage.setTitle("Auction");

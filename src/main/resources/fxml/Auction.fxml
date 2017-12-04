@@ -18,9 +18,9 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="p1p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
-                  <Button fx:id="p1p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
-                  <Button fx:id="p1p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
+                  <Button fx:id="p1p1" id="p1p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
+                  <Button fx:id="p1p10" id="p1p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
+                  <Button fx:id="p1p100" id="p1p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="122.0" prefWidth="155.0" fx:id="p2">
@@ -30,9 +30,9 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="p2p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
-                  <Button fx:id="p2p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
-                  <Button fx:id="p2p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
+                  <Button fx:id="p2p1" id="p2p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
+                  <Button fx:id="p2p10" id="p2p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
+                  <Button fx:id="p2p100" id="p2p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="165.0" layoutY="10.0" prefHeight="122.0" prefWidth="155.0" fx:id="p3">
@@ -42,9 +42,9 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="p3p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
-                  <Button fx:id="p3p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
-                  <Button fx:id="p3p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
+                  <Button fx:id="p3p1" id="p3p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
+                  <Button fx:id="p3p10" id="p3p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
+                  <Button fx:id="p3p100" id="p3p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="320.0" layoutY="10.0" prefHeight="122.0" prefWidth="155.0" fx:id="p4">
@@ -54,9 +54,9 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="p4p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
-                  <Button fx:id="p4p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
-                  <Button fx:id="p4p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
+                  <Button fx:id="p4p1" id="p4p1" layoutX="13.0" layoutY="66.0" mnemonicParsing="false" onAction="#addOne" text="+1" />
+                  <Button fx:id="p4p10" id="p4p10" layoutX="49.0" layoutY="66.0" mnemonicParsing="false" onAction="#addTen" text="+10" />
+                  <Button fx:id="p4p100" id="p4p100" layoutX="93.0" layoutY="66.0" mnemonicParsing="false" onAction="#addHundred" text="+100" />
                </children>
             </AnchorPane>
          </children>

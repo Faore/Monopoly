@@ -5,6 +5,8 @@ import esof322.pa4.team11.Game.UI.GameWindowController;
 import esof322.pa4.team11.GameOver.GameOverController;
 import esof322.pa4.team11.GameSettings;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +26,8 @@ public class MonopolyGame {
     }
 
     public Player winner;
+
+    public ObservableList<Player> players;
 
     public Stage primaryStage;
     private Stage debugStage;
@@ -46,6 +50,7 @@ public class MonopolyGame {
         }
         timer = new Timer("gameTimer");
         this.gameSettings = gameSettings;
+        this.players = FXCollections.observableArrayList(gameSettings.players);
         this.primaryStage = primaryStage;
         this.gameBoard = new GameBoard(gameSettings);
     }
