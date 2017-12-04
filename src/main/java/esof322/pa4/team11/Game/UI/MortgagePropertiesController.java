@@ -14,6 +14,7 @@ public class MortgagePropertiesController {
     public Button mortgageButton;
     public ListView<Deed> propertyList;
     public Player player;
+    private GameWindowController gameWindowController;
 
     public void initialize() {
         propertyList.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -22,6 +23,10 @@ public class MortgagePropertiesController {
                 rerender(newValue.intValue());
             }
         });
+    }
+
+    public void setup(GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
     }
 
     public void setup(Player player) {
@@ -70,11 +75,11 @@ public class MortgagePropertiesController {
             player.giveMoney(deed.mortgageValue);
             deed.setMortgaged(true);
         }
-        MonopolyGame.getInstance().gameWindowController.updateMoney(player.getMoney());
+        gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 
     public void done(ActionEvent actionEvent) {
-        MonopolyGame.getInstance().gameWindowController.closeMortgageWindow();
+        gameWindowController.closeMortgageWindow();
     }
 }

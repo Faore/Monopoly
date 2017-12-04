@@ -7,12 +7,17 @@ import javafx.scene.control.Label;
 
 public class ChestController {
     public Label chestCard;
+    private GameWindowController gameWindowController;
+
+    public void setup(GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
+    }
 
     public void setChestCard(Card card){
         chestCard.setText(card.description);
     }
 
     public void continueTurn(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.endChestCard();
+        gameWindowController.endChestCard();
     }
 }

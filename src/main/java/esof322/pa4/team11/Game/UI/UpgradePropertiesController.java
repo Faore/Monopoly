@@ -14,6 +14,7 @@ public class UpgradePropertiesController {
     public Player player;
     public Button upgradeButton;
     public Button downgradeButton;
+    public GameWindowController gameWindowController;
 
     public void initialize() {
         propertyList.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -22,6 +23,10 @@ public class UpgradePropertiesController {
                 rerender(newValue.intValue());
             }
         });
+    }
+
+    public void setup(GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
     }
 
     public void setup(Player player) {
@@ -117,18 +122,18 @@ public class UpgradePropertiesController {
     public void upgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).addBuildingLevel();
         player.takeMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost);
-        MonopolyGame.getInstance().gameWindowController.updateMoney(player.getMoney());
+        gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 
     public void done(ActionEvent actionEvent) {
-        MonopolyGame.getInstance().gameWindowController.endUpgrade();
+        gameWindowController.endUpgrade();
     }
 
     public void downgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).removeBuildingLevel();
         player.giveMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost/2);
-        MonopolyGame.getInstance().gameWindowController.updateMoney(player.getMoney());
+        gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 }

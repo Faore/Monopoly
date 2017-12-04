@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 public class ChanceController {
     public Label chanceCard;
-    public GameWindowController gameWindowController;
+    private GameWindowController gameWindowController;
 
     public void setup(GameWindowController gameWindowController) {
         this.gameWindowController = gameWindowController;

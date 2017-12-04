@@ -112,6 +112,7 @@ public class GameWindowController {
         loader = new FXMLLoader();
         Parent upgradePropertiesWindow = loader.load(getClass().getResource("/fxml/UpgradeProperties.fxml").openStream());
         upgradePropertiesController = loader.getController();
+        this.upgradePropertiesController.setup(this);
         upgradePropertiesStage = new Stage();
         upgradePropertiesStage.initStyle(StageStyle.UNDECORATED);
         upgradePropertiesStage.setTitle("Upgrade Properties");
@@ -124,6 +125,7 @@ public class GameWindowController {
         loader = new FXMLLoader();
         Parent jailWindow = loader.load(getClass().getResource("/fxml/Jail.fxml").openStream());
         jailController = loader.getController();
+        this.jailController.setup(this);
         jailStage = new Stage();
         jailStage.initStyle(StageStyle.UNDECORATED);
         jailStage.setTitle("You Are In Jail");
@@ -136,6 +138,7 @@ public class GameWindowController {
         loader = new FXMLLoader();
         Parent mortgageWindow = loader.load(getClass().getResource("/fxml/MortgageProperties.fxml").openStream());
         mortgagePropertiesController = loader.getController();
+        this.mortgagePropertiesController.setup(this);
         mortgageStage = new Stage();
         mortgageStage.initStyle(StageStyle.UNDECORATED);
         mortgageStage.setTitle("Manage Mortgages");
@@ -161,6 +164,7 @@ public class GameWindowController {
         loader = new FXMLLoader();
         Parent chestWindow = loader.load(getClass().getResource("/fxml/CommunityChest.fxml").openStream());
         chestController = loader.getController();
+        this.chestController.setup(this);
         chestStage = new Stage();
         chestStage.initStyle(StageStyle.UNDECORATED);
         chestStage.setTitle("Community Chest Card");

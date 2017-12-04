@@ -6,16 +6,21 @@ import javafx.scene.control.Button;
 
 public class JailController {
     public Button card;
+    private GameWindowController gameWindowController;
+
+    public void setup(GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
+    }
 
     public void rollToLeave(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.rollToLeaveJail();
+        gameWindowController.rollToLeaveJail();
     }
 
     public void payToLeave(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.payToLeaveJail();
+        gameWindowController.payToLeaveJail();
     }
 
     public void card(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowController.cardToLeaveJail();
+        gameWindowController.cardToLeaveJail();
     }
 }
