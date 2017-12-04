@@ -6,6 +6,7 @@ import esof322.pa4.team11.Game.Board.Tiles.Properties.Utility;
 import esof322.pa4.team11.Game.Board.Tiles.Property;
 import esof322.pa4.team11.Game.MonopolyGame;
 import esof322.pa4.team11.Game.Player;
+import esof322.pa4.team11.Game.UI.GameWindowController;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +28,10 @@ public class Deed {
 
     private int currentBuildingLevel;
 
-    public Deed(int printedPrice) {
+    private GameWindowController gameWindowController;
+
+    public Deed(int printedPrice, GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
         this.printedPrice = printedPrice;
         this.mortgageValue = printedPrice / 2;
         this.rent = -1;
@@ -39,7 +43,8 @@ public class Deed {
         this.isMortgaged = false;
     }
 
-    public Deed(int printedPrice, int rent) {
+    public Deed(int printedPrice, int rent, GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
         this.printedPrice = printedPrice;
         this.mortgageValue = printedPrice / 2;
         this.rent = rent;
@@ -51,7 +56,8 @@ public class Deed {
         this.isMortgaged = false;
     }
 
-    public Deed(int printedPrice, int rent, int buildingCost, int rent1, int rent2, int rent3, int rent4, int rent5) {
+    public Deed(int printedPrice, int rent, int buildingCost, int rent1, int rent2, int rent3, int rent4, int rent5, GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
         this.printedPrice = printedPrice;
         this.mortgageValue = printedPrice / 2;
         this.rent = rent;
@@ -146,7 +152,7 @@ public class Deed {
             throw new Exception("Building already at max level.");
         }
         this.currentBuildingLevel++;
-        MonopolyGame.getInstance().gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
+        gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public void removeBuildingLevel() throws Exception {
@@ -157,7 +163,7 @@ public class Deed {
             throw new Exception("Building already at min level.");
         }
         this.currentBuildingLevel--;
-        MonopolyGame.getInstance().gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
+        gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public Player getOwner() {

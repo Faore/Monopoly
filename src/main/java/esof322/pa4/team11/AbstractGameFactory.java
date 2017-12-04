@@ -27,5 +27,6 @@ public abstract class AbstractGameFactory {
 
     public abstract MonopolyGame createMonopolyGame(GameSettings settings, Stage primaryStage) throws Exception;
 
-    public abstract Parent createGameWindow(MonopolyGame game) throws IOException;
+    public abstract Parent createGameWindow(MonopolyGame game) throws Exception;
+
 }

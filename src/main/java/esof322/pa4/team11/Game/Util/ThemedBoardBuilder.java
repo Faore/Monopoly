@@ -9,6 +9,7 @@ import esof322.pa4.team11.Game.Board.Tiles.SpecialTile;
 
 import esof322.pa4.team11.Game.Board.Tiles.SpecialTileTypes;
 import esof322.pa4.team11.Game.Board.Tiles.TileOrientation;
+import esof322.pa4.team11.Game.UI.GameWindowController;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
 
@@ -23,7 +24,7 @@ public class ThemedBoardBuilder {
         deeds.add(deed);
     }
 
-    public static void buildBoard(ObservableList<Tile> tiles, ObservableList<Deed> deeds) throws Exception {
+    public static void buildBoard(ObservableList<Tile> tiles, ObservableList<Deed> deeds, GameWindowController gameWindowController) throws Exception {
 
         ArrayList<Deed> utilities = new ArrayList<>();
         ArrayList<Deed> railroads = new ArrayList<>();
@@ -48,7 +49,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.Go
                 )
         );
-        deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        deed = new Deed(60, 2, 50, 10,30,90,160, 250, gameWindowController);
         associateDeed(brown, deed);
         tiles.add(
                 new StandardProperty("Watchpoint Gibraltar",
@@ -65,7 +66,7 @@ public class ThemedBoardBuilder {
                         TileOrientation.Bottom,
                         SpecialTileTypes.CommunityChest)
         );
-        deed = new Deed(60, 4, 50, 20,60,180,320, 450);
+        deed = new Deed(60, 4, 50, 20,60,180,320, 450, gameWindowController);
         associateDeed(brown, deed);
         tiles.add(
                 new StandardProperty("Omnic Junkyard",
@@ -83,7 +84,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.IncomeTax
                 )
         );
-        deed = new Deed(200, 25);
+        deed = new Deed(200, 25, gameWindowController);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Durado Payload",
@@ -93,7 +94,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(100, 6, 50, 30,90,270,400, 550);
+        deed = new Deed(100, 6, 50, 30,90,270,400, 550, gameWindowController);
         associateDeed(lightblue, deed);
         tiles.add(
                 new StandardProperty("Bar at Eichenwalde",
@@ -111,7 +112,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.Chance
                 )
         );
-        deed = new Deed(100, 6, 50, 30,90,270,400, 550);
+        deed = new Deed(100, 6, 50, 30,90,270,400, 550, gameWindowController);
         associateDeed(lightblue, deed);
         tiles.add(
                 new StandardProperty("Hollywood Theater",
@@ -121,7 +122,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(120, 8, 50, 40,100,300,450, 600);
+        deed = new Deed(120, 8, 50, 40,100,300,450, 600, gameWindowController);
         associateDeed(lightblue, deed);
         tiles.add(
                 new StandardProperty("Horizon Transit",
@@ -139,7 +140,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.Jail
                 )
         );
-        deed = new Deed(140, 10, 100, 50,150,450,625, 750);
+        deed = new Deed(140, 10, 100, 50,150,450,625, 750, gameWindowController);
         associateDeed(pink, deed);
         tiles.add(
                 new StandardProperty("Underworld",
@@ -149,7 +150,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(150);
+        deed = new Deed(150, gameWindowController);
         associateDeed(utilities, deed);
         tiles.add(
                 new Utility("Electric Company",
@@ -159,7 +160,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(140, 10, 100, 50,150,450,625, 750);
+        deed = new Deed(140, 10, 100, 50,150,450,625, 750, gameWindowController);
         associateDeed(pink, deed);
         tiles.add(
                 new StandardProperty("Climbing Wall",
@@ -169,7 +170,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(160, 12, 100, 60,180,500,700, 900);
+        deed = new Deed(160, 12, 100, 60,180,500,700, 900, gameWindowController);
         associateDeed(pink, deed);
         tiles.add(
                 new StandardProperty("Canyon Caves",
@@ -179,7 +180,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 25);
+        deed = new Deed(200, 25, gameWindowController);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Eichenwalde Payload",
@@ -189,7 +190,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(180, 14, 100, 70,200,550,750, 950);
+        deed = new Deed(180, 14, 100, 70,200,550,750, 950, gameWindowController);
         associateDeed(orange, deed);
         tiles.add(
                 new StandardProperty("Genji's Dojo",
@@ -207,7 +208,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.CommunityChest
                 )
         );
-        deed = new Deed(180, 14, 100, 70,200,550,750, 950);
+        deed = new Deed(180, 14, 100, 70,200,550,750, 950, gameWindowController);
         associateDeed(orange, deed);
         tiles.add(
                 new StandardProperty("Hanzo's Hut",
@@ -217,7 +218,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 16, 100, 80,220,600,800, 1000);
+        deed = new Deed(200, 16, 100, 80,220,600,800, 1000, gameWindowController);
         associateDeed(orange, deed);
         tiles.add(
                 new StandardProperty("Big Earl's",
@@ -235,7 +236,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.FreeParking
                 )
         );
-        deed = new Deed(220, 18, 150, 90,250,700,875, 1050);
+        deed = new Deed(220, 18, 150, 90,250,700,875, 1050, gameWindowController);
         associateDeed(red, deed);
         tiles.add(
                 new StandardProperty("Castle Entrance",
@@ -253,7 +254,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.Chance
                 )
         );
-        deed = new Deed(220, 18, 150, 90,250,700,875, 1050);
+        deed = new Deed(220, 18, 150, 90,250,700,875, 1050, gameWindowController);
         associateDeed(red, deed);
         tiles.add(
                 new StandardProperty("Tracer Avenue",
@@ -263,7 +264,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(240, 20, 150, 100,300,750,925, 1100);
+        deed = new Deed(240, 20, 150, 100,300,750,925, 1100, gameWindowController);
         associateDeed(red, deed);
         tiles.add(
                 new StandardProperty("Anubis Pottery",
@@ -273,7 +274,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 25);
+        deed = new Deed(200, 25, gameWindowController);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Gibraltar Payload",
@@ -283,7 +284,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(260, 22, 150, 110,330,800,975, 1150);
+        deed = new Deed(260, 22, 150, 110,330,800,975, 1150, gameWindowController);
         associateDeed(yellow, deed);
         tiles.add(
                 new StandardProperty("King's Row",
@@ -293,7 +294,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(260, 22, 150, 110,330,800,975, 1150);
+        deed = new Deed(260, 22, 150, 110,330,800,975, 1150, gameWindowController);
         associateDeed(yellow, deed);
         tiles.add(
                 new StandardProperty("Durado Market",
@@ -303,7 +304,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(150);
+        deed = new Deed(150, gameWindowController);
         associateDeed(utilities, deed);
         tiles.add(
                 new Utility("Water Works",
@@ -313,7 +314,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(280, 24, 150, 120,360,850,1025, 1200);
+        deed = new Deed(280, 24, 150, 120,360,850,1025, 1200, gameWindowController);
         associateDeed(yellow, deed);
         tiles.add(
                 new StandardProperty("Temple Gate",
@@ -331,7 +332,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.GoToJail
                 )
         );
-        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275);
+        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275, gameWindowController);
         associateDeed(green, deed);
         tiles.add(
                 new StandardProperty("Twin Dragons",
@@ -341,7 +342,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275);
+        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275, gameWindowController);
         associateDeed(green, deed);
         tiles.add(
                 new StandardProperty("Nepal Shrine",
@@ -359,7 +360,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.CommunityChest
                 )
         );
-        deed = new Deed(320, 28, 200, 150,450,1000,1200, 1400);
+        deed = new Deed(320, 28, 200, 150,450,1000,1200, 1400, gameWindowController);
         associateDeed(green, deed);
         tiles.add(
                 new StandardProperty("Numbani Bus",
@@ -369,7 +370,7 @@ public class ThemedBoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 25);
+        deed = new Deed(200, 25, gameWindowController);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Route 66 Payload",
@@ -387,7 +388,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.Chance
                 )
         );
-        deed = new Deed(350, 35, 200, 175,500,1100,1300, 1500);
+        deed = new Deed(350, 35, 200, 175,500,1100,1300, 1500, gameWindowController);
         associateDeed(blue, deed);
         tiles.add(
                 new StandardProperty("Junkertown Throne",
@@ -405,7 +406,7 @@ public class ThemedBoardBuilder {
                         SpecialTileTypes.LuxuryTax
                 )
         );
-        deed = new Deed(400, 50, 200, 200,600,1400,1700, 2000);
+        deed = new Deed(400, 50, 200, 200,600,1400,1700, 2000, gameWindowController);
         associateDeed(blue, deed);
         tiles.add(
                 new StandardProperty("Lunar Colony",

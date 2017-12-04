@@ -12,16 +12,15 @@ public class StandardMonopolyGame extends AbstractGameFactory {
     @Override
     public MonopolyGame createMonopolyGame(GameSettings settings, Stage primaryStage) throws Exception {
         MonopolyGame game = new MonopolyGame(settings, primaryStage);
-        BoardBuilder.buildBoard(game.gameBoard.tiles, game.gameBoard.deeds);
-
         return game;
     }
 
     @Override
-    public Parent createGameWindow(MonopolyGame game) throws IOException {
+    public Parent createGameWindow(MonopolyGame game) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent parent = fxmlLoader.load(getClass().getResource("/fxml/GameWindow.fxml").openStream());
         game.gameWindowController = fxmlLoader.getController();
+        BoardBuilder.buildBoard(game.gameBoard.tiles, game.gameBoard.deeds, game.gameWindowController);
         return parent;
     }
 }
