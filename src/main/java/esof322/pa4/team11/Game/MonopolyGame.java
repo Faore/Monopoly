@@ -70,7 +70,7 @@ public class MonopolyGame {
             gameWindowController.attachTokenToBoard(player.token);
         }
 
-        turnManager = new TurnManager();
+        turnManager = new TurnManager(gameWindowController, gameBoard, players);
 
         timer.schedule(new TimerTask() {
             @Override
