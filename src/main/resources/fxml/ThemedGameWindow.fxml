@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0" prefWidth="1631.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="im.admt.team11.PA3.Game.UI.GameWindowManager">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0" prefWidth="1631.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esof322.pa4.team11.Game.UI.GameWindowManager">
     <children>
         <HBox alignment="CENTER_LEFT" fillHeight="false" prefWidth="485.0" spacing="5.0" VBox.vgrow="NEVER">
             <children>
@@ -27,7 +27,12 @@
                 <Button fx:id="manageMortgagesButton" mnemonicParsing="false" onAction="#manageMortgages" text="Manage Mortgages" />
                 <Button fx:id="upgradePropertiesButton" mnemonicParsing="false" onAction="#startUpgrade" text="Upgrade Properties" />
                 <Button fx:id="endTurnButton" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
+<<<<<<< HEAD
                 <Button fx:id="sellJailCardButton" mnemonicParsing="false" onAction="#sellJailCard" text="Sell Jail Card" />
+=======
+                <Button fx:id="sellJailCardButton" mnemonicParsing="false" onAction="#sellJailCard"
+                        text="Sell Jail Card"/>
+>>>>>>> 8ffe741b97172d9b5b0a16b79596bc9e4f9b1855
                 <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                 <Label fx:id="timerLabel" text="0:00" />
                 <MenuButton fx:id="debugMenu" mnemonicParsing="false" text="Debug">

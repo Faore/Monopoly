@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="im.admt.team11.PA3.Menu.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esof322.pa4.team11.Menu.MenuController">
    <children>
       <Button fx:id="startGameButton" layoutX="262.0" layoutY="306.0" mnemonicParsing="false" onAction="#clickStartGame" text="Start Game" />
       <Slider fx:id="timeLimitSlider" layoutX="204.0" layoutY="40.0" max="60.0" min="1.0" prefHeight="14.0" prefWidth="192.0" value="10.0" />
