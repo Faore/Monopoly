@@ -74,7 +74,7 @@ public class AuctionController {
             currentBidLabel.setText("Current Bid: $" + currentBid + " (Player " + currentBidder.playerNumber + ")");
         }
         int current = 0;
-        for ( Player player : MonopolyGame.getInstance().gameSettings.players) {
+        for ( Player player : players) {
             current++;
             switch (current) {
                 case 1:
