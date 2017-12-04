@@ -1,6 +1,6 @@
 package esof322.pa4.team11.Game;
 
-import esof322.pa4.team11.Game.UI.Debug.DebugUI;
+import esof322.pa4.team11.Game.UI.Debug.DebugController;
 import esof322.pa4.team11.Game.UI.GameWindowController;
 import esof322.pa4.team11.GameOver.GameOverController;
 import esof322.pa4.team11.GameSettings;
@@ -34,7 +34,7 @@ public class MonopolyGame {
     public Parent root;
 
     public GameWindowController gameWindowController;
-    public DebugUI debugUI;
+    public DebugController debugController;
 
     public GameBoard gameBoard;
     public GameSettings gameSettings;
@@ -91,7 +91,10 @@ public class MonopolyGame {
     }
 
     public void openDebugDialog() throws IOException {
-        Parent debugDialog = FXMLLoader.load(getClass().getResource("/fxml/debug/DebugUI.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        Parent debugDialog = loader.load(getClass().getResource("/fxml/debug/DebugUI.fxml").openStream());
+        DebugController debugController = loader.getController();
+        debugController.setup(gameWindowController, gameBoard.playerTokens);
         debugStage = new Stage();
         debugStage.initStyle(StageStyle.UTILITY);
         debugStage.setTitle("PA3 Debug Tools");
