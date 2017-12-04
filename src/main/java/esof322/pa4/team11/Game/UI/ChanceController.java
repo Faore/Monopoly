@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 public class ChanceController {
     public Label chanceCard;
 
-    public void initialize(){ MonopolyGame.getInstance().gameWindowManager.chanceController = this;}
-
     public void setChanceCard(Card card){
         chanceCard.setText(card.description);
     }

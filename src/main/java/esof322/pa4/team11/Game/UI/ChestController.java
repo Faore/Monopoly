@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 public class ChestController {
     public Label chestCard;
 
-    public void initialize(){ MonopolyGame.getInstance().gameWindowManager.chestController = this;}
-
     public void setChestCard(Card card){
         chestCard.setText(card.description);
     }

@@ -7,13 +7,6 @@ import javafx.scene.control.Button;
 public class JailController {
     public Button card;
 
-    public void initialize() {
-//        if (!MonopolyGame.getInstance().turnManager.getCurrentPlayer().chanceJailCard && !MonopolyGame.getInstance().turnManager.getCurrentPlayer().chestJailCard){
-//            card.setDisable(true);
-//        }
-        MonopolyGame.getInstance().gameWindowManager.jailController = this;
-    }
-
     public void rollToLeave(ActionEvent actionEvent) throws Exception {
         MonopolyGame.getInstance().gameWindowManager.rollToLeaveJail();
     }

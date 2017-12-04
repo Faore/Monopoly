@@ -18,10 +18,6 @@ public class AskBuyController {
     public Label rentLabel;
     public Button buyButton;
 
-    public void initialize() {
-        MonopolyGame.getInstance().gameWindowManager.askBuyController = this;
-    }
-
     public void setProperty(Property property, Player player) {
         deedTitleLabel.setText(property.name + " - $" + property.deed.printedPrice);
         if(property.deed.rent < 0) {

@@ -18,8 +18,6 @@ public class DebugUI {
 
     @FXML
     public void initialize() {
-        MonopolyGame.getInstance().debugUI = this;
-
         MonopolyGame.getInstance().gameWindowManager.zoomGroup.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

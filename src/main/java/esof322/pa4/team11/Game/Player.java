@@ -139,4 +139,8 @@ public class Player {
         }
         return repairs;
     }
+
+    public boolean canBid(int amount) {
+        return amount <= this.money;
+    }
 }

@@ -16,7 +16,6 @@ public class UpgradePropertiesController {
     public Button downgradeButton;
 
     public void initialize() {
-        MonopolyGame.getInstance().gameWindowManager.upgradePropertiesController = this;
         propertyList.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {

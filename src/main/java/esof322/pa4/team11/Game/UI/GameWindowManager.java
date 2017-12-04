@@ -83,7 +83,9 @@ public class GameWindowManager {
         zoomGroup.getChildren().add(scrollPane.getContent());
         scrollPane.setContent(contentGroup);
 
-        Parent deedWindow = FXMLLoader.load(getClass().getResource("/fxml/AskBuy.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        Parent deedWindow = loader.load(getClass().getResource("/fxml/AskBuy.fxml").openStream());
+        this.askBuyController = loader.getController();
         deedStage = new Stage();
         deedStage.initStyle(StageStyle.UNDECORATED);
         deedStage.setTitle("Deed");
@@ -93,7 +95,9 @@ public class GameWindowManager {
         deedStage.initModality(Modality.WINDOW_MODAL);
         deedStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
-        Parent auctionWindow = FXMLLoader.load(getClass().getResource("/fxml/Auction.fxml"));
+        loader = new FXMLLoader();
+        Parent auctionWindow = loader.load(getClass().getResource("/fxml/Auction.fxml").openStream());
+        this.auctionController = loader.getController();
         auctionStage = new Stage();
         auctionStage.initStyle(StageStyle.UNDECORATED);
         auctionStage.setTitle("Auction");
@@ -103,7 +107,9 @@ public class GameWindowManager {
         auctionStage.initModality(Modality.WINDOW_MODAL);
         auctionStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
-        Parent upgradePropertiesWindow = FXMLLoader.load(getClass().getResource("/fxml/UpgradeProperties.fxml"));
+        loader = new FXMLLoader();
+        Parent upgradePropertiesWindow = loader.load(getClass().getResource("/fxml/UpgradeProperties.fxml").openStream());
+        upgradePropertiesController = loader.getController();
         upgradePropertiesStage = new Stage();
         upgradePropertiesStage.initStyle(StageStyle.UNDECORATED);
         upgradePropertiesStage.setTitle("Upgrade Properties");
@@ -113,7 +119,9 @@ public class GameWindowManager {
         upgradePropertiesStage.initModality(Modality.WINDOW_MODAL);
         upgradePropertiesStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
-        Parent jailWindow = FXMLLoader.load(getClass().getResource("/fxml/Jail.fxml"));
+        loader = new FXMLLoader();
+        Parent jailWindow = loader.load(getClass().getResource("/fxml/Jail.fxml").openStream());
+        jailController = loader.getController();
         jailStage = new Stage();
         jailStage.initStyle(StageStyle.UNDECORATED);
         jailStage.setTitle("You Are In Jail");
@@ -123,7 +131,9 @@ public class GameWindowManager {
         jailStage.initModality(Modality.WINDOW_MODAL);
         jailStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
-        Parent mortgageWindow = FXMLLoader.load(getClass().getResource("/fxml/MortgageProperties.fxml"));
+        loader = new FXMLLoader();
+        Parent mortgageWindow = loader.load(getClass().getResource("/fxml/MortgageProperties.fxml").openStream());
+        mortgagePropertiesController = loader.getController();
         mortgageStage = new Stage();
         mortgageStage.initStyle(StageStyle.UNDECORATED);
         mortgageStage.setTitle("Manage Mortgages");
@@ -133,7 +143,9 @@ public class GameWindowManager {
         mortgageStage.initModality(Modality.WINDOW_MODAL);
         mortgageStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
-        Parent chanceWindow = FXMLLoader.load(getClass().getResource("/fxml/ChanceWindow.fxml"));
+        loader = new FXMLLoader();
+        Parent chanceWindow = loader.load(getClass().getResource("/fxml/ChanceWindow.fxml").openStream());
+        this.chanceController = loader.getController();
         chanceStage = new Stage();
         chanceStage.initStyle(StageStyle.UNDECORATED);
         chanceStage.setTitle("Chance Card");
@@ -143,7 +155,9 @@ public class GameWindowManager {
         chanceStage.initModality(Modality.WINDOW_MODAL);
         chanceStage.initOwner(MonopolyGame.getInstance().primaryStage);
 
-        Parent chestWindow = FXMLLoader.load(getClass().getResource("/fxml/CommunityChest.fxml"));
+        loader = new FXMLLoader();
+        Parent chestWindow = loader.load(getClass().getResource("/fxml/CommunityChest.fxml").openStream());
+        chestController = loader.getController();
         chestStage = new Stage();
         chestStage.initStyle(StageStyle.UNDECORATED);
         chestStage.setTitle("Community Chest Card");

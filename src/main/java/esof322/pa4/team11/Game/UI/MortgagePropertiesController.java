@@ -16,7 +16,6 @@ public class MortgagePropertiesController {
     public Player player;
 
     public void initialize() {
-        MonopolyGame.getInstance().gameWindowManager.mortgagePropertiesController = this;
         propertyList.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {

@@ -39,7 +39,6 @@ public class AuctionController {
     public Property property;
 
     public void initialize() {
-        MonopolyGame.getInstance().gameWindowManager.auctionController = this;
         int players = MonopolyGame.getInstance().gameBoard.playerTokens.size();
         if(players < 3) {
             container.getChildren().remove(p3);
@@ -72,68 +71,68 @@ public class AuctionController {
             current++;
             switch (current) {
                 case 1:
-                    if(player.getMoney() >= currentBid + 1) {
+                    if(player.canBid(currentBid + 1)) {
                         p1p1.setDisable(false);
                     } else {
                         p1p1.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 10) {
+                    if(player.canBid(currentBid + 10)) {
                         p1p10.setDisable(false);
                     } else {
                         p1p10.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 100) {
+                    if(player.canBid(currentBid + 100)) {
                         p1p100.setDisable(false);
                     } else {
                         p1p100.setDisable(true);
                     }
                     break;
                 case 2:
-                    if(player.getMoney() >= currentBid + 1) {
+                    if(player.canBid(currentBid + 1)) {
                         p2p1.setDisable(false);
                     } else {
                         p2p1.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 10) {
+                    if(player.canBid(currentBid + 10)) {
                         p2p10.setDisable(false);
                     } else {
                         p2p10.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 100) {
+                    if(player.canBid(currentBid + 100)) {
                         p2p100.setDisable(false);
                     } else {
                         p2p100.setDisable(true);
                     }
                     break;
                 case 3:
-                    if(player.getMoney() >= currentBid + 1) {
+                    if(player.canBid(currentBid + 1)) {
                         p3p1.setDisable(false);
                     } else {
                         p3p1.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 10) {
+                    if(player.canBid(currentBid + 10)) {
                         p3p10.setDisable(false);
                     } else {
                         p3p10.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 100) {
+                    if(player.canBid(currentBid + 100)) {
                         p3p100.setDisable(false);
                     } else {
                         p3p100.setDisable(true);
                     }
                     break;
                 case 4:
-                    if(player.getMoney() >= currentBid + 1) {
+                    if(player.canBid(currentBid + 1)) {
                         p4p1.setDisable(false);
                     } else {
                         p4p1.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 10) {
+                    if(player.canBid(currentBid + 10)) {
                         p4p10.setDisable(false);
                     } else {
                         p4p10.setDisable(true);
                     }
-                    if(player.getMoney() >= currentBid + 100) {
+                    if(player.canBid(currentBid + 100)) {
                         p4p100.setDisable(false);
                     } else {
                         p4p100.setDisable(true);
