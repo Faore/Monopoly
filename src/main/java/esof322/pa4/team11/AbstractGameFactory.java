@@ -1,15 +1,12 @@
 package esof322.pa4.team11;
 
 import esof322.pa4.team11.Game.MonopolyGame;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public abstract class AbstractGameFactory {
-    private static final StandardMonopolyGame STANDARD_MONOPOLY_GAME = new StandardMonopolyGame();
-    private static final OverwatchMonopolyGame OVERWATCH_MONOPOLY_GAME = new OverwatchMonopolyGame();
+    private static final StandardMonopolyGameFactory STANDARD_MONOPOLY_GAME = new StandardMonopolyGameFactory();
+    private static final OverwatchMonopolyGameFactory OVERWATCH_MONOPOLY_GAME = new OverwatchMonopolyGameFactory();
 
     public static AbstractGameFactory getFactory(Theme theme) {
         AbstractGameFactory factory = null;

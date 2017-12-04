@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class OverwatchMonopolyGame extends AbstractGameFactory {
+public class OverwatchMonopolyGameFactory extends AbstractGameFactory {
     @Override
     public MonopolyGame createMonopolyGame(GameSettings settings, Stage primaryStage) throws Exception {
         MonopolyGame game = new MonopolyGame(settings, primaryStage);
