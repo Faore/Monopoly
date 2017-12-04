@@ -117,18 +117,18 @@ public class UpgradePropertiesController {
     public void upgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).addBuildingLevel();
         player.takeMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost);
-        MonopolyGame.getInstance().gameWindowManager.updateMoney(player.getMoney());
+        MonopolyGame.getInstance().gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 
     public void done(ActionEvent actionEvent) {
-        MonopolyGame.getInstance().gameWindowManager.endUpgrade();
+        MonopolyGame.getInstance().gameWindowController.endUpgrade();
     }
 
     public void downgradeProperty(ActionEvent actionEvent) throws Exception {
         player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).removeBuildingLevel();
         player.giveMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost/2);
-        MonopolyGame.getInstance().gameWindowManager.updateMoney(player.getMoney());
+        MonopolyGame.getInstance().gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 }

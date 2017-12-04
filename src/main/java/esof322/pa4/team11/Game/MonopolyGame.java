@@ -1,10 +1,9 @@
 package esof322.pa4.team11.Game;
 
 import esof322.pa4.team11.Game.UI.Debug.DebugUI;
-import esof322.pa4.team11.Game.UI.GameWindowManager;
+import esof322.pa4.team11.Game.UI.GameWindowController;
 import esof322.pa4.team11.GameOver.GameOverController;
 import esof322.pa4.team11.GameSettings;
-import esof322.pa4.team11.Theme;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,7 +29,7 @@ public class MonopolyGame {
     private Stage debugStage;
     public Parent root;
 
-    public GameWindowManager gameWindowManager;
+    public GameWindowController gameWindowController;
     public DebugUI debugUI;
 
     public GameBoard gameBoard;
@@ -62,7 +61,7 @@ public class MonopolyGame {
         });
 
         for (Player player : gameSettings.players) {
-            gameWindowManager.attachTokenToBoard(player.token);
+            gameWindowController.attachTokenToBoard(player.token);
         }
 
         turnManager = new TurnManager();

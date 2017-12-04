@@ -8,14 +8,14 @@ public class JailController {
     public Button card;
 
     public void rollToLeave(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.rollToLeaveJail();
+        MonopolyGame.getInstance().gameWindowController.rollToLeaveJail();
     }
 
     public void payToLeave(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.payToLeaveJail();
+        MonopolyGame.getInstance().gameWindowController.payToLeaveJail();
     }
 
     public void card(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.cardToLeaveJail();
+        MonopolyGame.getInstance().gameWindowController.cardToLeaveJail();
     }
 }

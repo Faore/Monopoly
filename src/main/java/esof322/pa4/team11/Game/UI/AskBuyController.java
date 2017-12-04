@@ -18,6 +18,12 @@ public class AskBuyController {
     public Label rentLabel;
     public Button buyButton;
 
+    private GameWindowController gameWindowController;
+
+    public void setup(GameWindowController gameWindowController) {
+        this.gameWindowController = gameWindowController;
+    }
+
     public void setProperty(Property property, Player player) {
         deedTitleLabel.setText(property.name + " - $" + property.deed.printedPrice);
         if(property.deed.rent < 0) {
@@ -46,10 +52,10 @@ public class AskBuyController {
     }
 
     public void buyProperty(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.endAskBuyMode(true);
+        gameWindowController.endAskBuyMode(true);
     }
 
     public void auctionProperty(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.endAskBuyMode(false);
+        MonopolyGame.getInstance().gameWindowController.endAskBuyMode(false);
     }
 }

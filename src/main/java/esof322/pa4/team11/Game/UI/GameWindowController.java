@@ -26,7 +26,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.TimerTask;
 
-public class GameWindowManager {
+public class GameWindowController {
 
     public Label playerTurnLabel;
     public Button zoomOutButton;
@@ -68,7 +68,7 @@ public class GameWindowManager {
 
     @FXML
     public void initialize() throws IOException {
-        MonopolyGame.getInstance().gameWindowManager = this;
+        MonopolyGame.getInstance().gameWindowController = this;
         zoomSlider.setMin(Math.min(scrollPane.getHeight() / 3000.0, scrollPane.getWidth() / 3000.0));
         zoomSlider.setMax(1.0);
         zoomSlider.setValue(0);
@@ -86,6 +86,7 @@ public class GameWindowManager {
         FXMLLoader loader = new FXMLLoader();
         Parent deedWindow = loader.load(getClass().getResource("/fxml/AskBuy.fxml").openStream());
         this.askBuyController = loader.getController();
+        this.askBuyController.setup(this);
         deedStage = new Stage();
         deedStage.initStyle(StageStyle.UNDECORATED);
         deedStage.setTitle("Deed");

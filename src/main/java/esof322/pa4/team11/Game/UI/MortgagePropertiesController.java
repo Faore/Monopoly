@@ -70,11 +70,11 @@ public class MortgagePropertiesController {
             player.giveMoney(deed.mortgageValue);
             deed.setMortgaged(true);
         }
-        MonopolyGame.getInstance().gameWindowManager.updateMoney(player.getMoney());
+        MonopolyGame.getInstance().gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
     }
 
     public void done(ActionEvent actionEvent) {
-        MonopolyGame.getInstance().gameWindowManager.closeMortgageWindow();
+        MonopolyGame.getInstance().gameWindowController.closeMortgageWindow();
     }
 }

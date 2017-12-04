@@ -146,7 +146,7 @@ public class Deed {
             throw new Exception("Building already at max level.");
         }
         this.currentBuildingLevel++;
-        MonopolyGame.getInstance().gameWindowManager.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
+        MonopolyGame.getInstance().gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public void removeBuildingLevel() throws Exception {
@@ -157,7 +157,7 @@ public class Deed {
             throw new Exception("Building already at min level.");
         }
         this.currentBuildingLevel--;
-        MonopolyGame.getInstance().gameWindowManager.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
+        MonopolyGame.getInstance().gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public Player getOwner() {

@@ -1603,7 +1603,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+gameWindowManager: GameWindowManager",
+											"text": "+gameWindowController: GameWindowManager",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -29096,7 +29096,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFfs2W97iLlfwQ="
 							},
-							"name": "gameWindowManager",
+							"name": "gameWindowController",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,

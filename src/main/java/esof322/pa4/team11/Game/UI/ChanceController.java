@@ -13,6 +13,6 @@ public class ChanceController {
     }
 
     public void continueTurn(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.endChanceCard();
+        MonopolyGame.getInstance().gameWindowController.endChanceCard();
     }
 }

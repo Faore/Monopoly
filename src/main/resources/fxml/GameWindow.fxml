@@ -16,7 +16,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0"
       prefWidth="1631.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="esof322.pa4.team11.Game.UI.GameWindowManager">
+      fx:controller="esof322.pa4.team11.Game.UI.GameWindowController">
     <children>
         <HBox alignment="CENTER_LEFT" fillHeight="false" prefWidth="485.0" spacing="5.0" VBox.vgrow="NEVER">
             <children>

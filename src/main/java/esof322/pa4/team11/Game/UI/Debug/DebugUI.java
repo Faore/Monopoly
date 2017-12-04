@@ -18,11 +18,11 @@ public class DebugUI {
 
     @FXML
     public void initialize() {
-        MonopolyGame.getInstance().gameWindowManager.zoomGroup.setOnMousePressed(new EventHandler<MouseEvent>() {
+        MonopolyGame.getInstance().gameWindowController.zoomGroup.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 clickCoordinates.setText("(" + String.format("%1$,.2f", event.getX()) + ", " + String.format("%1$,.2f", event.getY()) + ")");
-                Tile tile = MonopolyGame.getInstance().gameWindowManager.tileAtEvent(event);
+                Tile tile = MonopolyGame.getInstance().gameWindowController.tileAtEvent(event);
                 tileEntity.setText(tile != null ? tile.name : "None");
             }
         });

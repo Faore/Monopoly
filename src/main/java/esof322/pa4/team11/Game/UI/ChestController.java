@@ -13,6 +13,6 @@ public class ChestController {
     }
 
     public void continueTurn(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.endChestCard();
+        MonopolyGame.getInstance().gameWindowController.endChestCard();
     }
 }

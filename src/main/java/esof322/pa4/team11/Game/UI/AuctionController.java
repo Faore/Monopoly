@@ -57,7 +57,7 @@ public class AuctionController {
     }
 
     public void endAuction(ActionEvent actionEvent) throws Exception {
-        MonopolyGame.getInstance().gameWindowManager.endAuction(currentBidder, currentBid, property);
+        MonopolyGame.getInstance().gameWindowController.endAuction(currentBidder, currentBid, property);
     }
 
     public void updateBidder() {
