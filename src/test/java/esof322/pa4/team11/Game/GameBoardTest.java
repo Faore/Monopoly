@@ -33,22 +33,6 @@ public class GameBoardTest {
     }
 
     @Test
-    public void chanceCardsInitialized() throws Exception {
-        GameSettings gameSettings = new GameSettings();
-        gameSettings.players.add(new Player(1, TokenTypes.Blue));
-        GameBoard board = new GameBoard(gameSettings);
-        assertEquals(16, board.chanceCards.size());
-    }
-
-    @Test
-    public void chestCardsInitialized() throws Exception {
-        GameSettings gameSettings = new GameSettings();
-        gameSettings.players.add(new Player(1, TokenTypes.Blue));
-        GameBoard board = new GameBoard(gameSettings);
-        assertEquals(16, board.chestCards.size());
-    }
-
-    @Test
     public void testGetChanceCard() throws Exception{
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(new Player(1, TokenTypes.Blue));
