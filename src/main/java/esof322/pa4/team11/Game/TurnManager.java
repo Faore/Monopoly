@@ -18,6 +18,8 @@ public class TurnManager {
     private Player currentPlayer;
     private TurnPhase turnPhase;
 
+    public String description;
+
     private Random random;
 
     private GameWindowController gameWindowController;
@@ -60,7 +62,6 @@ public class TurnManager {
         } else {
             phase = TurnPhase.Movement;
         }
-
         setPhase(phase);
     }
 
@@ -74,8 +75,8 @@ public class TurnManager {
     }
 
     public void movePlayer(int roll) throws Exception {
-        String description = "";
-        description += "Player " + currentPlayer.playerNumber + " rolled a " + roll + ", ";
+        //Description is reset here.
+        description = "Player " + currentPlayer.playerNumber + " rolled a " + roll + ", ";
         int startLocation = gameBoard.tiles.indexOf(currentPlayer.token.currentLocation);
         int endLocation = startLocation + roll;
         if(endLocation >= gameBoard.tiles.size()) {
@@ -84,7 +85,7 @@ public class TurnManager {
             description += "collected $200 from Go, ";
         }
         gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(endLocation));
-        description = handleLand(description);
+        handleLand();
 
         gameWindowController.setLastActionLabel(description);
         setPhase(TurnPhase.Management);
@@ -146,7 +147,7 @@ public class TurnManager {
         setPhase(TurnPhase.Movement);
     }
 
-    public String handleLand(String description) throws Exception{
+    public void handleLand() throws Exception{
         if(currentPlayer.token.currentLocation instanceof Property) {
             Property property = (Property) currentPlayer.token.currentLocation;
             if(property.deed.getOwner() == null) {
@@ -197,7 +198,7 @@ public class TurnManager {
                 case Chance:
                     Card chanceCard = gameBoard.getChanceCard();
                     gameWindowController.drawChanceCard(chanceCard);
-                    description = handleChance(chanceCard, currentLocation);
+                    handleChance(chanceCard, currentLocation);
                     gameWindowController.setLastActionLabel(description);
                     break;
                 case Jail:
@@ -213,16 +214,16 @@ public class TurnManager {
         } else {
             description += "and landed on " + currentPlayer.token.currentLocation.name + " which had no effect.";
         }
-        return description;
     }
 
     public String handleChest(Card chestCard) throws Exception{
-        String description = "";
+        //Description is reset here.
+        description = "";
         switch (chestCard.getCardNum()){
             case 1:
                 currentPlayer.giveMoney(200);
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(0));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 2:
                 currentPlayer.giveMoney(200);
@@ -239,7 +240,7 @@ public class TurnManager {
             case 5:
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(10));
                 currentPlayer.setInJail(true);
-                description = handleLand(description);
+                handleLand();
                 gameWindowController.setLastActionLabel(description);
                 nextTurn();
                 break;
@@ -299,13 +300,14 @@ public class TurnManager {
         return description;
     }
 
-    public String handleChance(Card chanceCard, int currentLocation) throws Exception{
-        String description = "";
+    public void handleChance(Card chanceCard, int currentLocation) throws Exception{
+        //Description is reset here.
+        description = "";
         switch (chanceCard.getCardNum()){
             case 1:
                 currentPlayer.giveMoney(200);
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(0));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 2:
                 currentPlayer.giveMoney(50);
@@ -314,17 +316,17 @@ public class TurnManager {
             case 3:
                 currentLocation -= 3;
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 4:
                 if (currentLocation == 7 || currentLocation == 36){
                     currentLocation = 12;
                     gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
+                    handleLand();
                 }else{
                     currentLocation = 28;
                     gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
+                    handleLand();
                 }
                 break;
             case 5:
@@ -332,22 +334,22 @@ public class TurnManager {
                 if (currentLocation == 7){
                     currentLocation = 15;
                     gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
+                    handleLand();
                 }else if(currentLocation == 22){
                     currentLocation = 25;
                     gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
+                    handleLand();
                 }
                 else{
                     currentLocation = 5;
                     gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
+                    handleLand();
                 }
                 break;
             case 7:
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(10));
                 currentPlayer.setInJail(true);
-                description = handleLand(description);
+                handleLand();
                 gameWindowController.setLastActionLabel(description);
                 nextTurn();
                 break;
@@ -364,22 +366,22 @@ public class TurnManager {
             case 10:
                 currentLocation = 5;
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 11:
                 currentLocation = 24;
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 12:
                 currentLocation = 11;
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 13:
                 currentLocation = 39;
                 gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                description = handleLand(description);
+                handleLand();
                 break;
             case 14:
                 int numPlayers = players.size();
@@ -400,6 +402,5 @@ public class TurnManager {
             default:
                 description = "unknown card";
         }
-        return description;
     }
 }

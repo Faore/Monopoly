@@ -272,6 +272,7 @@ public class GameWindowController {
             rollToMoveButton.setDisable(true);
             endTurnButton.setDisable(true);
             upgradePropertiesButton.setDisable(true);
+            jailController.setup(player);
             jailStage.show();
         }
         updateMoney(player.getMoney());
