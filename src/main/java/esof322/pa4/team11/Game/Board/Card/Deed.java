@@ -27,10 +27,7 @@ public class Deed {
 
     private int currentBuildingLevel;
 
-    private GameWindowController gameWindowController;
-
-    public Deed(int printedPrice, GameWindowController gameWindowController) {
-        this.gameWindowController = gameWindowController;
+    public Deed(int printedPrice) {
         this.printedPrice = printedPrice;
         this.mortgageValue = printedPrice / 2;
         this.rent = -1;
@@ -42,8 +39,7 @@ public class Deed {
         this.isMortgaged = false;
     }
 
-    public Deed(int printedPrice, int rent, GameWindowController gameWindowController) {
-        this.gameWindowController = gameWindowController;
+    public Deed(int printedPrice, int rent) {
         this.printedPrice = printedPrice;
         this.mortgageValue = printedPrice / 2;
         this.rent = rent;
@@ -55,8 +51,7 @@ public class Deed {
         this.isMortgaged = false;
     }
 
-    public Deed(int printedPrice, int rent, int buildingCost, int rent1, int rent2, int rent3, int rent4, int rent5, GameWindowController gameWindowController) {
-        this.gameWindowController = gameWindowController;
+    public Deed(int printedPrice, int rent, int buildingCost, int rent1, int rent2, int rent3, int rent4, int rent5) {
         this.printedPrice = printedPrice;
         this.mortgageValue = printedPrice / 2;
         this.rent = rent;
@@ -104,12 +99,12 @@ public class Deed {
             return 0;
         }
         if(this.rent == -1) {
+            //This is a utility.
             for(Deed deed : this.associatedDeeds) {
                 if(!(deed.getOwner() == this.currentOwner)) {
                     return (new Random().nextInt(6) + 1)*4;
                 }
             }
-            //This is a utility.
             return (new Random().nextInt(6) + 1) * 10;
         }
 
@@ -151,7 +146,6 @@ public class Deed {
             throw new Exception("Building already at max level.");
         }
         this.currentBuildingLevel++;
-        gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public void removeBuildingLevel() throws Exception {
@@ -162,7 +156,6 @@ public class Deed {
             throw new Exception("Building already at min level.");
         }
         this.currentBuildingLevel--;
-        gameWindowController.setBuildingLevelAtProperty(currentOwner.token.tokenType, (StandardProperty) property, currentBuildingLevel);
     }
 
     public Player getOwner() {

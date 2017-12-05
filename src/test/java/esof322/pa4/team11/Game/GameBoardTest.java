@@ -101,7 +101,7 @@ public class GameBoardTest {
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(new Player(1, TokenTypes.Blue));
         GameBoard board = new GameBoard(gameSettings);
-        BoardBuilder.buildBoard(board.tiles, board.deeds, new GameWindowController());
+        BoardBuilder.buildBoard(board.tiles, board.deeds);
         assertEquals(0, board.getLocation(board.tiles.get(0)));
     }
 }

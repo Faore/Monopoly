@@ -15,7 +15,7 @@ public class ThemedBoardBuilderTest {
     public void testFullMonopolyBoard() throws Exception {
         ObservableList<Tile> tiles = FXCollections.observableArrayList();
         ObservableList<Deed> deeds = FXCollections.observableArrayList();
-        ThemedBoardBuilder.buildBoard(tiles, deeds, new GameWindowController());
+        ThemedBoardBuilder.buildBoard(tiles, deeds);
         assertTrue(deeds.size() == 28);
         assertTrue(tiles.size() == 40);
     }

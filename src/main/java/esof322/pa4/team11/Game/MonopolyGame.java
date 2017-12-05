@@ -42,6 +42,10 @@ public class MonopolyGame {
 
     public Timer timer;
 
+    public static void destroyInstance() {
+        singleton = null;
+    }
+
     public MonopolyGame(GameSettings gameSettings, Stage primaryStage) throws Exception {
         if (MonopolyGame.singleton == null) {
             MonopolyGame.singleton = this;

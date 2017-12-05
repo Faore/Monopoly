@@ -22,7 +22,7 @@ public class StandardMonopolyGameFactory extends AbstractGameFactory {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent parent = fxmlLoader.load(getClass().getResource("/fxml/GameWindow.fxml").openStream());
         game.gameWindowController = fxmlLoader.getController();
-        BoardBuilder.buildBoard(game.gameBoard.tiles, game.gameBoard.deeds, game.gameWindowController);
+        BoardBuilder.buildBoard(game.gameBoard.tiles, game.gameBoard.deeds);
         CardBuilder.buildChanceCard(game.gameBoard.chanceCards);
         CardBuilder.buildChestCard(game.gameBoard.chestCards);
         FXCollections.shuffle(game.gameBoard.chanceCards);

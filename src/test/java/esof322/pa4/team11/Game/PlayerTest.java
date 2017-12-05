@@ -54,7 +54,7 @@ public class PlayerTest extends ApplicationTest {
 
     @Test
     public void testBuyDeed() throws Exception {
-        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250, new GameWindowController());
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed);
         assertTrue(player.deeds.contains(deed));
@@ -63,7 +63,7 @@ public class PlayerTest extends ApplicationTest {
 
     @Test
     public void testAuctionDeed() throws Exception {
-        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250, new GameWindowController());
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
         Player player = new Player(1, TokenTypes.Blue);
         player.buyDeed(deed, 1500);
         assertTrue(player.deeds.contains(deed));
@@ -99,8 +99,8 @@ public class PlayerTest extends ApplicationTest {
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(player);
         GameBoard gameBoard = new GameBoard(gameSettings);
-        Deed deed1 = new Deed(60, new GameWindowController());
-        Deed deed2 = new Deed(60, new GameWindowController());
+        Deed deed1 = new Deed(60);
+        Deed deed2 = new Deed(60);
         deed1.setOwner(player);
         deed2.setOwner(player);
         deed2.setMortgaged(true);
@@ -119,7 +119,7 @@ public class PlayerTest extends ApplicationTest {
         Player player = new Player(1, TokenTypes.Blue);
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(player);
-        Deed deed = new Deed(250, new GameWindowController());
+        Deed deed = new Deed(250);
         deed.setOwner(player);
         try {
             player.buyDeed(deed);
@@ -135,7 +135,7 @@ public class PlayerTest extends ApplicationTest {
         Player player = new Player(1, TokenTypes.Blue);
         GameSettings gameSettings = new GameSettings();
         gameSettings.players.add(player);
-        Deed deed = new Deed(250, new GameWindowController());
+        Deed deed = new Deed(250);
         deed.setOwner(player);
         try {
             player.buyDeed(deed, 50);

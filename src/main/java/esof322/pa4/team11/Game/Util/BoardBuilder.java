@@ -24,7 +24,7 @@ public class BoardBuilder {
         deeds.add(deed);
     }
 
-    public static void buildBoard(ObservableList<Tile> tiles, ObservableList<Deed> deeds, GameWindowController gameWindowController) throws Exception {
+    public static void buildBoard(ObservableList<Tile> tiles, ObservableList<Deed> deeds) throws Exception {
 
         ArrayList<Deed> utilities = new ArrayList<>();
         ArrayList<Deed> railroads = new ArrayList<>();
@@ -49,7 +49,7 @@ public class BoardBuilder {
                         SpecialTileTypes.Go
                 )
         );
-        deed = new Deed(60, 2, 50, 10,30,90,160, 250, gameWindowController);
+        deed = new Deed(60, 2, 50, 10,30,90,160, 250);
         associateDeed(brown, deed);
         tiles.add(
                 new StandardProperty("Mediterranean Avenue",
@@ -66,7 +66,7 @@ public class BoardBuilder {
                         TileOrientation.Bottom,
                         SpecialTileTypes.CommunityChest)
         );
-        deed = new Deed(60, 4, 50, 20,60,180,320, 450, gameWindowController);
+        deed = new Deed(60, 4, 50, 20,60,180,320, 450);
         associateDeed(brown, deed);
         tiles.add(
                 new StandardProperty("Baltic Avenue",
@@ -84,7 +84,7 @@ public class BoardBuilder {
                         SpecialTileTypes.IncomeTax
                 )
         );
-        deed = new Deed(200, 25, gameWindowController);
+        deed = new Deed(200, 25);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Reading Railroad",
@@ -94,7 +94,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(100, 6, 50, 30,90,270,400, 550, gameWindowController);
+        deed = new Deed(100, 6, 50, 30,90,270,400, 550);
         associateDeed(lightblue, deed);
         tiles.add(
                 new StandardProperty("Oriental Avenue",
@@ -112,7 +112,7 @@ public class BoardBuilder {
                         SpecialTileTypes.Chance
                 )
         );
-        deed = new Deed(100, 6, 50, 30,90,270,400, 550, gameWindowController);
+        deed = new Deed(100, 6, 50, 30,90,270,400, 550);
         associateDeed(lightblue, deed);
         tiles.add(
                 new StandardProperty("Vermont Avenue",
@@ -122,7 +122,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(120, 8, 50, 40,100,300,450, 600, gameWindowController);
+        deed = new Deed(120, 8, 50, 40,100,300,450, 600);
         associateDeed(lightblue, deed);
         tiles.add(
                 new StandardProperty("Connecticut Avenue",
@@ -140,7 +140,7 @@ public class BoardBuilder {
                         SpecialTileTypes.Jail
                 )
         );
-        deed = new Deed(140, 10, 100, 50,150,450,625, 750, gameWindowController);
+        deed = new Deed(140, 10, 100, 50,150,450,625, 750);
         associateDeed(pink, deed);
         tiles.add(
                 new StandardProperty("St. Charles Place",
@@ -150,7 +150,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(150, gameWindowController);
+        deed = new Deed(150);
         associateDeed(utilities, deed);
         tiles.add(
                 new Utility("Electric Company",
@@ -160,7 +160,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(140, 10, 100, 50,150,450,625, 750, gameWindowController);
+        deed = new Deed(140, 10, 100, 50,150,450,625, 750);
         associateDeed(pink, deed);
         tiles.add(
                 new StandardProperty("States Avenue",
@@ -170,7 +170,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(160, 12, 100, 60,180,500,700, 900, gameWindowController);
+        deed = new Deed(160, 12, 100, 60,180,500,700, 900);
         associateDeed(pink, deed);
         tiles.add(
                 new StandardProperty("Virginia Avenue",
@@ -180,7 +180,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 25, gameWindowController);
+        deed = new Deed(200, 25);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Pennsylvania Railroad",
@@ -190,7 +190,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(180, 14, 100, 70,200,550,750, 950, gameWindowController);
+        deed = new Deed(180, 14, 100, 70,200,550,750, 950);
         associateDeed(orange, deed);
         tiles.add(
                 new StandardProperty("St. James Place",
@@ -208,7 +208,7 @@ public class BoardBuilder {
                         SpecialTileTypes.CommunityChest
                 )
         );
-        deed = new Deed(180, 14, 100, 70,200,550,750, 950, gameWindowController);
+        deed = new Deed(180, 14, 100, 70,200,550,750, 950);
         associateDeed(orange, deed);
         tiles.add(
                 new StandardProperty("Tennessee Avenue",
@@ -218,7 +218,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 16, 100, 80,220,600,800, 1000, gameWindowController);
+        deed = new Deed(200, 16, 100, 80,220,600,800, 1000);
         associateDeed(orange, deed);
         tiles.add(
                 new StandardProperty("New York Avenue",
@@ -236,7 +236,7 @@ public class BoardBuilder {
                         SpecialTileTypes.FreeParking
                 )
         );
-        deed = new Deed(220, 18, 150, 90,250,700,875, 1050, gameWindowController);
+        deed = new Deed(220, 18, 150, 90,250,700,875, 1050);
         associateDeed(red, deed);
         tiles.add(
                 new StandardProperty("Kentucky Avenue",
@@ -254,7 +254,7 @@ public class BoardBuilder {
                         SpecialTileTypes.Chance
                 )
         );
-        deed = new Deed(220, 18, 150, 90,250,700,875, 1050, gameWindowController);
+        deed = new Deed(220, 18, 150, 90,250,700,875, 1050);
         associateDeed(red, deed);
         tiles.add(
                 new StandardProperty("Indiana Avenue",
@@ -264,7 +264,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(240, 20, 150, 100,300,750,925, 1100, gameWindowController);
+        deed = new Deed(240, 20, 150, 100,300,750,925, 1100);
         associateDeed(red, deed);
         tiles.add(
                 new StandardProperty("Illinois Avenue",
@@ -274,7 +274,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 25, gameWindowController);
+        deed = new Deed(200, 25);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("B. & O. Railroad",
@@ -284,7 +284,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(260, 22, 150, 110,330,800,975, 1150, gameWindowController);
+        deed = new Deed(260, 22, 150, 110,330,800,975, 1150);
         associateDeed(yellow, deed);
         tiles.add(
                 new StandardProperty("Atlantic Avenue",
@@ -294,7 +294,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(260, 22, 150, 110,330,800,975, 1150, gameWindowController);
+        deed = new Deed(260, 22, 150, 110,330,800,975, 1150);
         associateDeed(yellow, deed);
         tiles.add(
                 new StandardProperty("Ventnor Avenue",
@@ -304,7 +304,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(150, gameWindowController);
+        deed = new Deed(150);
         associateDeed(utilities, deed);
         tiles.add(
                 new Utility("Water Works",
@@ -314,7 +314,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(280, 24, 150, 120,360,850,1025, 1200, gameWindowController);
+        deed = new Deed(280, 24, 150, 120,360,850,1025, 1200);
         associateDeed(yellow, deed);
         tiles.add(
                 new StandardProperty("Marvin Gardens",
@@ -332,7 +332,7 @@ public class BoardBuilder {
                         SpecialTileTypes.GoToJail
                 )
         );
-        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275, gameWindowController);
+        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275);
         associateDeed(green, deed);
         tiles.add(
                 new StandardProperty("Pacific Avenue",
@@ -342,7 +342,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275, gameWindowController);
+        deed = new Deed(300, 26, 200, 130,390,900,1100, 1275);
         associateDeed(green, deed);
         tiles.add(
                 new StandardProperty("North Carolina Avenue",
@@ -360,7 +360,7 @@ public class BoardBuilder {
                         SpecialTileTypes.CommunityChest
                 )
         );
-        deed = new Deed(320, 28, 200, 150,450,1000,1200, 1400, gameWindowController);
+        deed = new Deed(320, 28, 200, 150,450,1000,1200, 1400);
         associateDeed(green, deed);
         tiles.add(
                 new StandardProperty("Pennsylvania Avenue",
@@ -370,7 +370,7 @@ public class BoardBuilder {
                         deed
                 )
         );
-        deed = new Deed(200, 25, gameWindowController);
+        deed = new Deed(200, 25);
         associateDeed(railroads, deed);
         tiles.add(
                 new Railroad("Short Line",
@@ -388,7 +388,7 @@ public class BoardBuilder {
                         SpecialTileTypes.Chance
                 )
         );
-        deed = new Deed(350, 35, 200, 175,500,1100,1300, 1500, gameWindowController);
+        deed = new Deed(350, 35, 200, 175,500,1100,1300, 1500);
         associateDeed(blue, deed);
         tiles.add(
                 new StandardProperty("Park Place",
@@ -406,7 +406,7 @@ public class BoardBuilder {
                         SpecialTileTypes.LuxuryTax
                 )
         );
-        deed = new Deed(400, 50, 200, 200,600,1400,1700, 2000, gameWindowController);
+        deed = new Deed(400, 50, 200, 200,600,1400,1700, 2000);
         associateDeed(blue, deed);
         tiles.add(
                 new StandardProperty("Boardwalk",

@@ -11,7 +11,7 @@ public class DeedTest {
     private Deed testDeedBoardwalk;
 
     public DeedTest() throws Exception {
-        testDeedBoardwalk = new Deed(400, 50, 200, 200, 600, 1400, 1700, 200, new GameWindowController());
+        testDeedBoardwalk = new Deed(400, 50, 200, 200, 600, 1400, 1700, 200);
     }
 
     @Test

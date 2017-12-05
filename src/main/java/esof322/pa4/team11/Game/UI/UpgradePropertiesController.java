@@ -1,6 +1,7 @@
 package esof322.pa4.team11.Game.UI;
 
 import esof322.pa4.team11.Game.Board.Card.Deed;
+import esof322.pa4.team11.Game.Board.Tiles.Properties.StandardProperty;
 import esof322.pa4.team11.Game.MonopolyGame;
 import esof322.pa4.team11.Game.Player;
 import javafx.beans.value.ChangeListener;
@@ -120,7 +121,8 @@ public class UpgradePropertiesController {
     }
 
     public void upgradeProperty(ActionEvent actionEvent) throws Exception {
-        player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).addBuildingLevel();
+        Deed deed = player.deeds.get(propertyList.getSelectionModel().getSelectedIndex());
+        deed.addBuildingLevel();
         player.takeMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost);
         gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
@@ -131,7 +133,9 @@ public class UpgradePropertiesController {
     }
 
     public void downgradeProperty(ActionEvent actionEvent) throws Exception {
-        player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).removeBuildingLevel();
+        Deed deed = player.deeds.get(propertyList.getSelectionModel().getSelectedIndex());
+        deed.removeBuildingLevel();
+        gameWindowController.setBuildingLevelAtProperty(deed.getOwner().token.tokenType, (StandardProperty) deed.getProperty(), deed.getCurrentBuildingLevel());
         player.giveMoney(player.deeds.get(propertyList.getSelectionModel().getSelectedIndex()).buildingCost/2);
         gameWindowController.updateMoney(player.getMoney());
         rerender(propertyList.getSelectionModel().getSelectedIndex());
