@@ -2,6 +2,8 @@ package esof322.pa4.team11.Game;
 
 import esof322.pa4.team11.Game.Board.Card.Card;
 import esof322.pa4.team11.Game.Board.Pieces.TokenTypes;
+import esof322.pa4.team11.Game.UI.GameWindowController;
+import esof322.pa4.team11.Game.Util.BoardBuilder;
 import esof322.pa4.team11.GameSettings;
 import javafx.collections.ObservableList;
 import org.junit.Assert;
@@ -108,5 +110,14 @@ public class GameBoardTest {
         board.getChestCard();
         board.replaceChestJailCard();
         assertEquals(board.chestJailCard, board.chestCards.get(0));
+    }
+
+    @Test
+    public void testGetLocation() throws Exception {
+        GameSettings gameSettings = new GameSettings();
+        gameSettings.players.add(new Player(1, TokenTypes.Blue));
+        GameBoard board = new GameBoard(gameSettings);
+        BoardBuilder.buildBoard(board.tiles, board.deeds, new GameWindowController());
+        assertEquals(0, board.getLocation(board.tiles.get(0)));
     }
 }
