@@ -5,6 +5,7 @@ import esof322.pa4.team11.Game.Board.Pieces.TokenTypes;
 import esof322.pa4.team11.Game.UI.GameWindowController;
 import esof322.pa4.team11.GameSettings;
 import javafx.stage.Stage;
+import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -144,5 +145,42 @@ public class PlayerTest extends ApplicationTest {
             return;
         }
         assertTrue(false);
+    }
+
+    @Test
+    public void testGetChanceRepairs() throws Exception {
+        Player player = new Player(1, TokenTypes.Blue);
+        Assert.assertEquals(0, player.getChanceRepairs());
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        deed.addBuildingLevel();
+        player.deeds.add(deed);
+        Assert.assertEquals(25, player.getChanceRepairs());
+        deed.addBuildingLevel();
+        deed.addBuildingLevel();
+        deed.addBuildingLevel();
+        deed.addBuildingLevel();
+        Assert.assertEquals(100, player.getChanceRepairs());
+    }
+
+    @Test
+    public void testGetChestRepairs() throws Exception {
+        Player player = new Player(1, TokenTypes.Blue);
+        Assert.assertEquals(0, player.getChestRepairs());
+        Deed deed = new Deed(60, 2, 50, 10,30,90,160, 250);
+        deed.addBuildingLevel();
+        player.deeds.add(deed);
+        Assert.assertEquals(45, player.getChestRepairs());
+        deed.addBuildingLevel();
+        deed.addBuildingLevel();
+        deed.addBuildingLevel();
+        deed.addBuildingLevel();
+        Assert.assertEquals(115, player.getChestRepairs());
+    }
+
+    @Test
+    public void testCanBid() {
+        Player player = new Player(1, TokenTypes.Blue);
+        assertTrue(player.canBid(50));
+        assertFalse(player.canBid(1501));
     }
 }

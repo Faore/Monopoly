@@ -135,11 +135,11 @@ public class TurnManager {
     public void cardToLeaveJail(){
         currentPlayer.setInJail(false);
         if (currentPlayer.chanceJailCard){
-            currentPlayer.setChanceJailCard(false);
+            currentPlayer.chanceJailCard = false;
             gameBoard.replaceChanceJailCard();
             gameWindowController.setLastActionLabel("Player " + currentPlayer.playerNumber + " used the chance get out of jail free card.");
         }else{
-            currentPlayer.setChestJailCard(false);
+            currentPlayer.chestJailCard = false;
             gameBoard.replaceChestJailCard();
             gameWindowController.setLastActionLabel("Player " + currentPlayer.playerNumber + " used the community chest get out of jail free card.");
         }
@@ -290,7 +290,7 @@ public class TurnManager {
                 description = "Player " + currentPlayer.playerNumber +  " received $100";
                 break;
             case 16:
-                currentPlayer.setChestJailCard(true);
+                currentPlayer.chestJailCard = true;
                 description = "Player " + currentPlayer.playerNumber +  " received a Get Out of Jail Free card";
                 break;
             default:
@@ -328,21 +328,6 @@ public class TurnManager {
                 }
                 break;
             case 5:
-                if (currentLocation == 7){
-                    currentLocation = 15;
-                    gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
-                }else if(currentLocation == 22){
-                    currentLocation = 25;
-                    gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
-                }
-                else{
-                    currentLocation = 5;
-                    gameWindowController.setTokenLocation(currentPlayer.token, gameBoard.tiles.get(currentLocation));
-                    description = handleLand(description);
-                }
-                break;
             case 6:
                 if (currentLocation == 7){
                     currentLocation = 15;
@@ -409,7 +394,7 @@ public class TurnManager {
                 description = "Player " + currentPlayer.playerNumber +  " received $150";
                 break;
             case 16:
-                currentPlayer.setChanceJailCard(true);
+                currentPlayer.chanceJailCard = true;
                 description = "Player " + currentPlayer.playerNumber +  " received a Get Out of Jail Free card";
                 break;
             default:

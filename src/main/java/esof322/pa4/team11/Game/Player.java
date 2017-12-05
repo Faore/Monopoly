@@ -37,14 +37,6 @@ public class Player {
         }
     }
 
-    public void setChanceJailCard(boolean jailCard){
-        this.chanceJailCard = jailCard;
-    }
-
-    public void setChestJailCard(boolean jailCard){
-        this.chestJailCard = jailCard;
-    }
-
     public void decrementTimeInJail() {
         if(timeInJail > 0) {
             timeInJail--;
