@@ -1,0 +1,349 @@
+Commit Log:
+
+commit 048346677c46490f07ce4d786d18a7bb6053af9b
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Tue Dec 5 19:57:47 2017 -0700
+
+    little more line coverage for tests
+
+commit 7a3d6b3a1321676c174bb9406d39e3d86ef406c5
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Tue Dec 5 18:55:16 2017 -0700
+
+    deed tests cover 100% of methods
+
+commit fab9e5f91748840eafb56da289dfc090757fa065
+Merge: 5c3a6ea ed90c86
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Tue Dec 5 18:14:20 2017 -0700
+
+    fixed conflict Merge branch 'master' of https://github.com/MSU-ESOF322/Team11
+
+commit 5c3a6eaa7aa6e4dee04a6b4ec6d9e449b6b8f81f
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Tue Dec 5 17:55:22 2017 -0700
+
+    more deed tests
+
+commit ed90c867be88d09bd83a65b760f5f8310a5e9f16
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Tue Dec 5 17:21:44 2017 -0700
+
+    README.txt
+
+commit d2202b33d0ae9e773cbb26625561d14e68dcf963
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Tue Dec 5 13:46:36 2017 -0700
+
+    Use instance variable for description in Turn manager to help decouple from UI. Jail controller now makes sure you can use a get out jail free card before letting you use it..
+
+commit ac1732322596843393b0b965b19d44711074e1e6
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Tue Dec 5 13:04:11 2017 -0700
+
+    remove redundant code.
+
+commit 707d4da62697242cb21cbcdadeb0ccf37bd71bf1
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Tue Dec 5 12:27:31 2017 -0700
+
+    Decouple deeds from UI.
+
+commit 33dcec690141e3af371c4c2eb1e4761051d0aabd
+Merge: 86d4158 8949428
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Tue Dec 5 11:42:50 2017 -0700
+
+    Merge branch 'master' of github.com:MSU-ESOF322/Team11
+
+commit 86d41581be3934803c97004cd32b9b73d4bc0a68
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Tue Dec 5 11:42:46 2017 -0700
+
+    Test get location
+
+commit 8949428b1aca84914eed253022e301933c5e90aa
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Mon Dec 4 14:17:33 2017 -0700
+
+    moved card tests to card builder
+
+commit 03eafc5226c5cdf60b83c567400846325d56fb98
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Mon Dec 4 10:57:20 2017 -0700
+
+    card tests for both versions of the game
+
+commit b75827b3f5fea2fbb3083a7ae9052c4dec11b5f3
+Merge: 6c28b84 4378bb7
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Mon Dec 4 10:28:26 2017 -0700
+
+    fixed conflict Merge branch 'master' of https://github.com/MSU-ESOF322/Team11
+
+commit 6c28b849447a4569ebc4b3ac13d39938100b0f55
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Mon Dec 4 10:28:19 2017 -0700
+
+    moved chest and chance initialized test to standardFactoryTest
+
+commit 4378bb713cf8e9a6697a0862001ff538fd51b754
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 09:57:19 2017 -0700
+
+    More unit tests.
+
+commit 6c1c946b2ee76e91464c91953a8e61150de5c99c
+Merge: 11efcc3 765b66b
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 09:26:06 2017 -0700
+
+    Fixed merge conflicts.
+
+commit 11efcc3454c87ed7a691d3fc421ea8161452419e
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 09:23:39 2017 -0700
+
+    Abstract factory retrieval tests, fix existing tests.
+
+commit 765b66be972b5a70af6ceec674d77d555ff7146f
+Merge: a51f014 5f638f3
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Mon Dec 4 08:35:35 2017 -0700
+
+    fixed, couple tests, added theme cardsMerge branch 'master' of https://github.com/MSU-ESOF322/Team11
+
+commit a51f014c3e261a8abfef936e88d8089337f6e8e9
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Mon Dec 4 08:34:49 2017 -0700
+
+    fixed a couple tests, added themed cards for properties as the locations don't match for the boards
+
+commit 5f638f32d80702bdb52a6c9bbf93730e9c8c84bd
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 08:28:53 2017 -0700
+
+    Rename modules. Rename factories.
+
+commit 204817686d4f83af71d6413b06ff46b833c5f301
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 02:39:31 2017 -0700
+
+    Properly construct turn manager.
+
+commit 91c3ddbbdf4f743cd63dc445b9653f3fb7c85568
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 02:37:45 2017 -0700
+
+    Remove use of singletons turn manager.
+
+commit fd934a563680dd0c1b9c6516fa52f9a1d1359feb
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 02:27:42 2017 -0700
+
+    Remove singleton from Deeds.
+
+commit 7f428924cfa2ec4d0ca5d99252c028ba619086c4
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 02:14:01 2017 -0700
+
+    Remove stray singleton use in the UI.
+
+commit 3d7cfcfdfd741c4546d828855ae51c2a3eef04e8
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 02:10:14 2017 -0700
+
+    GameWindowController no longer uses singletones.
+
+commit cdfb75bbb4dc86414a906a3d8f245a96714f8a69
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 01:34:03 2017 -0700
+
+    Change debug to not rely on singleton, changed to controller.
+
+commit 331a416e9adaafb946ceebcd06bd9a9b04e92604
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 01:25:14 2017 -0700
+
+    All sub-controllers no longer use the singleton.
+
+commit 1a9d12475832b12c9f594cb0443c36e16b6fa689
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 01:15:11 2017 -0700
+
+    Chance controller no longer relies on singleton.
+
+commit 51014b2c987c26bb87ae81489d68e1b93dd66ea8
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 01:10:00 2017 -0700
+
+    Auction and AskBuy controllers are no longer reliant on the singleton.
+
+commit 0b57f1b60993dbef4c837b344a763c36fe2c9c37
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 00:43:34 2017 -0700
+
+    Convert GameWindowManager to a GameWindowController for more MVC.
+
+commit 2131801f2504e08f9120b20d5feb8430ef9377c4
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 00:37:18 2017 -0700
+
+    Remove controller self-registration in favor of parent registration. (This means many of the UI elements won't be 100% reliant on the MonopolyGame singleton.)
+
+commit 8cfd9d4d8fb81a995434811f2134c9dde1347f6f
+Merge: efbab94 db2e34f
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 00:12:24 2017 -0700
+
+    Merge branch 'master' of github.com:MSU-ESOF322/Team11
+
+commit efbab944fe167366b498825115da50f2421a1d54
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Mon Dec 4 00:12:08 2017 -0700
+
+    Fix game over bug. Remove accessing singleton.
+
+commit db2e34f8786d766f7e09ed99b1fbe8f296237cf4
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Mon Dec 4 00:03:11 2017 -0700
+
+    Conflict Fix
+
+commit 60b0a531b05ab6443ca5ec6404abf394980f6205
+Merge: 838178b 8ffe741
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Sun Dec 3 23:53:18 2017 -0700
+
+    Merge branch 'master' of https://github.com/MSU-ESOF322/Team11
+
+commit 838178bd721e2f24c1e7cc38331040105ba38691
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Sun Dec 3 23:50:30 2017 -0700
+
+    Added a missing line in ThemedGameWindow
+
+commit 8ffe741b97172d9b5b0a16b79596bc9e4f9b1855
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Sun Dec 3 23:37:10 2017 -0700
+
+    Fix themed game creation, created abstract factory, fix logic in selling get out of jail cards. Switch package name. Fix bugs from cached data.
+
+commit 0391e689a867a8059fb55b0c4cf4939b85637d99
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sun Dec 3 15:39:24 2017 -0700
+
+    sell jail card button
+
+commit e73519702e877952c0a26a33c048ea19a8e74ff9
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sun Dec 3 11:58:58 2017 -0700
+
+    finished theme select, fixed some description prints
+
+commit 7f98bd5640eade4c3f26d05e8337d20e9e7c06ef
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sun Dec 3 09:10:52 2017 -0700
+
+    minor changes and added tests
+
+commit 5b23bc20f2fbfe772cfb80bad979f6996437714a
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Sun Dec 3 06:22:37 2017 -0700
+
+    correction
+
+commit b9e55273a47d6a5d788a175342531a870c21d3f9
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Sun Dec 3 06:19:50 2017 -0700
+
+    Theme Updates and minor code corrections
+
+    Addition of a themed board builder for the custom theme which includes custom tiles and "railroads" which are the payloads.
+
+commit fd44265676594120993d11a3035329631ee5c8a7
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sat Dec 2 23:33:41 2017 -0700
+
+    code cleanup, fix some jail prints
+
+commit 9a68ccc04e981e6354ef4ab54e278c37b038f7c6
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sat Dec 2 23:13:22 2017 -0700
+
+    get out of jail free card implemented, just need to disable button if player doesn't have a card
+
+commit 0fb0abcc53dbd6f76b0e086a2967ac794856e4fa
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sat Dec 2 21:48:35 2017 -0700
+
+    refactoring move and action for land on space implemented for chance and shest
+
+commit 96e4ae5ebea2e3f7c2623099adc97a38f4b4247c
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sat Dec 2 15:41:10 2017 -0700
+
+    start to community chest, no get out of jail card yet
+
+commit 186c01951598d085609ae9043be428cd5dd4868b
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sat Dec 2 12:56:35 2017 -0700
+
+    more for chance, no action on jail or landing on properties yet
+
+commit 650e0df102c687c37d7f9bcd0f5742e2db8343bf
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Thu Nov 30 20:09:24 2017 -0700
+
+    chance working, only a few cards in
+
+commit 657a66fa543b972850bb51448c5744646b31977f
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Thu Nov 30 15:59:48 2017 -0700
+
+    chance window, no action yet
+
+commit 187661a07b07d6b2848a6bfdb3f587ada4875857
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Thu Nov 30 12:39:32 2017 -0700
+
+    start to ui for cards
+
+commit c2ac5bd867fe4c6ca7de96be8ef646f3ae736dc3
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Thu Nov 30 09:22:31 2017 -0700
+
+    start to cards
+
+commit a7f619b0dae07ae39d95d30331d926783ba6546f
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Thu Nov 30 00:21:37 2017 -0700
+
+    Custom Theme and Menu Option
+
+    Custom Overwatch Theme
+
+commit eee93425cb4898cc2b2d21029b8959abccd40849
+Author: SeanJungst <seanjungst@gmail.com>
+Date:   Sun Nov 26 23:27:47 2017 -0700
+
+    Ai Player Menu option
+
+commit b0ae3acd1c600c1cf6f5d5ae0fd58a97daeb7f69
+Merge: c4eb1df 61e012d
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Sat Nov 25 15:59:34 2017 -0700
+
+    Merge branch 'master' of github.com:MSU-ESOF322/Team11
+
+commit c4eb1dfcce937a4163fe7219b2f974dda9f20e9c
+Author: Chris Thomas <cthomas@admt.im>
+Date:   Sat Nov 25 15:59:20 2017 -0700
+
+    Mild refactoring and some new unit tests.
+
+commit 61e012db4dbeb3ec8f9bdda796f665b4ecbbb999
+Author: tkruegs <tkruegs@gmail.com>
+Date:   Sat Nov 18 22:05:13 2017 -0700
+
+    start to AIPlayer
