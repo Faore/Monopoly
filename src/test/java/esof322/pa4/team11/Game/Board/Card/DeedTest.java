@@ -35,8 +35,12 @@ public class DeedTest extends ApplicationTest{
     @Test
     public void testGetRentRailroad() throws Exception {
         Deed railroad = new Deed(200, 25);
-        railroad.setOwner(new Player(1, TokenTypes.Blue));
-        int expectedRent = 50;
+        Deed railroad2 = new Deed(200, 25);
+        Player player = new Player(1, TokenTypes.Blue);
+        railroad.setOwner(player);
+        railroad2.setOwner(player);
+        railroad.associateWithDeed(railroad2);
+        int expectedRent = 100;
         assertEquals(expectedRent, railroad.getRent());
     }
 
