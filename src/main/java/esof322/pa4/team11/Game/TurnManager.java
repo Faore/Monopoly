@@ -192,7 +192,7 @@ public class TurnManager {
                 case CommunityChest:
                     Card chestCard = gameBoard.getChestCard();
                     gameWindowController.drawChestCard(chestCard);
-                    description = handleChest(chestCard);
+                    handleChest(chestCard);
                     gameWindowController.setLastActionLabel(description);
                     break;
                 case Chance:
@@ -216,7 +216,7 @@ public class TurnManager {
         }
     }
 
-    public String handleChest(Card chestCard) throws Exception{
+    public void handleChest(Card chestCard) throws Exception{
         //Description is reset here.
         description = "";
         switch (chestCard.getCardNum()){
@@ -297,7 +297,6 @@ public class TurnManager {
             default:
                 description = "unknown card";
         }
-        return description;
     }
 
     public void handleChance(Card chanceCard, int currentLocation) throws Exception{
