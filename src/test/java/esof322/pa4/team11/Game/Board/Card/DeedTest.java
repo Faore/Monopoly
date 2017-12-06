@@ -33,14 +33,25 @@ public class DeedTest extends ApplicationTest{
     }
 
     @Test
-    public void testGetRent() throws Exception {
+    public void testGetRentRailroad() throws Exception {
+        Deed railroad = new Deed(200, 25);
+        railroad.setOwner(new Player(1, TokenTypes.Blue));
         int expectedRent = 50;
-        assertEquals(expectedRent, testDeedBoardwalk.rent);
+        assertEquals(expectedRent, railroad.getRent());
+    }
+
+    @Test
+    public void testGetRentWithHouses() throws Exception {
+        testDeedBoardwalk.setOwner(new Player(1, TokenTypes.Blue));
+        testDeedBoardwalk.addBuildingLevel();
+        testDeedBoardwalk.addBuildingLevel();
+        int expectedRent = 600;
+        assertEquals(expectedRent, testDeedBoardwalk.getRent());
     }
 
     @Test
     public void testGetOwner() throws Exception {
-        assertTrue(null == testDeedBoardwalk.currentOwner);
+        assertTrue(null == testDeedBoardwalk.getOwner());
     }
 
     @Test
@@ -95,5 +106,14 @@ public class DeedTest extends ApplicationTest{
         testDeedBoardwalk.addBuildingLevel();
         testDeedBoardwalk.removeBuildingLevel();
         assertEquals(0, testDeedBoardwalk.getCurrentBuildingLevel());
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        Property boardwalk = new StandardProperty("Mediterranean Avenue",
+                new Point2D(2344, 2993),
+                new Point2D(2577, 2585),
+                TileOrientation.Bottom, testDeedBoardwalk);
+        assertTrue(boardwalk.name == testDeedBoardwalk.toString());
     }
 }
